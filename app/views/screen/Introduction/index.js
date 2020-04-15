@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { View, Text, StyleSheet, Image } from 'react-native'
-import { Connect, connect } from 'react-redux'
+import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import AppIntroSlider from 'react-native-app-intro-slider';
 import Icon from 'react-native-vector-icons/Feather'

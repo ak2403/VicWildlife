@@ -7,4 +7,8 @@ const PerformanceTypes = {
     'RESET_QUIZ_OPTIONS': 'reset the quiz options'
 }
 
-export { LocationTypes, PerformanceTypes }
+const IntroductionTypes = {
+    'COMPLETED_ONBOARDING': 'completed onboarding'
+}
+
+export { LocationTypes, PerformanceTypes, IntroductionTypes }
