@@ -8,7 +8,8 @@ const PerformanceTypes = {
 }
 
 const IntroductionTypes = {
-    'COMPLETED_ONBOARDING': 'completed onboarding'
+    'COMPLETED_ONBOARDING': 'completed onboarding',
+    'APP_LOADED': 'runs when app loads first'
 }
 
 export { LocationTypes, PerformanceTypes, IntroductionTypes }

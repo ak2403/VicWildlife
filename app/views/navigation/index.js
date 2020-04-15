@@ -1,5 +1,7 @@
-import * as React from 'react';
+import React, { Component } from 'react';
 import { View, Text } from 'react-native';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux'
 import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -9,33 +11,56 @@ import LocationScreen from '../screen/Location'
 import PerformanceScreen from '../screen/Performance'
 import QuizScreen from '../screen/Quiz'
 
+import { loadingAppStatus } from '../../action/IntroductionAction'
+
 const Stack = createStackNavigator();
 
-function App() {
-    return (
-        <NavigationContainer>
-            <Stack.Navigator>
-                <Stack.Screen name="Home" component={IntroductionScreen} options={{
-                    headerShown: false
-                }} />
-                <Stack.Screen name="Location" component={LocationScreen} options={{
+class App extends Component {
+    componentDidMount = () => {
+        this.props.loadingAppStatus()
+    }
 
-                }} />
+    render() {
+        let {is_onboarding_completed, is_app_loaded} = this.props
 
-                <Stack.Screen name="Dashboard" component={DashboardScreen} options={{
-                    headerLeft: () => <View />
-                }} />
+        if(!is_app_loaded){
+            return <View>
+                <Text>Loading</Text>
+            </View>
+        }
 
-                <Stack.Screen name="Quiz" component={PerformanceScreen} options={{
-                    headerShown: false
-                }} />
-                <Stack.Screen name="TakeaQuiz" component={QuizScreen} options={{
-                    headerShown: false
-                }} />
+        return (
+            <NavigationContainer>
+                <Stack.Navigator initialRouteName={is_onboarding_completed ? "Dashboard": "Onboarding"}>
+                    <Stack.Screen name="Onboarding" component={IntroductionScreen} options={{
+                        headerShown: false
+                    }} />
 
-            </Stack.Navigator>
-        </NavigationContainer>
-    );
+                    <Stack.Screen name="Dashboard" component={DashboardScreen} options={{
+                        // headerLeft: () => <View />
+                        headerShown: false
+                    }} />
+
+                    <Stack.Screen name="TakeaQuiz" component={QuizScreen} options={{
+                        headerShown: false
+                    }} />
+
+                </Stack.Navigator>
+            </NavigationContainer>
+        );
+    }
 }
 
-export default App;
+const mapStateToProps = props => {
+    let { authentication } = props
+    return {
+        is_onboarding_completed: authentication.is_onboarding_completed,
+        is_app_loaded: authentication.is_app_loaded
+    }
+}
+
+const mapDispatchToProps = dispatch => bindActionCreators({
+    loadingAppStatus
+}, dispatch)
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
