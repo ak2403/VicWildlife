@@ -6,7 +6,7 @@ import Geolocation from '@react-native-community/geolocation';
 import MapView, { PROVIDER_GOOGLE, Marker, Circle } from 'react-native-maps';
 import Card from '../../component/Card'
 
-import { getNearbyLocations } from '../../../action/LocationAction';
+import { getNearbyLocations, bookmarkLocation } from '../../../action/LocationAction';
 
 Geolocation.setRNConfiguration({
     enableHighAccuracy: true, timeout: 20000, maximumAge: 1000
@@ -61,6 +61,10 @@ class LocationComponent extends Component {
         })
     };
 
+    bookmarkCard = data => {
+        this.props.bookmarkLocation(data)
+    }
+
     render() {
         let { locations, locationReceived } = this.state
         // let { nearby_location } = this.props
@@ -95,7 +99,7 @@ class LocationComponent extends Component {
                 {nearby_location.length != 0 ? <FlatList
                     data={nearby_location}
                     horizontal={true}
-                    renderItem={({ item }) => <Card data={item} />}
+                    renderItem={({ item }) => <Card data={item} bookmarkCard={data => this.bookmarkCard(data)} />}
                     keyExtractor={item => item.id}
                 /> : <View></View>}
             </View>
@@ -105,7 +109,8 @@ class LocationComponent extends Component {
 }
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-    getNearbyLocations
+    getNearbyLocations,
+    bookmarkLocation
 }, dispatch)
 
 const mapStateToProps = props => {

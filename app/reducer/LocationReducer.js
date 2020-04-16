@@ -1,7 +1,8 @@
 import {LocationTypes} from '../type'
 
 let initialState = {
-    nearby_location: []
+    nearby_location: [],
+    bookmark_location: []
 }
 
 const LocationReducer = (state=initialState, action) => {
@@ -11,6 +12,13 @@ const LocationReducer = (state=initialState, action) => {
                 ...state,
                 nearby_location: action.payload.results.slice(0,6)
             }
+
+        case LocationTypes.BOOKMARK_LOCATION:
+            return {
+                ...state,
+                bookmark_location: action.payload
+            }
+
         default:
             return state
     }

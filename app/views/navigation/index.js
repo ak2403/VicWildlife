@@ -7,8 +7,6 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import IntroductionScreen from '../screen/Introduction'
 import DashboardScreen from '../screen/Dashboard'
-import LocationScreen from '../screen/Location'
-import PerformanceScreen from '../screen/Performance'
 import QuizScreen from '../screen/Quiz'
 
 import { loadingAppStatus } from '../../action/IntroductionAction'

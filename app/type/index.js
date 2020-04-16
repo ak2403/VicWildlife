@@ -1,5 +1,6 @@
 const LocationTypes = {
-    'GET_NEARBY_PLACES': 'get the nearby wildlife service'
+    'GET_NEARBY_PLACES': 'get the nearby wildlife service',
+    'BOOKMARK_LOCATION': 'bookmark the location'
 }
 
 const PerformanceTypes = {
@@ -13,4 +14,8 @@ const IntroductionTypes = {
     'APP_LOADED': 'runs when app loads first'
 }
 
-export { LocationTypes, PerformanceTypes, IntroductionTypes }
+const SpeciesTypes = {
+    'GET_SPECIES_LIST': 'get the species list'
+}
+
+export { LocationTypes, PerformanceTypes, IntroductionTypes, SpeciesTypes }

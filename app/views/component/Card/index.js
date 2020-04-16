@@ -72,7 +72,7 @@ const CardComponent = props => {
             </View>
 
             <View style={styles.iconView}>
-                <Icon name="bookmark" color="#e0e0e0" size={20} />
+                <Icon name="bookmark" color="#e0e0e0" size={20} onPress={() => props.bookmarkCard(data)} />
             </View>
         </View>
     )
