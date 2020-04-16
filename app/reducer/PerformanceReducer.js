@@ -17,7 +17,7 @@ const PerformanceReducer = (state=initialState, action) => {
         case PerformanceTypes.RESET_QUIZ_OPTIONS:
             return {
                 ...state,
-                list_of_quiz_questions: [],
+                // list_of_quiz_questions: [],
                 isQuizStarted: false
             }
 
