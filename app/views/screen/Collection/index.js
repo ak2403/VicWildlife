@@ -13,8 +13,7 @@ class CollectionScreen extends Component {
 
     render() {
         let { bookmark_location } = this.props
-        console.log(this.props)
-
+        
         return <SafeAreaView forceInset={{ top: 'always' }} style={{ flex: 1 }}>
 
             <View style={styles.container}>
