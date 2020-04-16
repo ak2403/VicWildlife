@@ -4,7 +4,8 @@ const LocationTypes = {
 
 const PerformanceTypes = {
     'GET_QUIZ_QUESTIONS': 'get the question list for the user',
-    'RESET_QUIZ_OPTIONS': 'reset the quiz options'
+    'RESET_QUIZ_OPTIONS': 'reset the quiz options',
+    'SAVE_QUIZ_STATISTICS': 'save the quiz statistics'
 }
 
 const IntroductionTypes = {

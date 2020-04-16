@@ -6,6 +6,8 @@ import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import styles from './style'
 
+import {saveQuiz} from '../../../action/PerformanceAction'
+
 class Quiz extends Component {
     constructor(props) {
         super(props)
@@ -75,6 +77,13 @@ class Quiz extends Component {
             correctAnswerByUser: correctAnswerCount,
             completedQuiz: true
         })
+
+        this.props.saveQuiz([{
+            correctAnswerByUser: correctAnswerCount,
+            totalQuestions: lengthOfQuestions,
+            completedQuiz: true,
+            date: new Date().toLocaleDateString()
+        }])
 
     }
 
@@ -153,4 +162,8 @@ class Quiz extends Component {
     }
 }
 
-export default connect()(Quiz)
+const mapDispatchToProps = dispatch => bindActionCreators({
+    saveQuiz
+}, dispatch)
+
+export default connect(null, mapDispatchToProps)(Quiz)
