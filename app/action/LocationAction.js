@@ -14,16 +14,22 @@ export const getNearbyLocations = props => {
     }
 }
 
-export const bookmarkLocation = data => {
+export const bookmarkLocation = (data, index) => {
     return async dispatch => {
         let getBookmarkLocation = await AsyncStorage.getItem("@bookmarkLocation1")
         let parsedLocationData = []
+        let joinedArray = []
 
         if(getBookmarkLocation != null){
             parsedLocationData = JSON.parse(getBookmarkLocation)
+            if(index != -1){
+                parsedLocationData.splice(index, 1)
+                joinedArray = parsedLocationData
+            }else{
+                joinedArray = parsedLocationData.concat(data)
+            }
         }
-
-        let joinedArray = parsedLocationData.concat(data)
+        
         let saveLocationData = await AsyncStorage.setItem("@bookmarkLocation1", JSON.stringify(joinedArray))
 
         dispatch({

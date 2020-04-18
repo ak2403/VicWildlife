@@ -9,8 +9,8 @@ import styles from './style'
 const SpeciesList = ({ data }) => {
     let { item } = data
     return <View style={styles.CardView}>
-        <View style={styles.ImageView}>
-        </View>
+        {/* <View style={styles.ImageView}>
+        </View> */}
 
         <View style={styles.ContentView}>
             <Text style={styles.ContentText}>{item["Common Name"]}</Text>

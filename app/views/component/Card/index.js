@@ -62,17 +62,20 @@ const styles = StyleSheet.create({
 });
 
 const CardComponent = props => {
-    let { data } = props
+    let { data, selectedCard } = props
+
+    let isUserSelected = selectedCard.indexOf(data.id)
+
     return (
         <View elevation={5} style={styles.locationLayout}>
             <Text style={styles.headerText}>{data.name}</Text>
             <Text style={styles.contentText}>{data.formatted_address}</Text>
-            <View style={styles[data.opening_hours.open_now ? `statusGreen` : `statusRed`]}>
+            {data.opening_hours && <View style={styles[data.opening_hours.open_now ? `statusGreen` : `statusRed`]}>
                 <Text style={styles.statusText}>{data.opening_hours.open_now ? `Open` : `Closed`}</Text>
-            </View>
+            </View>}
 
             <View style={styles.iconView}>
-                <Icon name="bookmark" color="#e0e0e0" size={20} onPress={() => props.bookmarkCard(data)} />
+                <Icon name="bookmark" color={isUserSelected != -1 ? "#e67e22" : "#e0e0e0"} size={20} onPress={() => props.bookmarkCard(data, isUserSelected)} />
             </View>
         </View>
     )
