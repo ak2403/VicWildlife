@@ -53,15 +53,20 @@ class SpeciesScreen extends Component {
         return <SafeAreaView forceInset={{ top: 'always' }} style={{ flex: 1 }}>
 
             <View style={styles.container}>
-                <Text style={styles.headerText}>Species</Text>
+                <View>
+                    <Text style={styles.headerText}>Species</Text>
+                    
+                </View>
 
                 <View>
                     <TextInput
                         onChangeText={text => this.changeSearch(text)}
-                        style={{ height: 40 }}
-                        placeholder="Search the species" />
+                        style={{ height: 40, color: '#333', backgroundColor: '#e0e0e0', marginBottom: 20, padding: 5, borderRadius: 10 }}
+                        placeholder="Search the species"
+                        placeholderTextColor="#333" />
 
                     <FlatList
+                        key={item => item["Listed SPRAT TaxonID"]}
                         data={filteredSpecies}
                         renderItem={item => <SpeciesList data={item} />} />
                 </View>

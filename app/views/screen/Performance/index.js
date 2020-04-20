@@ -48,7 +48,7 @@ class PerformanceScreen extends Component {
 
                 <View style={styles.submitButton}>
 
-                    <Button color="#fff" title="Take a Quiz" onPress={() => this.props.navigation.navigate("TakeaQuiz")} />
+                    <Button title="Take a Quiz" onPress={() => this.props.navigation.navigate("TakeaQuiz")} />
 
                 </View>
 

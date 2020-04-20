@@ -41,8 +41,8 @@ export default StyleSheet.create({
 
     },
     submitButton: {
-        backgroundColor: '#0984e3',
-        color: '#fff',
+        // backgroundColor: '#0984e3',
+        // color: '#fff',
         marginTop: 10,
         borderRadius: 5
     }

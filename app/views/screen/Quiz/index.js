@@ -85,20 +85,20 @@ class QuizScreen extends Component {
     }
 
     render() {
-        let { quizStarted, listOfQuizQuestions } = this.state;
+        let { quizStarted, options } = this.state;
         let { list_of_quiz_questions } = this.props;
 
         if (quizStarted) {
             return <Quiz data={list_of_quiz_questions} closeQuiz={() => this.closeQuiz()} />
         }
 
-        return <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', alignContent: 'center' }}>
+        return <View style={{ flex: 1, padding: 50, justifyContent: 'center', alignItems: 'center', alignContent: 'center' }}>
             <View style={styles.closeIcon}>
                 <Icon name="x" size={20} color="#fff" onPress={this.closeQuiz} />
             </View>
 
             <Text>Quiz</Text>
-            <Form>
+            <Form style={{width: '100%'}}>
                 <Item picker>
                     <Picker
                         mode="dropdown"
@@ -106,7 +106,7 @@ class QuizScreen extends Component {
                         placeholder="Select the number of questions"
                         placeholderStyle={{ color: "#bfc6ea" }}
                         placeholderIconColor="#007aff"
-                        // selectedValue={this.state.selected2}
+                        selectedValue={options.numberOfQuestions}
                         onValueChange={value => this.onChange("numberOfQuestions", value)}
                     >
                         <Picker.Item label="5" value="5" />
@@ -122,7 +122,7 @@ class QuizScreen extends Component {
                         placeholder="Select the difficulty"
                         placeholderStyle={{ color: "#bfc6ea" }}
                         placeholderIconColor="#007aff"
-                        // selectedValue={this.state.selected2}
+                        selectedValue={options.difficultyLevel}
                         onValueChange={value => this.onChange("difficultyLevel", value)}
                     >
                         <Picker.Item label="Easy" value="easy" />
@@ -138,7 +138,7 @@ class QuizScreen extends Component {
                         placeholder="Select the Question Type"
                         placeholderStyle={{ color: "#bfc6ea" }}
                         placeholderIconColor="#007aff"
-                        // selectedValue={this.state.selected2}
+                        selectedValue={options.typeOfQuestions}
                         onValueChange={value => this.onChange("typeOfQuestions", value)}
                     >
                         <Picker.Item label="Any" value="any" />

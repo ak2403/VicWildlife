@@ -10,24 +10,22 @@ import { completedOnboarding } from '../../../action/IntroductionAction'
 const slides = [
     {
         key: 1,
-        title: 'Quiz',
-        text: 'Do different level quizzes',
-        image: require('../../../assets/images/quiz.png'),
-        backgroundColor: '#59b2ab',
-    },
-    {
+        title: 'Species List',
+        text: 'Search for species in Victoria',
+        image: require('../../../assets/images/list.png'),
+        backgroundColor: '#22bcb5',
+    }, {
         key: 2,
         title: 'Location',
         text: 'Search for wildlife service closest to you',
         image: require('../../../assets/images/location.png'),
         backgroundColor: '#febe29',
-    },
-    {
+    }, {
         key: 3,
-        title: 'Rocket guy',
-        text: 'I\'m already out of descriptions\n\nLorem ipsum bla bla bla',
-        image: require('../../../assets/images/list.png'),
-        backgroundColor: '#22bcb5',
+        title: 'Quiz',
+        text: 'Do different level quizzes',
+        image: require('../../../assets/images/quiz.png'),
+        backgroundColor: '#59b2ab',
     }
 ];
 

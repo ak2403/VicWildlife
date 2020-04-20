@@ -38,7 +38,8 @@ export default StyleSheet.create({
         fontWeight: 'bold',
     },
     cardAnswer: {
-
+        flexWrap: 'wrap',
+        flex: 1
     },
     submitButton: {
         backgroundColor: '#0984e3',
