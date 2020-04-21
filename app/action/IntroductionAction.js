@@ -1,6 +1,9 @@
 import AsyncStorage from '@react-native-community/async-storage';
+
+/** Importing the types */
 import { IntroductionTypes } from '../type'
 
+/** Function that will run when the user completes the onboarding of the app. */
 export const completedOnboarding = () => {
     return async dispatch => {
         try {
@@ -14,6 +17,7 @@ export const completedOnboarding = () => {
     }
 }
 
+/** Function that will run when the app starts initially */
 export const loadingAppStatus = () => {
     return async dispatch => {
         try {
