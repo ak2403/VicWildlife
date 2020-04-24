@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet, FlatList } from 'react-native'
+import { View, Text, StyleSheet, FlatList, Image } from 'react-native'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import Geolocation from '@react-native-community/geolocation';
@@ -69,11 +69,11 @@ class LocationComponent extends Component {
     render() {
         let { locations, locationReceived } = this.state
         // let { nearby_location } = this.props
-        let {bookmark_location, nearby_location} = this.props
+        let { bookmark_location, nearby_location } = this.props
 
         let bookmarkedID = bookmark_location.map(list => list.id);
-        // console.log(bookmarkedID)
-        
+        console.log(locations)
+
         // let nearby_location = [{ "formatted_address": "488 Park, Orchards Rd, Park Orchards VIC 3114, Australia", "geometry": { "location": { "lat": -37.78191229999999, "lng": 145.2108323 }, "viewport": { "northeast": { "lat": -37.78070367010728, "lng": 145.2120454798927 }, "southwest": { "lat": -37.78340332989272, "lng": 145.2093458201073 } } }, "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png", "id": "1d8a1846c78dde2728469a4a9a252e220b604760", "name": "Snake Busters", "opening_hours": { "open_now": true }, "photos": [{ "height": 1188, "html_attributions": ["<a href=\"https://maps.google.com/maps/contrib/104445551094489637470\">Snake Busters</a>"], "photo_reference": "CmRZAAAAQL2uCAA294mWxtdKAIWTyimxwk0d5Ts2fYchb1kx-LuxJrA7zYrbaOZN0Y6e-jXPRM85p8TUTX3MdT4Ct_4FEdY1U5Y3uUFlk0kQqhchqtmimrLiPUXIiI_qewnDYMZEEhD66GG5pOWIEjVJYl_LH1udGhSfA7VKplOUfaBi5--iipjT7xx_Cg", "width": 1440 }], "place_id": "ChIJUZwQs_A51moRAa0OPFnEWAk", "plus_code": { "compound_code": "6696+68 Park Orchards, Victoria", "global_code": "4RJ76696+68" }, "rating": 0, "reference": "ChIJUZwQs_A51moRAa0OPFnEWAk", "types": ["home_goods_store", "point_of_interest", "store", "establishment"], "user_ratings_total": 0 }, { "formatted_address": "488 Park, Orchards Rd, Park Orchards VIC 3114, Australia", "geometry": { "location": { "lat": -37.78191229999999, "lng": 145.2108323 }, "viewport": { "northeast": { "lat": -37.78070367010728, "lng": 145.2120454798927 }, "southwest": { "lat": -37.78340332989272, "lng": 145.2093458201073 } } }, "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png", "id": "1d8a1846c78dde2728469a4a9a252e220b604760", "name": "Snake Busters", "opening_hours": { "open_now": true }, "photos": [{ "height": 1188, "html_attributions": ["<a href=\"https://maps.google.com/maps/contrib/104445551094489637470\">Snake Busters</a>"], "photo_reference": "CmRZAAAAQL2uCAA294mWxtdKAIWTyimxwk0d5Ts2fYchb1kx-LuxJrA7zYrbaOZN0Y6e-jXPRM85p8TUTX3MdT4Ct_4FEdY1U5Y3uUFlk0kQqhchqtmimrLiPUXIiI_qewnDYMZEEhD66GG5pOWIEjVJYl_LH1udGhSfA7VKplOUfaBi5--iipjT7xx_Cg", "width": 1440 }], "place_id": "ChIJUZwQs_A51moRAa0OPFnEWAk", "plus_code": { "compound_code": "6696+68 Park Orchards, Victoria", "global_code": "4RJ76696+68" }, "rating": 0, "reference": "ChIJUZwQs_A51moRAa0OPFnEWAk", "types": ["home_goods_store", "point_of_interest", "store", "establishment"], "user_ratings_total": 0 }, { "formatted_address": "488 Park, Orchards Rd, Park Orchards VIC 3114, Australia", "geometry": { "location": { "lat": -37.78191229999999, "lng": 145.2108323 }, "viewport": { "northeast": { "lat": -37.78070367010728, "lng": 145.2120454798927 }, "southwest": { "lat": -37.78340332989272, "lng": 145.2093458201073 } } }, "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png", "id": "1d8a1846c78dde2728469a4a9a252e220b604760", "name": "Snake Busters", "opening_hours": { "open_now": true }, "photos": [{ "height": 1188, "html_attributions": ["<a href=\"https://maps.google.com/maps/contrib/104445551094489637470\">Snake Busters</a>"], "photo_reference": "CmRZAAAAQL2uCAA294mWxtdKAIWTyimxwk0d5Ts2fYchb1kx-LuxJrA7zYrbaOZN0Y6e-jXPRM85p8TUTX3MdT4Ct_4FEdY1U5Y3uUFlk0kQqhchqtmimrLiPUXIiI_qewnDYMZEEhD66GG5pOWIEjVJYl_LH1udGhSfA7VKplOUfaBi5--iipjT7xx_Cg", "width": 1440 }], "place_id": "ChIJUZwQs_A51moRAa0OPFnEWAk", "plus_code": { "compound_code": "6696+68 Park Orchards, Victoria", "global_code": "4RJ76696+68" }, "rating": 0, "reference": "ChIJUZwQs_A51moRAa0OPFnEWAk", "types": ["home_goods_store", "point_of_interest", "store", "establishment"], "user_ratings_total": 0 }]
 
         return <View style={styles.rootLayout}>
@@ -85,17 +85,31 @@ class LocationComponent extends Component {
                         region={{
                             latitude: Number(locations.latitude),
                             longitude: Number(locations.longitude),
-                            latitudeDelta: 0.25,
-                            longitudeDelta: 0.121,
+                            latitudeDelta: 0.5,
+                            longitudeDelta: 0.21,
                         }}>
+
                         <Marker
                             coordinate={locations}
                             title={"You are here"} />
+                        {nearby_location.length != 0 && nearby_location.map(location => {
+                            let loc_attr = {
+                                latitude: location.geometry.location.lat,
+                                longitude: location.geometry.location.lng
+                            }
+
+                            return <Marker
+                                coordinate={loc_attr}
+                                title={"You are here"}>
+                                <Image source={require('../../../assets/images/service.png')} style={{ width: 40, height: 40 }} />
+                            </Marker>
+
+                        })}
 
                         <Circle
                             center={{ latitude: Number(locations.latitude), longitude: Number(locations.longitude) }}
-                            radius={4000}
-                            strokeWidth={1}
+                            radius={400}
+                            strokeWidth={2}
                             strokeColor={'#1a66ff'}
                             fillColor={'rgba(230,238,255,0.5)'} />
                     </MapView>}

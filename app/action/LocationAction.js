@@ -2,6 +2,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 import * as getAPI from '../api/getAPI'
 import {LocationTypes} from '../type'
 
+/** Function that will get the nearby location based on the coordinates */
 export const getNearbyLocations = props => {
     return async dispatch => {
         let getResponse = await getAPI.getNearbyPlaces(props)
@@ -14,6 +15,7 @@ export const getNearbyLocations = props => {
     }
 }
 
+/** Function that will bookmark the locations to the local storage. */
 export const bookmarkLocation = (data, index) => {
     return async dispatch => {
         let getBookmarkLocation = await AsyncStorage.getItem("@bookmarkLocation1")
@@ -39,6 +41,7 @@ export const bookmarkLocation = (data, index) => {
     }
 }
 
+/** Function that will retrieve the local storage data for the bookmarked location. */
 export const getBookmarkLocation = () => {
     return async dispatch => {
         let getBookmarkLocation = await AsyncStorage.getItem("@bookmarkLocation1")

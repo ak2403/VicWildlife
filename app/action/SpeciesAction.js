@@ -1,11 +1,16 @@
 import { SpeciesTypes } from '../type'
+import * as getAPI from '../api/getAPI'
 import Data from '../data/Victoria endangered wildlife.json'
 
 export const loadSpeciesList = () => {
     return async dispatch => {
-        dispatch({
-            type: SpeciesTypes.GET_SPECIES_LIST,
-            payload: Data
-        })
+        // let getResponse = await getAPI.getSpecies()
+        
+        // if(getResponse.status == 200){
+            dispatch({
+                type: SpeciesTypes.GET_SPECIES_LIST,
+                payload: Data
+            })
+        // }
     }
 }

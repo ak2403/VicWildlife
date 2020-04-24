@@ -29,3 +29,18 @@ export const getQuizQuestions = props => {
             }
         })
 }
+
+export const getSpecies = () => {
+    return axios.get("http://backtonature.herokuapp.com/spices")
+        .then(response => {
+            return {
+                status: 200,
+                data: response.data
+            }
+        })
+        .catch(err => {
+            return {
+                status: 400
+            }
+        })
+}

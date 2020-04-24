@@ -35,7 +35,7 @@ class QuizScreen extends Component {
             difficultyLevel: '',
             typeOfQuestions: ''
         },
-        quizStarted: false,
+        quizStarted: true,
         listOfQuizQuestions: []
     }
 
@@ -141,7 +141,7 @@ class QuizScreen extends Component {
                         selectedValue={options.typeOfQuestions}
                         onValueChange={value => this.onChange("typeOfQuestions", value)}
                     >
-                        <Picker.Item label="Any" value="any" />
+                        {/* <Picker.Item label="Any" value="any" /> */}
                         <Picker.Item label="Multiple Options" value="multiple" />
                         <Picker.Item label="True/False" value="boolean" />
                     </Picker>

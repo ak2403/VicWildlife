@@ -10,6 +10,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import IntroductionScreen from '../screen/Introduction'
 import DashboardScreen from '../screen/Dashboard'
 import QuizScreen from '../screen/Quiz'
+import DescriptionScreen from '../screen/Description'
 
 /** Importing the actions */
 import { loadingAppStatus } from '../../action/IntroductionAction'
@@ -49,6 +50,10 @@ class App extends Component {
 
                     <Stack.Screen name="TakeaQuiz" component={QuizScreen} options={{
                         headerShown: false
+                    }} />
+
+                    <Stack.Screen name="Description" component={DescriptionScreen} options={{
+                        // headerShown: false
                     }} />
 
                 </Stack.Navigator>

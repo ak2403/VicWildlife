@@ -21,7 +21,7 @@ export default function App() {
             <Icon name="list" size={20} />
           ),
         }} />
-        <Tab.Screen name="Location" component={LocationScreen} options={{
+        <Tab.Screen name="Services" component={LocationScreen} options={{
           tabBarIcon: ({ color, size }) => (
             <Icon name="my-location" size={20} />
           ),

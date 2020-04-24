@@ -1,23 +1,33 @@
 import React, { Component } from 'react'
-import { View, Text, TextInput, FlatList, SafeAreaView } from 'react-native'
+import { View, Text, TextInput, FlatList, SafeAreaView, Image, TouchableHighlight } from 'react-native'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { loadSpeciesList } from '../../../action/SpeciesAction'
 
 import styles from './style'
 
-const SpeciesList = ({ data }) => {
+const SpeciesList = ({ data, navigation }) => {
     let { item } = data
-    return <View style={styles.CardView}>
-        {/* <View style={styles.ImageView}>
+
+    let image_link = item.Image !== null ? item.Image : undefined;
+
+    return <TouchableHighlight onPress={() => {
+        navigation.navigate('Description', {
+            data: item
+        })
+    }}>
+        <View style={styles.CardView}>
+            {/* <View style={styles.ImageView}>
+        {image_link && <Image source={{uri: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Polytelis_swainsonii_-_Canberra.jpg/2560px-Polytelis_swainsonii_-_Canberra.jpg"}} style={{flex:1}} /> }
         </View> */}
 
-        <View style={styles.ContentView}>
-            <Text style={styles.ContentText}>{item["Common Name"]}</Text>
-            <Text>{item["Threatened status"]}</Text>
-        </View>
+            <View style={styles.ContentView}>
+                <Text style={styles.ContentText}>{item["Common Name"]}</Text>
+                <Text>{item["Threatened status"]}</Text>
+            </View>
 
-    </View>
+        </View>
+    </TouchableHighlight>
 }
 
 class SpeciesScreen extends Component {
@@ -37,16 +47,16 @@ class SpeciesScreen extends Component {
     render() {
         let { searchText } = this.state
         let { speciesList } = this.props
-        
+
         let filteredSpecies = []
 
-        if(searchText != ''){
+        if (searchText != '') {
             filteredSpecies = speciesList.filter(list => {
-                if(list["Common Name"].indexOf(searchText) != -1){
+                if (list["Common Name"].toLowerCase().indexOf(searchText.toLowerCase()) != -1) {
                     return true
                 }
             })
-        }else{
+        } else {
             filteredSpecies = speciesList
         }
 
@@ -55,7 +65,7 @@ class SpeciesScreen extends Component {
             <View style={styles.container}>
                 <View>
                     <Text style={styles.headerText}>Species</Text>
-                    
+
                 </View>
 
                 <View>
@@ -68,7 +78,7 @@ class SpeciesScreen extends Component {
                     <FlatList
                         key={item => item["Listed SPRAT TaxonID"]}
                         data={filteredSpecies}
-                        renderItem={item => <SpeciesList data={item} />} />
+                        renderItem={item => <SpeciesList data={item} navigation={this.props.navigation} />} />
                 </View>
             </View>
 

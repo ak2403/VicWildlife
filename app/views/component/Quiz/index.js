@@ -18,7 +18,8 @@ class Quiz extends Component {
             showLeftIcon: false,
             showRightIcon: true,
             correctAnswerByUser: 0,
-            completedQuiz: false
+            completedQuiz: false,
+            sortQuestion: 0
         }
     }
 
@@ -41,7 +42,8 @@ class Quiz extends Component {
         this.setState({
             currentQuestionIndex,
             showRightIcon,
-            showLeftIcon: true
+            showLeftIcon: true,
+            sortQuestion: 0.5 - Math.random()
         })
     }
 
@@ -92,7 +94,7 @@ class Quiz extends Component {
     }
 
     render() {
-        let { lengthOfQuestions, answersByUser, currentQuestionIndex, showLeftIcon, showRightIcon, correctAnswerByUser, completedQuiz } = this.state
+        let { lengthOfQuestions, sortQuestion, answersByUser, currentQuestionIndex, showLeftIcon, showRightIcon, correctAnswerByUser, completedQuiz } = this.state
         let { data } = this.props
         let selectedAnswer = ''
 
@@ -102,17 +104,20 @@ class Quiz extends Component {
 
         var shuffe_options = [].concat(options);
         shuffe_options.sort(function () {
-            return 0.5 - Math.random();
+            return sortQuestion;
         });
 
         if (answersByUser[currentQuestionIndex]) {
             selectedAnswer = answersByUser[currentQuestionIndex]
         }
 
-
         return <View style={styles.container}>
             {completedQuiz ? <View>
                 <Text>{`You have answered ${correctAnswerByUser} out of ${lengthOfQuestions}`}</Text>
+                <View>{data.map(question => <View>
+                    <Text>{question.question}</Text>
+                    <Text>correct answer: {question.correct_answer}</Text>
+                </View>)}</View>
                 <Button title="Finish the Quiz" onPress={() => this.props.closeQuiz()} />
             </View> :
                 <>
@@ -127,7 +132,7 @@ class Quiz extends Component {
                         <View style={styles.optionsView}>
                             {shuffe_options.map(list => <TouchableOpacity key={list} onPress={() => this.answerSelected(list)}>
                                 <View style={styles.optionListView}>
-                                    <CheckBox checked={selectedAnswer == list ? true : false} />
+                                    <CheckBox checked={selectedAnswer == list ? true : false} onPress={() => this.answerSelected(list)} />
                                     <Text style={styles.optionsText}>{list}</Text>
                                 </View>
                             </TouchableOpacity>)}
