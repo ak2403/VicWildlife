@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
-import { View, Text, Button, FlatList, SafeAreaView } from 'react-native'
+import { View, Text, Button, FlatList, SafeAreaView, Image } from 'react-native'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { getQuizStatistics } from '../../../action/PerformanceAction'
+import ImageBG from '../../component/ImageBG'
+import Header from '../../component/Header'
+import BG from '../../../assets/images/quiz_bg.jpg';
 
 import styles from './style'
 
@@ -34,16 +37,22 @@ class PerformanceScreen extends Component {
         let { quiz_statistics } = this.props
 
         return <SafeAreaView forceInset={{ top: 'always' }} style={{ flex: 1 }}>
+            <ImageBG name={BG} />
+
 
             <View style={styles.container}>
-                <Text style={styles.headerText}>Quiz</Text>
-                <View style={{flex: 1}}>
+                <Header title="Quiz" />
+
+                <View style={{ flex: 1 }}>
                     <Text style={styles.flatlistHeader}>Statistics</Text>
-                    <FlatList
-                        data={quiz_statistics}
-                        renderItem={({ item }) => <ListCard data={item} />}
-                        keyExtractor={item => item.id}
-                    />
+                    {quiz_statistics.length == 0 ? <View style={styles.smokeView}>
+                        <Text style={styles.smokeText}>There is no history of quiz. To get started with a quiz, press "Take a Quiz" button.</Text>
+                    </View> :
+                        <FlatList
+                            data={quiz_statistics}
+                            renderItem={({ item }) => <ListCard data={item} />}
+                            keyExtractor={item => item.id}
+                        />}
                 </View>
 
                 <View style={styles.submitButton}>

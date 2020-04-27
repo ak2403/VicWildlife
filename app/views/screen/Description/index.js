@@ -1,37 +1,21 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, ScrollView } from 'react-native'
 import HTMLView from 'react-native-htmlview';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import Icon from 'react-native-vector-icons/Feather'
 
 const styles = StyleSheet.create({
-    slide: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center'
+    container: {
+        padding: 10
     },
-    image: {
-        width: 320,
-        height: 320,
-        marginVertical: 32,
+    headerText: {
+        fontWeight: 'bold',
+        fontSize: 16,
+        paddingBottom: 5
     },
-    text: {
-        color: '#333333',
-        textAlign: 'center',
-    },
-    title: {
-        fontSize: 22,
-        color: '#333333',
-        textAlign: 'center',
-    },
-    buttonCircle: {
-        width: 40,
-        height: 40,
-        backgroundColor: 'rgba(0, 0, 0, .2)',
-        borderRadius: 20,
-        justifyContent: 'center',
-        alignItems: 'center',
+    contentText: {
+        fontSize: 14,
+        paddingBottom: 10
     }
 });
 
@@ -39,22 +23,25 @@ class DescriptionScreen extends Component {
 
     render() {
         let { data } = this.props.route.params
-        console.log(data)
-        return <View>
-        <Text>Common Name</Text>
-        <Text>{data["Common Name"]}</Text>
 
-        <Text>Class</Text>
-        <Text>{data["Class"]}</Text>
+        return <ScrollView><View style={styles.container}>
+            <Text style={styles.headerText}>Common Name</Text>
+            <Text style={styles.contentText}>{data["Common Name"]}</Text>
 
-        <Text>Family</Text>
-        <Text>{data["Family"]}</Text>
+            <Text style={styles.headerText}>Class</Text>
+            <Text style={styles.contentText}>{data["Class"]}</Text>
 
-            <Text>Descrption</Text>
-            {/* <Text>{data.Description}</Text> */}
-            <HTMLView
-                value={data.Description} />
+            <Text style={styles.headerText}>Family</Text>
+            <Text style={styles.contentText}>{data["Family"]}</Text>
+
+            {data.Description &&
+                <>
+                    <Text style={styles.headerText}>Descrption</Text>
+                    <HTMLView
+                        value={data.Description} />
+                </>}
         </View>
+        </ScrollView>
     }
 }
 

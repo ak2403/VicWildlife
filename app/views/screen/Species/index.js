@@ -1,8 +1,13 @@
 import React, { Component } from 'react'
-import { View, Text, TextInput, FlatList, SafeAreaView, Image, TouchableHighlight } from 'react-native'
+import { View, Text, TextInput, FlatList, SafeAreaView, Image, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import Icon from 'react-native-vector-icons/MaterialIcons'
+import Header from '../../component/Header'
+import ImageBG from '../../component/ImageBG'
 import { loadSpeciesList } from '../../../action/SpeciesAction'
+
+import BG from '../../../assets/images/bg.jpg';
 
 import styles from './style'
 
@@ -11,23 +16,32 @@ const SpeciesList = ({ data, navigation }) => {
 
     let image_link = item.Image !== null ? item.Image : undefined;
 
-    return <TouchableHighlight onPress={() => {
-        navigation.navigate('Description', {
-            data: item
-        })
-    }}>
-        <View style={styles.CardView}>
-            {/* <View style={styles.ImageView}>
-        {image_link && <Image source={{uri: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Polytelis_swainsonii_-_Canberra.jpg/2560px-Polytelis_swainsonii_-_Canberra.jpg"}} style={{flex:1}} /> }
-        </View> */}
-
-            <View style={styles.ContentView}>
-                <Text style={styles.ContentText}>{item["Common Name"]}</Text>
-                <Text>{item["Threatened status"]}</Text>
-            </View>
-
+    return <View style={styles.CardView}>
+        <View style={styles.ImageView}>
+            {image_link && <Image source={{ uri: image_link }} style={{ flex: 1 }} />}
         </View>
-    </TouchableHighlight>
+
+        <View style={styles.ContentView}>
+            <Text numberOfLines={1} style={styles.ContentText}>{item["Common Name"]}</Text>
+            <Text style={{ color: '#333' }}>{item["Threatened status"]}</Text>
+        </View>
+
+        <View style={{ marginLeft: 'auto', width: 50, height: '100%' }}>
+            <TouchableOpacity onPress={() => {
+                navigation.navigate('Description', {
+                    data: item
+                })
+            }} style={{ flex: 1, justifyContent: 'center', alignItems: 'center', borderBottomWidth: 1, borderBottomColor: '#333' }}>
+
+                <Icon name="arrow-forward" size={20} />
+
+            </TouchableOpacity>
+            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                <Icon name="arrow-forward" size={20} />
+            </View>
+        </View>
+
+    </View>
 }
 
 class SpeciesScreen extends Component {
@@ -60,18 +74,16 @@ class SpeciesScreen extends Component {
             filteredSpecies = speciesList
         }
 
-        return <SafeAreaView forceInset={{ top: 'always' }} style={{ flex: 1 }}>
+        return <SafeAreaView forceInset={{ top: 'always' }} style={{ flex: 1, position: 'relative' }}>
+            <ImageBG name={BG} />
 
             <View style={styles.container}>
-                <View>
-                    <Text style={styles.headerText}>Species</Text>
-
-                </View>
+                <Header title="Species" />
 
                 <View>
                     <TextInput
                         onChangeText={text => this.changeSearch(text)}
-                        style={{ height: 40, color: '#333', backgroundColor: '#e0e0e0', marginBottom: 20, padding: 5, borderRadius: 10 }}
+                        style={{ height: 40, color: '#333', backgroundColor: 'rgba(255,255,255, 0.8)', marginBottom: 20, padding: 5, borderRadius: 10 }}
                         placeholder="Search the species"
                         placeholderTextColor="#333" />
 

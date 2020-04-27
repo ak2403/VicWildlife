@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet, Image } from 'react-native'
+import { View, Text, StyleSheet, Image, SafeAreaView } from 'react-native'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import AppIntroSlider from 'react-native-app-intro-slider';
@@ -88,9 +88,9 @@ class Introduction extends Component {
     _renderDoneButton = () => {
         return (
             <View style={styles.buttonCircle}>
-                <Icon
+                <Icon onPress={this._onDone}
                     name="check"
-                    color="#333"
+                    color="#fff"
                     size={24}
                 />
             </View>
@@ -98,14 +98,23 @@ class Introduction extends Component {
     };
 
     render() {
-        return <AppIntroSlider
-            activeDotStyle={{ backgroundColor: '#333' }}
-            dotStyle={{ backgroundColor: '#e0e0e0' }}
-            renderItem={this._renderItem}
-            data={slides}
-            onDone={this._onDone}
-            renderDoneButton={this._renderDoneButton}
-            renderNextButton={this._renderNextButton} />;
+        return <View style={{ flex: 1, position: 'relative' }}>
+
+            <Image source={require('../../../assets/images/bg.jpg')} style={{
+                flex: 1, width: null,
+                height: null, alignSelf: 'stretch', position: 'absolute', top: 0, bottom: 0, left: 0, right: 0
+            }} />
+
+            <SafeAreaView forceInset={{ top: 'always' }} style={{ flex: 1, backgroundColor: 'rgba(52, 52, 52, 0.5)' }}>
+                <View style={{ width: '80%', marginTop: 50, paddingLeft: 20 }}>
+                    <Text style={{ fontSize: 40, lineHeight: 50, fontFamily: 'Roboto', color: '#fff' }}>Let's get started with Back To Nature</Text>
+                </View>
+{this._renderDoneButton()}
+            </SafeAreaView>
+
+
+
+        </View>
     }
 }
 

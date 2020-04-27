@@ -8,12 +8,6 @@ export default StyleSheet.create({
         paddingRight: 20,
         paddingBottom: 20
     },
-    headerText: {
-        fontSize: 28,
-        color: '#333',
-        fontWeight: 'bold',
-        marginBottom: 20
-    },
     flatlistHeader: {
         fontSize: 18,
         color: '#333',
@@ -45,5 +39,15 @@ export default StyleSheet.create({
         // color: '#fff',
         marginTop: 10,
         borderRadius: 5
+    },
+    smokeView: {
+        flex: 1, 
+        justifyContent: 'center', 
+        alignContent: 'center'
+    },
+    smokeText: {
+        padding: 50,
+        lineHeight: 30,
+        color: '#333'
     }
 })

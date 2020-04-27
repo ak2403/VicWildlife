@@ -1,6 +1,6 @@
 import { SpeciesTypes } from '../type'
 import * as getAPI from '../api/getAPI'
-import Data from '../data/Victoria endangered wildlife.json'
+import Data from '../data/data.json'
 
 export const loadSpeciesList = () => {
     return async dispatch => {

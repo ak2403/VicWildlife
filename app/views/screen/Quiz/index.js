@@ -35,8 +35,9 @@ class QuizScreen extends Component {
             difficultyLevel: '',
             typeOfQuestions: ''
         },
-        quizStarted: true,
-        listOfQuizQuestions: []
+        quizStarted: false,
+        listOfQuizQuestions: [],
+        isAllOptionsSelected: null
     }
 
     onChange = (key, value) => {
@@ -59,6 +60,10 @@ class QuizScreen extends Component {
 
         if(isAllOptionsSelected){
             this.props.getQuizQuestions(options)
+        }else{
+            this.setState({
+                isAllOptionsSelected: false
+            })
         }
         
     }
@@ -85,7 +90,7 @@ class QuizScreen extends Component {
     }
 
     render() {
-        let { quizStarted, options } = this.state;
+        let { quizStarted, options, isAllOptionsSelected } = this.state;
         let { list_of_quiz_questions } = this.props;
 
         if (quizStarted) {
@@ -113,8 +118,9 @@ class QuizScreen extends Component {
                         <Picker.Item label="10" value="10" />
                         <Picker.Item label="15" value="15" />
                     </Picker>
+                    
                 </Item>
-
+                {(isAllOptionsSelected == false && options.numberOfQuestions == '') && <Text style={{color: '#e74c3c'}}>Please select an option</Text>}
                 <Item picker>
                     <Picker
                         mode="dropdown"
@@ -125,12 +131,13 @@ class QuizScreen extends Component {
                         selectedValue={options.difficultyLevel}
                         onValueChange={value => this.onChange("difficultyLevel", value)}
                     >
+                        <Picker.Item label="Select Type" value="" />
                         <Picker.Item label="Easy" value="easy" />
                         <Picker.Item label="Medium" value="medium" />
                         <Picker.Item label="Hard" value="hard" />
                     </Picker>
                 </Item>
-
+                {(isAllOptionsSelected == false && options.difficultyLevel == '') && <Text style={{color: '#e74c3c'}}>Please select an option</Text>}
                 <Item picker>
                     <Picker
                         mode="dropdown"
@@ -146,6 +153,7 @@ class QuizScreen extends Component {
                         <Picker.Item label="True/False" value="boolean" />
                     </Picker>
                 </Item>
+                {(isAllOptionsSelected == false && options.typeOfQuestions == '') && <Text style={{color: '#e74c3c'}}>Please select an option</Text>}
             </Form>
             <Button title="Start Quiz" onPress={() => this.ProceedQuiz()} />
         </View>

@@ -6,33 +6,27 @@ export default StyleSheet.create({
         paddingTop: 10,
         paddingLeft: 20,
         paddingRight: 20,
-        paddingBottom: 20
-    },
-    headerText: {
-        fontSize: 28,
-        color: '#333',
-        fontWeight: 'bold',
-        marginBottom: 20
+        paddingBottom: 20,
     },
     CardView: {
-        backgroundColor: '#fff',
+        backgroundColor: 'rgba(255,255,255, 0.8)',
         borderRadius: 5,
         padding: 10,
         marginBottom: 10,
         flexDirection: 'row'
     },
     ImageView: {
-        width: 120,
-        height: 80,
-        backgroundColor: '#e0e'
+        width: 100,
+        height: 60
     },
     ContentView: {
-        paddingLeft: 10
+        paddingLeft: 10,
+        flex: 1
     },
     ContentText: {
-        fontSize: 16,
+        fontSize: 15,
         color: '#333',
         fontWeight: 'bold',
-        marginBottom: 5
+        marginBottom: 5,
     }
 })

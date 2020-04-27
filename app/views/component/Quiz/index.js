@@ -113,10 +113,10 @@ class Quiz extends Component {
 
         return <View style={styles.container}>
             {completedQuiz ? <View>
-                <Text>{`You have answered ${correctAnswerByUser} out of ${lengthOfQuestions}`}</Text>
-                <View>{data.map(question => <View>
-                    <Text>{question.question}</Text>
-                    <Text>correct answer: {question.correct_answer}</Text>
+                <Text style={{paddingBottom: 10, fontWeight: 'bold'}}>{`You have answered ${correctAnswerByUser} out of ${lengthOfQuestions}`}</Text>
+                <View>{data.map(question => <View style={{paddingBottom: 5}}>
+                    <Text>Q1: {question.question}</Text>
+                    <Text style={{color: '#27ae60', fontWeight: 'bold'}}>correct answer: {question.correct_answer}</Text>
                 </View>)}</View>
                 <Button title="Finish the Quiz" onPress={() => this.props.closeQuiz()} />
             </View> :
