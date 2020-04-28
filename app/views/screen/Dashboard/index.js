@@ -15,15 +15,15 @@ export default function App() {
 
   return (
     <Tab.Navigator tabBarOptions={{
-      activeTintColor: '#e91e63',    
+      activeTintColor: '#2ecc71',
+      inactiveTintColor: '#333',
       labelStyle: {
-        color: '#333',
         fontWeight: 'bold',
         fontSize: 12
       },
       style: {
         backgroundColor: 'rgba(255,255,255, 0.8)'
-      },
+      }
     }}>
       <Tab.Screen name="Species" component={SpeciesScreen} options={{
         tabBarIcon: ({ color, size }) => (
@@ -42,7 +42,7 @@ export default function App() {
       }} />
       <Tab.Screen name="Collections" component={CollectionScreen} options={{
         tabBarIcon: ({ color, size }) => (
-          <Icon name="collections-bookmark" size={20} color="#6ab04c" />
+          <Icon name="collections-bookmark" size={20} color="#333" />
         ),
       }} />
     </Tab.Navigator>

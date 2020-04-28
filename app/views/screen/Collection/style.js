@@ -49,7 +49,12 @@ export default StyleSheet.create({
     smokeText: {
         padding: 50,
         lineHeight: 30,
-        color: '#333',
+        color: '#fff',
+        fontSize: 14,
+        fontWeight: 'bold',
+        fontFamily: 'Roboto',
+        backgroundColor: 'rgba(52, 52, 52, 0.5)',
+        borderRadius: 5,
         textAlign: 'center'
     }
 })

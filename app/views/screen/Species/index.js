@@ -18,7 +18,9 @@ const SpeciesList = ({ data, navigation }) => {
 
     return <View style={styles.CardView}>
         <View style={styles.ImageView}>
-            {image_link && <Image source={{ uri: image_link }} style={{ flex: 1 }} />}
+            {image_link ? <Image source={{ uri: image_link }} style={{ flex: 1 }} /> : <View>
+                <Text>Image is not available.</Text>
+            </View>}
         </View>
 
         <View style={styles.ContentView}>
@@ -31,14 +33,14 @@ const SpeciesList = ({ data, navigation }) => {
                 navigation.navigate('Description', {
                     data: item
                 })
-            }} style={{ flex: 1, justifyContent: 'center', alignItems: 'center', borderBottomWidth: 1, borderBottomColor: '#333' }}>
+            }} style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
 
                 <Icon name="arrow-forward" size={20} />
 
             </TouchableOpacity>
-            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+            {/* <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                 <Icon name="arrow-forward" size={20} />
-            </View>
+            </View> */}
         </View>
 
     </View>
@@ -66,8 +68,10 @@ class SpeciesScreen extends Component {
 
         if (searchText != '') {
             filteredSpecies = speciesList.filter(list => {
-                if (list["Common Name"].toLowerCase().indexOf(searchText.toLowerCase()) != -1) {
-                    return true
+                if (list["Common Name"] !== null){
+                    if (list["Common Name"].toLowerCase().indexOf(searchText.toLowerCase()) != -1) {
+                        return true
+                    }
                 }
             })
         } else {

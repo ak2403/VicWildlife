@@ -1,33 +1,17 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet, Image, SafeAreaView } from 'react-native'
+import { View, Text, StyleSheet, Button, SafeAreaView, Image, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import AppIntroSlider from 'react-native-app-intro-slider';
 import Icon from 'react-native-vector-icons/Feather'
+import ImageBG from '../../component/ImageBG'
+import ListCard from '../../component/ListCard'
+
+import BG from '../../../assets/images/bg.jpg';
+import QuizIcon from '../../../assets/images/quiz.png';
+import EmergencyIcon from '../../../assets/images/emergency.png';
+import ListIcon from '../../../assets/images/list.png';
 
 import { completedOnboarding } from '../../../action/IntroductionAction'
-
-const slides = [
-    {
-        key: 1,
-        title: 'Species List',
-        text: 'Search for species in Victoria',
-        image: require('../../../assets/images/list.png'),
-        backgroundColor: '#22bcb5',
-    }, {
-        key: 2,
-        title: 'Location',
-        text: 'Search for wildlife service closest to you',
-        image: require('../../../assets/images/location.png'),
-        backgroundColor: '#febe29',
-    }, {
-        key: 3,
-        title: 'Quiz',
-        text: 'Do different level quizzes',
-        image: require('../../../assets/images/quiz.png'),
-        backgroundColor: '#59b2ab',
-    }
-];
 
 const styles = StyleSheet.create({
     slide: {
@@ -59,60 +43,40 @@ const styles = StyleSheet.create({
     }
 });
 
+// #C4E538 Logo color
 class Introduction extends Component {
-    _renderItem = ({ item }) => {
-        return (
-            <View style={styles.slide}>
-                <Image style={{ width: 150, height: 150 }} source={item.image} />
-                <Text style={styles.title}>{item.title}</Text>
-                <Text style={styles.text}>{item.text}</Text>
-            </View>
-        );
-    }
     _onDone = () => {
         this.props.completedOnboarding();
         this.props.navigation.navigate('Dashboard')
     }
 
-    _renderNextButton = () => {
-        return (
-            <View style={styles.buttonCircle}>
-                <Icon
-                    name="arrow-right"
-                    color="#333"
-                    size={24}
-                />
-            </View>
-        );
-    };
-    _renderDoneButton = () => {
-        return (
-            <View style={styles.buttonCircle}>
-                <Icon onPress={this._onDone}
-                    name="check"
-                    color="#fff"
-                    size={24}
-                />
-            </View>
-        );
-    };
-
     render() {
-        return <View style={{ flex: 1, position: 'relative' }}>
+        return <View style={{ flex: 1 }}>
 
-            <Image source={require('../../../assets/images/bg.jpg')} style={{
-                flex: 1, width: null,
-                height: null, alignSelf: 'stretch', position: 'absolute', top: 0, bottom: 0, left: 0, right: 0
-            }} />
+            <ImageBG name={BG} />
 
-            <SafeAreaView forceInset={{ top: 'always' }} style={{ flex: 1, backgroundColor: 'rgba(52, 52, 52, 0.5)' }}>
+<View style={{backgroundColor: 'rgba(52, 52, 52, 0.5)', flex: 1}}>
+            <View style={{ padding: 20 }}>
                 <View style={{ width: '80%', marginTop: 50, paddingLeft: 20 }}>
-                    <Text style={{ fontSize: 40, lineHeight: 50, fontFamily: 'Roboto', color: '#fff' }}>Let's get started with Back To Nature</Text>
+                    <Text style={{ fontSize: 40, fontWeight: 'bold', lineHeight: 50, fontFamily: 'Roboto', color: '#fff' }}>Welcome to Back To Nature</Text>
                 </View>
-{this._renderDoneButton()}
-            </SafeAreaView>
 
+                <View style={{ marginTop: 50, paddingLeft: 20, width: '100%', justifyContent: 'center', alignItems: 'center' }}>
+                    <ListCard image={QuizIcon} title="Quiz" subtitle="Do different level quizzes" />
+                    <ListCard image={EmergencyIcon} title="Wildlife Service" subtitle="Search for wildlife service closest to you" />
+                    <ListCard image={ListIcon} title="Species list" subtitle="Search for species in Victoria" />
+                </View>
+            </View>
 
+            <View style={{ marginTop: 'auto', marginBottom: 30, padding: 20 }}>
+                <TouchableOpacity
+                    style={{ backgroundColor: "#C4E538", borderRadius: 5, height: 50, justifyContent: 'center', alignContent: 'center', alignItems: 'center' }}
+                    onPress={this._onDone}
+                    underlayColor='#fff'>
+                    <Text style={{ color: '#333', fontWeight: 'bold', fontSize: 18 }}>Let's get started</Text>
+                </TouchableOpacity>
+            </View>
+            </View>
 
         </View>
     }

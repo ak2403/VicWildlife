@@ -10,7 +10,7 @@ const ImageBG = props => {
                 flex: 1, width: null,
                 height: null, alignSelf: 'stretch',
             }}
-                blurRadius={10} />
+                blurRadius={5} />
             <View style={{ position: 'absolute', top: 0, bottom: 0, left: 0, right: 0 }}>
 
             </View>

@@ -10,11 +10,11 @@ export default StyleSheet.create({
     },
     flatlistHeader: {
         fontSize: 18,
-        color: '#333',
+        color: '#fff',
         marginBottom: 10
     },
     Card: {
-        backgroundColor: '#fff',
+        backgroundColor: 'rgba(255,255,255, 0.8)',
         borderRadius: 5,
         marginBottom: 10,
         paddingTop: 10,
@@ -48,6 +48,12 @@ export default StyleSheet.create({
     smokeText: {
         padding: 50,
         lineHeight: 30,
-        color: '#333'
+        color: '#fff',
+        fontSize: 14,
+        fontWeight: 'bold',
+        fontFamily: 'Roboto',
+        backgroundColor: 'rgba(52, 52, 52, 0.5)',
+        borderRadius: 5,
+        textAlign: 'center'
     }
 })

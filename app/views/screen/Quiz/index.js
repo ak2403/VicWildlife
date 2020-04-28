@@ -108,12 +108,13 @@ class QuizScreen extends Component {
                     <Picker
                         mode="dropdown"
                         style={{ width: undefined }}
-                        placeholder="Select the number of questions"
+                        // placeholder="Select the number of questions"
                         placeholderStyle={{ color: "#bfc6ea" }}
                         placeholderIconColor="#007aff"
                         selectedValue={options.numberOfQuestions}
                         onValueChange={value => this.onChange("numberOfQuestions", value)}
                     >
+                        <Picker.Item label="Select the number of questions" value="" />
                         <Picker.Item label="5" value="5" />
                         <Picker.Item label="10" value="10" />
                         <Picker.Item label="15" value="15" />
@@ -125,13 +126,13 @@ class QuizScreen extends Component {
                     <Picker
                         mode="dropdown"
                         style={{ width: undefined }}
-                        placeholder="Select the difficulty"
+                        // placeholder="Select the difficulty"
                         placeholderStyle={{ color: "#bfc6ea" }}
                         placeholderIconColor="#007aff"
                         selectedValue={options.difficultyLevel}
                         onValueChange={value => this.onChange("difficultyLevel", value)}
                     >
-                        <Picker.Item label="Select Type" value="" />
+                        <Picker.Item label="Select the difficulty" value="" />
                         <Picker.Item label="Easy" value="easy" />
                         <Picker.Item label="Medium" value="medium" />
                         <Picker.Item label="Hard" value="hard" />
@@ -142,13 +143,13 @@ class QuizScreen extends Component {
                     <Picker
                         mode="dropdown"
                         style={{ width: undefined }}
-                        placeholder="Select the Question Type"
+                        // placeholder="Select the Question Type"
                         placeholderStyle={{ color: "#bfc6ea" }}
                         placeholderIconColor="#007aff"
                         selectedValue={options.typeOfQuestions}
                         onValueChange={value => this.onChange("typeOfQuestions", value)}
                     >
-                        {/* <Picker.Item label="Any" value="any" /> */}
+                        <Picker.Item label="Select the Question Type" value="" />
                         <Picker.Item label="Multiple Options" value="multiple" />
                         <Picker.Item label="True/False" value="boolean" />
                     </Picker>

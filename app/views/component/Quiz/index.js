@@ -126,7 +126,7 @@ class Quiz extends Component {
                     </View>
                     <View style={styles.questionsView}>
                         <View style={styles.questionView}>
-                            <Text style={styles.questionText}>{currentQuestion.question}</Text>
+                            <Text style={styles.questionText}>Q {currentQuestionIndex+1} : {currentQuestion.question}</Text>
                         </View>
 
                         <View style={styles.optionsView}>

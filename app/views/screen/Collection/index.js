@@ -25,7 +25,7 @@ class CollectionScreen extends Component {
                 
                 <Text style={styles.flatlistHeader}>Location</Text>
                 {bookmark_location.length == 0 ? <View style={styles.smokeView}>
-                    <Text style={styles.smokeText}>There is no bookmarked location.</Text>
+                    <Text style={styles.smokeText}>There is no saved wildlife service location. In order to bookmark a location, navigate to "Services".</Text>
                 </View> : <>
                 {bookmark_location.map(location => {
                     return <View key={location.id} style={styles.Card}>
