@@ -30,6 +30,20 @@
 		4E81F2DE64FE4C89BB4C985A /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D67E0DFC2D25424C9BE7E9E6 /* Feather.ttf */; };
 		4F2FA8E1A1850B3DDE743FF8 /* libPods-BackToNature.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D1277586031EEA9284C2C17C /* libPods-BackToNature.a */; };
 		58D9FB1740FC431AAE74FC61 /* Fontisto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0BB4595AF24C4CA7B2AE9D61 /* Fontisto.ttf */; };
+		6EAF62092466B8E200210DA5 /* Calibre-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6EAF61FB2466B8E000210DA5 /* Calibre-Regular.otf */; };
+		6EAF620A2466B8E200210DA5 /* Calibre-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6EAF61FC2466B8E000210DA5 /* Calibre-Black.otf */; };
+		6EAF620B2466B8E200210DA5 /* Calibre-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6EAF61FD2466B8E100210DA5 /* Calibre-Light.otf */; };
+		6EAF620C2466B8E200210DA5 /* Calibre-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6EAF61FE2466B8E100210DA5 /* Calibre-Medium.otf */; };
+		6EAF620D2466B8E200210DA5 /* Calibre-RegularItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6EAF61FF2466B8E100210DA5 /* Calibre-RegularItalic.otf */; };
+		6EAF620E2466B8E200210DA5 /* Calibre-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6EAF62002466B8E100210DA5 /* Calibre-Thin.otf */; };
+		6EAF620F2466B8E200210DA5 /* Calibre-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6EAF62012466B8E100210DA5 /* Calibre-Semibold.otf */; };
+		6EAF62102466B8E200210DA5 /* Calibre-BlackItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6EAF62022466B8E100210DA5 /* Calibre-BlackItalic.otf */; };
+		6EAF62112466B8E200210DA5 /* Calibre-ThinItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6EAF62032466B8E100210DA5 /* Calibre-ThinItalic.otf */; };
+		6EAF62122466B8E200210DA5 /* Calibre-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6EAF62042466B8E100210DA5 /* Calibre-MediumItalic.otf */; };
+		6EAF62132466B8E200210DA5 /* Calibre-SemiboldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6EAF62052466B8E100210DA5 /* Calibre-SemiboldItalic.otf */; };
+		6EAF62142466B8E200210DA5 /* Calibre-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6EAF62062466B8E200210DA5 /* Calibre-BoldItalic.otf */; };
+		6EAF62152466B8E200210DA5 /* Calibre-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6EAF62072466B8E200210DA5 /* Calibre-Bold.otf */; };
+		6EAF62162466B8E200210DA5 /* Calibre-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6EAF62082466B8E200210DA5 /* Calibre-LightItalic.otf */; };
 		74C57E65A73C4BF68A77DFF9 /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 211A34462D594DFBBCCD74E6 /* MaterialCommunityIcons.ttf */; };
 		80E3031CD7354C9A84DE00F7 /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4D22C1E37789480E81CE9ED5 /* Entypo.ttf */; };
 		8501A7590267444B969944F3 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 987472DF1E9C49E7A416A224 /* FontAwesome.ttf */; };
@@ -83,6 +97,20 @@
 		4C0C41C5F0CE4DBF8F4D43F5 /* Roboto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Roboto.ttf; path = "../node_modules/native-base/Fonts/Roboto.ttf"; sourceTree = "<group>"; };
 		4D22C1E37789480E81CE9ED5 /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/native-base/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
 		6C6CC03327DB13836A449E2E /* Pods-BackToNature-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BackToNature-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-BackToNature-tvOSTests/Pods-BackToNature-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		6EAF61FB2466B8E000210DA5 /* Calibre-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Calibre-Regular.otf"; sourceTree = "<group>"; };
+		6EAF61FC2466B8E000210DA5 /* Calibre-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Calibre-Black.otf"; sourceTree = "<group>"; };
+		6EAF61FD2466B8E100210DA5 /* Calibre-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Calibre-Light.otf"; sourceTree = "<group>"; };
+		6EAF61FE2466B8E100210DA5 /* Calibre-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Calibre-Medium.otf"; sourceTree = "<group>"; };
+		6EAF61FF2466B8E100210DA5 /* Calibre-RegularItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Calibre-RegularItalic.otf"; sourceTree = "<group>"; };
+		6EAF62002466B8E100210DA5 /* Calibre-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Calibre-Thin.otf"; sourceTree = "<group>"; };
+		6EAF62012466B8E100210DA5 /* Calibre-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Calibre-Semibold.otf"; sourceTree = "<group>"; };
+		6EAF62022466B8E100210DA5 /* Calibre-BlackItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Calibre-BlackItalic.otf"; sourceTree = "<group>"; };
+		6EAF62032466B8E100210DA5 /* Calibre-ThinItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Calibre-ThinItalic.otf"; sourceTree = "<group>"; };
+		6EAF62042466B8E100210DA5 /* Calibre-MediumItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Calibre-MediumItalic.otf"; sourceTree = "<group>"; };
+		6EAF62052466B8E100210DA5 /* Calibre-SemiboldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Calibre-SemiboldItalic.otf"; sourceTree = "<group>"; };
+		6EAF62062466B8E200210DA5 /* Calibre-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Calibre-BoldItalic.otf"; sourceTree = "<group>"; };
+		6EAF62072466B8E200210DA5 /* Calibre-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Calibre-Bold.otf"; sourceTree = "<group>"; };
+		6EAF62082466B8E200210DA5 /* Calibre-LightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Calibre-LightItalic.otf"; sourceTree = "<group>"; };
 		6F05C1ECB5B09939CDE897EE /* Pods-BackToNature-BackToNatureTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BackToNature-BackToNatureTests.debug.xcconfig"; path = "Target Support Files/Pods-BackToNature-BackToNatureTests/Pods-BackToNature-BackToNatureTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6FB38CC733414CE58DDBCAA7 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/native-base/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
 		7B5DC513A27F4126885915C2 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/native-base/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
@@ -187,6 +215,27 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		6EAF61FA2466B8BE00210DA5 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				6EAF61FC2466B8E000210DA5 /* Calibre-Black.otf */,
+				6EAF62022466B8E100210DA5 /* Calibre-BlackItalic.otf */,
+				6EAF62072466B8E200210DA5 /* Calibre-Bold.otf */,
+				6EAF62062466B8E200210DA5 /* Calibre-BoldItalic.otf */,
+				6EAF61FD2466B8E100210DA5 /* Calibre-Light.otf */,
+				6EAF62082466B8E200210DA5 /* Calibre-LightItalic.otf */,
+				6EAF61FE2466B8E100210DA5 /* Calibre-Medium.otf */,
+				6EAF62042466B8E100210DA5 /* Calibre-MediumItalic.otf */,
+				6EAF61FB2466B8E000210DA5 /* Calibre-Regular.otf */,
+				6EAF61FF2466B8E100210DA5 /* Calibre-RegularItalic.otf */,
+				6EAF62012466B8E100210DA5 /* Calibre-Semibold.otf */,
+				6EAF62052466B8E100210DA5 /* Calibre-SemiboldItalic.otf */,
+				6EAF62002466B8E100210DA5 /* Calibre-Thin.otf */,
+				6EAF62032466B8E100210DA5 /* Calibre-ThinItalic.otf */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -197,6 +246,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				6EAF61FA2466B8BE00210DA5 /* fonts */,
 				13B07FAE1A68108700A75B9A /* BackToNature */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* BackToNatureTests */,
@@ -360,6 +410,7 @@
 					13B07F861A680F5B00A75B9A = {
 						DevelopmentTeam = AF29D8DK43;
 						LastSwiftMigration = 1120;
+						ProvisioningStyle = Automatic;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -406,8 +457,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				6EAF62112466B8E200210DA5 /* Calibre-ThinItalic.otf in Resources */,
+				6EAF62102466B8E200210DA5 /* Calibre-BlackItalic.otf in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				971131F551324F82AFF25426 /* AntDesign.ttf in Resources */,
+				6EAF620C2466B8E200210DA5 /* Calibre-Medium.otf in Resources */,
 				80E3031CD7354C9A84DE00F7 /* Entypo.ttf in Resources */,
 				18A68964E325440684A75D12 /* EvilIcons.ttf in Resources */,
 				4E81F2DE64FE4C89BB4C985A /* Feather.ttf in Resources */,
@@ -415,15 +469,26 @@
 				0732C7421CD7461B8E5D206E /* FontAwesome5_Brands.ttf in Resources */,
 				C80D47A546EA4F14AB4488F0 /* FontAwesome5_Regular.ttf in Resources */,
 				3272C5D1A4884346963FBA48 /* FontAwesome5_Solid.ttf in Resources */,
+				6EAF620E2466B8E200210DA5 /* Calibre-Thin.otf in Resources */,
+				6EAF62122466B8E200210DA5 /* Calibre-MediumItalic.otf in Resources */,
 				58D9FB1740FC431AAE74FC61 /* Fontisto.ttf in Resources */,
 				9725065678B7419C9E94CE8A /* Foundation.ttf in Resources */,
 				4A9CD9FD79EC4E428009F94E /* Ionicons.ttf in Resources */,
+				6EAF62092466B8E200210DA5 /* Calibre-Regular.otf in Resources */,
+				6EAF62142466B8E200210DA5 /* Calibre-BoldItalic.otf in Resources */,
+				6EAF620A2466B8E200210DA5 /* Calibre-Black.otf in Resources */,
+				6EAF620B2466B8E200210DA5 /* Calibre-Light.otf in Resources */,
+				6EAF62132466B8E200210DA5 /* Calibre-SemiboldItalic.otf in Resources */,
+				6EAF62162466B8E200210DA5 /* Calibre-LightItalic.otf in Resources */,
 				74C57E65A73C4BF68A77DFF9 /* MaterialCommunityIcons.ttf in Resources */,
 				8EB5FDD82B05433B9D35F3D8 /* MaterialIcons.ttf in Resources */,
 				280D972241F84B4EAA71FA41 /* Octicons.ttf in Resources */,
 				4B9E1CF017C14800BCB58867 /* Roboto_medium.ttf in Resources */,
 				35A043247976446DA1B11FDC /* Roboto.ttf in Resources */,
 				138A102D914B4D12B3E39770 /* rubicon-icon-font.ttf in Resources */,
+				6EAF620D2466B8E200210DA5 /* Calibre-RegularItalic.otf in Resources */,
+				6EAF620F2466B8E200210DA5 /* Calibre-Semibold.otf in Resources */,
+				6EAF62152466B8E200210DA5 /* Calibre-Bold.otf in Resources */,
 				3CEB8E2DA9B64AE4AE2BBFF7 /* SimpleLineIcons.ttf in Resources */,
 				F7D3B95FC05449DE8CA78C0F /* Zocial.ttf in Resources */,
 			);
@@ -459,7 +524,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
 		171BB306E045E0353DEDFD45 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -527,10 +592,42 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-BackToNature-BackToNatureTests/Pods-BackToNature-BackToNatureTests-resources.sh",
 				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Entypo.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Feather.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Foundation.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Octicons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Zocial.ttf",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AntDesign.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Entypo.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EvilIcons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Feather.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Brands.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Regular.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Solid.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Fontisto.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Foundation.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Ionicons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MaterialCommunityIcons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MaterialIcons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Octicons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SimpleLineIcons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Zocial.ttf",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -751,6 +848,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = AF29D8DK43;
 				ENABLE_BITCODE = NO;
@@ -767,6 +866,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = BackToNature;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -779,8 +879,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = AF29D8DK43;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = BackToNature/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -790,6 +891,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = BackToNature;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};

@@ -11,6 +11,8 @@ import IntroductionScreen from '../screen/Introduction'
 import DashboardScreen from '../screen/Dashboard'
 import QuizScreen from '../screen/Quiz'
 import DescriptionScreen from '../screen/Description'
+import CollectionScreen from '../screen/Collection'
+import PerformanceScreen from '../screen/Performance'
 
 /** Importing the actions */
 import { loadingAppStatus } from '../../action/IntroductionAction'
@@ -54,6 +56,14 @@ class App extends Component {
 
                     <Stack.Screen name="Description" component={DescriptionScreen} options={{
                         // headerShown: false
+                    }} />
+
+                    <Stack.Screen name="SavedCollections" component={CollectionScreen} options={{
+                        headerShown: false
+                    }} />
+
+                    <Stack.Screen name="Quiz" component={PerformanceScreen} options={{
+                        headerShown: false
                     }} />
 
                 </Stack.Navigator>

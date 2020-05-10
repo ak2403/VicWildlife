@@ -18,4 +18,8 @@ const SpeciesTypes = {
     'GET_SPECIES_LIST': 'get the species list'
 }
 
-export { LocationTypes, PerformanceTypes, IntroductionTypes, SpeciesTypes }
+const NewsTypes = {
+    'GET_NEWS': 'get the news from api'
+}
+
+export { LocationTypes, PerformanceTypes, IntroductionTypes, SpeciesTypes, NewsTypes }

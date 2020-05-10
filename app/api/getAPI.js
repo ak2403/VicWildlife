@@ -1,3 +1,4 @@
+import NewsData from '../data/news.json'
 import axios from 'axios'
 
 export const getNearbyPlaces = props => {
@@ -43,4 +44,11 @@ export const getSpecies = () => {
                 status: 400
             }
         })
+}
+
+export const getNews = () => {
+    return {
+        status: 200,
+        data: NewsData.articles
+    }
 }

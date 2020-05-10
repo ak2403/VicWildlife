@@ -59,6 +59,11 @@
 	<false/>
 	<key>UIAppFonts</key>
 	<array>
+		<string>Calibre-Semibold.otf</string>
+		<string>Calibre-Regular.otf</string>
+		<string>Calibre-Light.otf</string>
+		<string>Calibre-Bold.otf</string>
+		<string>Calibre-Black.otf</string>
 		<string>AntDesign.ttf</string>
 		<string>Entypo.ttf</string>
 		<string>EvilIcons.ttf</string>
