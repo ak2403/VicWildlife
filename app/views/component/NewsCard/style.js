@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
         padding: 10,
         paddingLeft: 10,
         paddingRight: 10,
-        height: 140
+        height: 110
     },
     imageView: {
         width: 120,

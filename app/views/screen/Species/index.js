@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { View, Text, TextInput, FlatList, SafeAreaView, Image, TouchableOpacity } from 'react-native'
+import { Picker } from 'native-base'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import Icon from 'react-native-vector-icons/MaterialIcons'
@@ -48,7 +49,9 @@ const SpeciesList = ({ data, navigation }) => {
 
 class SpeciesScreen extends Component {
     state = {
-        searchText: ''
+        searchText: '',
+        filterByCategory: '',
+        filterByStatus: ''
     }
     componentDidMount = () => {
         this.props.loadSpeciesList()
@@ -60,23 +63,44 @@ class SpeciesScreen extends Component {
         })
     }
 
+    saveFilter = (key, value) => {
+        this.setState({
+            [key]: value
+        })
+    }
+
     render() {
-        let { searchText } = this.state
+        let { searchText, filterByCategory, filterByStatus } = this.state
         let { speciesList } = this.props
 
         let filteredSpecies = []
 
-        if (searchText != '') {
-            filteredSpecies = speciesList.filter(list => {
-                if (list["Common Name"] !== null){
-                    if (list["Common Name"].toLowerCase().indexOf(searchText.toLowerCase()) != -1) {
-                        return true
-                    }
+        let speciesCategory = [];
+        let threatenedStatus = [];
+
+        speciesList.map(list => {
+            if (threatenedStatus.indexOf(list["Threatened status"]) == -1) {
+                threatenedStatus.push(list["Threatened status"])
+            }
+            if (speciesCategory.indexOf(list.Class) == -1) {
+                speciesCategory.push(list.Class)
+            }
+        })
+
+        filteredSpecies = speciesList.filter(list => {
+            if (filterByCategory !== '' && list['Class'] != filterByCategory) {
+                return false;
+            }
+            if (filterByStatus !== '' && list['Threatened status'] != filterByStatus) {
+                return false;
+            }
+            if (list["Common Name"] !== null) {
+                if (list["Common Name"].toLowerCase().indexOf(searchText.toLowerCase()) == -1) {
+                    return false
                 }
-            })
-        } else {
-            filteredSpecies = speciesList
-        }
+            }
+            return true
+        })
 
         return <SafeAreaView forceInset={{ top: 'always' }} style={{ flex: 1, position: 'relative' }}>
             <ImageBG name={BG} />
@@ -85,11 +109,54 @@ class SpeciesScreen extends Component {
                 <Header title="Species" />
 
                 <View>
-                    <TextInput
-                        onChangeText={text => this.changeSearch(text)}
-                        style={{ height: 40, color: '#333', backgroundColor: 'rgba(255,255,255, 0.8)', marginBottom: 20, padding: 5, borderRadius: 10 }}
-                        placeholder="Search the species"
-                        placeholderTextColor="#333" />
+
+
+                    <View style={{ width: '100%', marginBottom: 5 }}>
+                        <TextInput
+                            onChangeText={text => this.changeSearch(text)}
+                            style={{ height: 40, color: '#333', backgroundColor: 'rgba(255,255,255, 0.8)', marginBottom: 5, padding: 10, borderRadius: 10 }}
+                            placeholder="Search the species. Eg., Mouse"
+                            placeholderTextColor="#333" />
+
+                        <Text>Filter By:</Text>
+
+                        <View style={{ width: '100%', flexDirection: 'row' }}>
+                            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                <Text style={{ fontSize: 12 }}>Category</Text>
+                                <Picker
+                                    mode="dropdown"
+                                    iosHeader="Select Category"
+                                    style={{ width: 120, height: 30, fontSize: 12 }}
+                                    placeholder="Select the Category"
+                                    placeholderStyle={{ color: "#bfc6ea", fontSize: 12 }}
+                                    placeholderIconColor="#007aff"
+                                    selectedValue={filterByCategory}
+                                    onValueChange={value => this.saveFilter('filterByCategory', value)}
+                                >
+                                    {speciesCategory.map(list => <Picker.Item label={list} value={list} />)}
+                                </Picker>
+                            </View>
+
+                            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                <Text style={{ fontSize: 12 }}>Threatened status</Text>
+                                <Picker
+                                    mode="dropdown"
+                                    iosHeader="Select the Threatened status"
+                                    style={{ width: 120, height: 30, fontSize: 12 }}
+                                    placeholder="Select the Threatened status"
+                                    placeholderStyle={{ color: "#bfc6ea", fontSize: 12 }}
+                                    placeholderIconColor="#007aff"
+                                    selectedValue={filterByStatus}
+                                    onValueChange={value => this.saveFilter('filterByStatus', value)}
+                                >
+                                    {threatenedStatus.map(list => <Picker.Item label={list} value={list} />)}
+                                </Picker>
+                            </View>
+
+
+                        </View>
+
+                    </View>
 
                     <FlatList
                         key={item => item["Listed SPRAT TaxonID"]}
