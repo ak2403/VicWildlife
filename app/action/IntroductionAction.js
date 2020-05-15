@@ -43,3 +43,18 @@ export const loadingAppStatus = () => {
         }
     }
 }
+
+export const switchAppTheme = theme => {
+    return async dispatch => {
+        let setTheme = await AsyncStorage.setItem('@userSelectedTheme', theme)
+        dispatch({
+            type: IntroductionTypes.CHANGE_APP_THEME,
+            payload: theme
+        })
+    }
+}
+
+export const showMainMenu = value => ({
+    type: IntroductionTypes.SHOW_MENU,
+    payload: value
+})

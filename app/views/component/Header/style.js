@@ -4,7 +4,7 @@ export default StyleSheet.create({
     headerView: {
         marginBottom: 20,
         flexDirection: 'row',
-        justifyContent: 'space-between',
+        // justifyContent: 'space-between',
         alignContent: 'center',
         alignItems: 'center'
     },

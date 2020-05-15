@@ -11,7 +11,9 @@ const PerformanceTypes = {
 
 const IntroductionTypes = {
     'COMPLETED_ONBOARDING': 'completed onboarding',
-    'APP_LOADED': 'runs when app loads first'
+    'APP_LOADED': 'runs when app loads first',
+    'SHOW_MENU': 'show the menu in the app',
+    'CHANGE_APP_THEME': 'change the user app theme'
 }
 
 const SpeciesTypes = {

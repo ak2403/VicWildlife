@@ -13,6 +13,7 @@ import QuizScreen from '../screen/Quiz'
 import DescriptionScreen from '../screen/Description'
 import CollectionScreen from '../screen/Collection'
 import PerformanceScreen from '../screen/Performance'
+import LocationScreen from '../screen/Location'
 
 /** Importing the actions */
 import { loadingAppStatus } from '../../action/IntroductionAction'
@@ -29,10 +30,10 @@ class App extends Component {
     }
 
     render() {
-        let {is_onboarding_completed, is_app_loaded} = this.props
+        let { is_onboarding_completed, is_app_loaded } = this.props
 
         // Shown loading text when the application is retrieving the local storage data
-        if(!is_app_loaded){
+        if (!is_app_loaded) {
             return <View>
                 <Text>Loading</Text>
             </View>
@@ -40,7 +41,7 @@ class App extends Component {
 
         return (
             <NavigationContainer>
-                <Stack.Navigator initialRouteName={is_onboarding_completed ? "Dashboard": "Onboarding"}>
+                <Stack.Navigator initialRouteName={is_onboarding_completed ? "Dashboard" : "Onboarding"}>
                     <Stack.Screen name="Onboarding" component={IntroductionScreen} options={{
                         headerShown: false
                     }} />
@@ -58,6 +59,10 @@ class App extends Component {
                         // headerShown: false
                     }} />
 
+                    <Stack.Screen name="Services" component={LocationScreen} options={{
+                        // headerShown: false
+                    }} />
+
                     <Stack.Screen name="SavedCollections" component={CollectionScreen} options={{
                         headerShown: false
                     }} />
@@ -67,7 +72,7 @@ class App extends Component {
                     }} />
 
                 </Stack.Navigator>
-                
+
             </NavigationContainer>
         );
     }

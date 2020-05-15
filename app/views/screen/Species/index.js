@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, TextInput, FlatList, SafeAreaView, Image, TouchableOpacity } from 'react-native'
+import { View, Button, Text, TextInput, FlatList, SafeAreaView, Image, TouchableOpacity } from 'react-native'
 import { Picker } from 'native-base'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -69,6 +69,11 @@ class SpeciesScreen extends Component {
         })
     }
 
+    clearFilter = () => this.setState({
+        filterByCategory: '',
+        filterByStatus: ''
+    })
+
     render() {
         let { searchText, filterByCategory, filterByStatus } = this.state
         let { speciesList } = this.props
@@ -111,24 +116,29 @@ class SpeciesScreen extends Component {
                 <View>
 
 
-                    <View style={{ width: '100%', marginBottom: 5 }}>
+                    <View style={{ width: '100%', marginBottom: 10, backgroundColor: 'rgba(255,255,255, 0.8)', padding: 10, borderRadius: 5 }}>
                         <TextInput
                             onChangeText={text => this.changeSearch(text)}
                             style={{ height: 40, color: '#333', backgroundColor: 'rgba(255,255,255, 0.8)', marginBottom: 5, padding: 10, borderRadius: 10 }}
                             placeholder="Search the species. Eg., Mouse"
                             placeholderTextColor="#333" />
 
-                        <Text>Filter By:</Text>
+                        <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 5, marginBottom: 5 }}>
+                            <Text style={{ color: '#333', fontFamily: 'Calibre-Bold', fontSize: 18 }}>Filter By:</Text>
+                            <TouchableOpacity onPress={this.clearFilter} style={{ backgroundColor: '#ee5253', padding: 5, paddingLeft: 10, paddingRight: 10, borderRadius: 5 }}>
+                                <Text style={{ color: '#fff', fontFamily: 'Calibre-Bold', fontSize: 14 }}>clear filter</Text>
+                            </TouchableOpacity>
+                        </View>
 
-                        <View style={{ width: '100%', flexDirection: 'row' }}>
+                        <View style={{ width: '100%', flexDirection: 'row', justifyContent: 'space-between' }}>
                             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                                <Text style={{ fontSize: 12 }}>Category</Text>
+                                <Text style={{ fontSize: 12, fontFamily: 'Calibre' }}>Category</Text>
                                 <Picker
                                     mode="dropdown"
                                     iosHeader="Select Category"
-                                    style={{ width: 120, height: 30, fontSize: 12 }}
+                                    style={{ width: 100, height: 25, fontSize: 12, fontFamily: 'Calibre', backgroundColor: '#fff', color: '#333' }}
                                     placeholder="Select the Category"
-                                    placeholderStyle={{ color: "#bfc6ea", fontSize: 12 }}
+                                    placeholderStyle={{ color: "#333", fontSize: 12, fontFamily: 'Calibre' }}
                                     placeholderIconColor="#007aff"
                                     selectedValue={filterByCategory}
                                     onValueChange={value => this.saveFilter('filterByCategory', value)}
@@ -138,13 +148,13 @@ class SpeciesScreen extends Component {
                             </View>
 
                             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                                <Text style={{ fontSize: 12 }}>Threatened status</Text>
+                                <Text style={{ fontSize: 12, fontFamily: 'Calibre' }}>Threatened status</Text>
                                 <Picker
                                     mode="dropdown"
                                     iosHeader="Select the Threatened status"
-                                    style={{ width: 120, height: 30, fontSize: 12 }}
+                                    style={{ width: 100, height: 25, fontSize: 12, fontFamily: 'Calibre', backgroundColor: '#fff', color: '#333' }}
                                     placeholder="Select the Threatened status"
-                                    placeholderStyle={{ color: "#bfc6ea", fontSize: 12 }}
+                                    placeholderStyle={{ color: "#333", fontSize: 12, fontFamily: 'Calibre' }}
                                     placeholderIconColor="#007aff"
                                     selectedValue={filterByStatus}
                                     onValueChange={value => this.saveFilter('filterByStatus', value)}

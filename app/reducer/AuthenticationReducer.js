@@ -1,13 +1,14 @@
-import {IntroductionTypes} from '../type'
+import { IntroductionTypes } from '../type'
 
 let initialState = {
     is_onboarding_completed: false,
     is_app_loaded: false,
-    userTheme: ''
+    userTheme: '',
+    showMenu: false
 }
 
-const AuthenticationReducer = (state=initialState, action) => {
-    switch(action.type){
+const AuthenticationReducer = (state = initialState, action) => {
+    switch (action.type) {
         case IntroductionTypes.COMPLETED_ONBOARDING:
             return {
                 ...state,
@@ -21,6 +22,18 @@ const AuthenticationReducer = (state=initialState, action) => {
                 is_app_loaded: true,
                 is_onboarding_completed: action.payload,
                 userTheme: action.theme
+            }
+
+        case IntroductionTypes.SHOW_MENU:
+            return {
+                ...state,
+                showMenu: action.payload
+            }
+
+        case IntroductionTypes.CHANGE_APP_THEME:
+            return {
+                ...state,
+                userTheme: action.payload
             }
 
         default:
