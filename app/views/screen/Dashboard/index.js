@@ -11,6 +11,7 @@ import NewsScreen from '../News'
 import MenuScreen from '../Menu'
 import PerformanceScreen from '../Performance'
 import CollectionScreen from '../Collection'
+import DonationScreen from '../Donation'
 
 import { showMainMenu, switchAppTheme, toggleDarkTheme } from '../../../action/IntroductionAction'
 
@@ -87,8 +88,8 @@ class App extends React.Component {
         component: NewsScreen,
         icon: "question-answer"
       }, {
-        name: "Species",
-        component: SpeciesScreen,
+        name: "Donation",
+        component: DonationScreen,
         icon: "list"
       }, {
         name: "Services",
@@ -97,6 +98,10 @@ class App extends React.Component {
       }]
 
       menuOptions = [{
+        name: "Species",
+        component: "Species",
+        icon: "list"
+      },{
         name: "Quiz",
         component: "Quiz",
         icon: "my-location"
@@ -123,6 +128,10 @@ class App extends React.Component {
         name: "Services",
         component: "Services",
         icon: "my-location"
+      }, {
+        name: "Donation",
+        component: "Donation",
+        icon: "list"
       }, {
         name: "Saved Collection",
         component: "SavedCollections",

@@ -14,6 +14,8 @@ import DescriptionScreen from '../screen/Description'
 import CollectionScreen from '../screen/Collection'
 import PerformanceScreen from '../screen/Performance'
 import LocationScreen from '../screen/Location'
+import DonationScreen from '../screen/Donation'
+import SpeciesScreen from '../screen/Species'
 
 /** Importing the actions */
 import { loadingAppStatus } from '../../action/IntroductionAction'
@@ -67,7 +69,15 @@ class App extends Component {
                         headerShown: false
                     }} />
 
+                    <Stack.Screen name="Donation" component={DonationScreen} options={{
+                        headerShown: false
+                    }} />
+
                     <Stack.Screen name="Quiz" component={PerformanceScreen} options={{
+                        headerShown: false
+                    }} />
+
+                    <Stack.Screen name="Species" component={SpeciesScreen} options={{
                         headerShown: false
                     }} />
 

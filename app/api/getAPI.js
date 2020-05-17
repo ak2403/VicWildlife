@@ -1,3 +1,4 @@
+import DonationData from '../data/donation.json'
 import NewsData from '../data/news.json'
 import axios from 'axios'
 
@@ -50,5 +51,12 @@ export const getNews = () => {
     return {
         status: 200,
         data: NewsData.articles
+    }
+}
+
+export const getDonations = () => {
+    return {
+        status: 200,
+        data: DonationData
     }
 }

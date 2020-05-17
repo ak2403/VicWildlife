@@ -26,4 +26,8 @@ const NewsTypes = {
     'GET_NEWS': 'get the news from api'
 }
 
-export { LocationTypes, PerformanceTypes, IntroductionTypes, SpeciesTypes, NewsTypes }
+const DonationTypes = {
+    'GET_DONATIONS': 'get the donation list'
+}
+
+export { LocationTypes, PerformanceTypes, IntroductionTypes, SpeciesTypes, NewsTypes, DonationTypes }
