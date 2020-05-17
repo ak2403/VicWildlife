@@ -13,11 +13,13 @@ const IntroductionTypes = {
     'COMPLETED_ONBOARDING': 'completed onboarding',
     'APP_LOADED': 'runs when app loads first',
     'SHOW_MENU': 'show the menu in the app',
-    'CHANGE_APP_THEME': 'change the user app theme'
+    'CHANGE_APP_THEME': 'change the user app theme',
+    'TOGGLE_DARK_THEME': 'toggle between the dark theme'
 }
 
 const SpeciesTypes = {
-    'GET_SPECIES_LIST': 'get the species list'
+    'GET_SPECIES_LIST': 'get the species list',
+    'GET_BOOKMARK_SPECIES': 'store and send the list to reducer'
 }
 
 const NewsTypes = {

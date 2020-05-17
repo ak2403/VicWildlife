@@ -18,9 +18,8 @@ class NewsScreen extends Component {
         this.props.getNews()
     }
 
-
     render() {
-        let { latest_news } = this.props
+        let { latest_news, darkTheme } = this.props
 
         return (<SafeAreaView forceInset={{ top: 'always' }} style={{ flex: 1, position: 'relative' }}>
             <ImageBG name={BG} />
@@ -32,7 +31,7 @@ class NewsScreen extends Component {
                     <FlatList
                         key={item => item["Listed SPRAT TaxonID"]}
                         data={latest_news}
-                        renderItem={item => <NewsCard onPress={data => this.openNews(data)} data={item.item} />} />
+                        renderItem={item => <NewsCard theme={darkTheme} onPress={data => this.openNews(data)} data={item.item} />} />
                 </View>
             </View>
         </SafeAreaView>)
@@ -40,9 +39,10 @@ class NewsScreen extends Component {
 }
 
 const mapStateToProps = props => {
-    let { news } = props
+    let { news, authentication } = props
     return {
-        latest_news: news.latest_news
+        latest_news: news.latest_news,
+        darkTheme: authentication.darkTheme
     }
 }
 

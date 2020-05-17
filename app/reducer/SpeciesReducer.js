@@ -1,7 +1,8 @@
 import { SpeciesTypes } from '../type'
 
 let initialState = {
-    speciesList: []
+    speciesList: [],
+    bookmarked_species: []
 }
 
 const SpeciesReducer = (state = initialState, action) => {
@@ -10,6 +11,12 @@ const SpeciesReducer = (state = initialState, action) => {
             return {
                 ...state,
                 speciesList: action.payload
+            }
+
+        case SpeciesTypes.GET_BOOKMARK_SPECIES:
+            return {
+                ...state,
+                bookmarked_species: action.payload
             }
             
         default:

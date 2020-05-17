@@ -9,6 +9,7 @@ export const completedOnboarding = (theme) => {
         try {
             let getResponse = await AsyncStorage.setItem('@isOnboardingComplete', 'true')
             let setTheme = await AsyncStorage.setItem('@userSelectedTheme', theme)
+            let setDarkTheme = await AsyncStorage.setItem('@darkTheme', "false")
             dispatch({
                 type: IntroductionTypes.COMPLETED_ONBOARDING,
                 payload: theme
@@ -26,10 +27,12 @@ export const loadingAppStatus = () => {
             let getResponse = await AsyncStorage.getItem('@isOnboardingComplete')
             if(getResponse != null){
                 let getTheme = await AsyncStorage.getItem('@userSelectedTheme')
+                let getDarkTheme = await AsyncStorage.getItem('@darkTheme')
                 dispatch({
                     type: IntroductionTypes.APP_LOADED,
                     payload: getResponse == 'true' ? true : false,
-                    theme: getTheme
+                    theme: getTheme,
+                    darkTheme: Boolean(getDarkTheme)
                 })
             }else{
                 dispatch({
@@ -58,3 +61,13 @@ export const showMainMenu = value => ({
     type: IntroductionTypes.SHOW_MENU,
     payload: value
 })
+
+export const toggleDarkTheme = theme => {
+    return async dispatch => {
+        let setTheme = await AsyncStorage.setItem('@darkTheme', theme.toString())
+        dispatch({
+            type: IntroductionTypes.TOGGLE_DARK_THEME,
+            payload: theme
+        })
+    }
+}

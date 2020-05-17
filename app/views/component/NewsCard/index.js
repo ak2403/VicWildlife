@@ -15,18 +15,18 @@ openLink = link => {
 };
 
 const NewsCard = props => {
-    let { data, onPress } = props
+    let { data, onPress, theme } = props
 
     return (<TouchableOpacity onPress={() => openLink(data.link)}>
-    <View style={Styles.container}>
+    <View style={[Styles.container, theme && {backgroundColor: 'rgba(35,35,39, 0.8)'}]}>
         <View style={{ flexDirection: 'row', height: 90 }}>
             <View style={Styles.imageView}>
                 <Image source={{ uri: data.primary_image_link }} style={{ width: 120, height: '100%' }} />
             </View>
 
             <View style={Styles.contentView}>
-                <Text style={Styles.titleText}>{data.title}</Text>
-                <Text numberOfLines={2} style={Styles.subtitleText}>{data.snippet}</Text>
+                <Text style={[Styles.titleText, theme && { color: "#dfdde3" }]}>{data.title}</Text>
+                <Text numberOfLines={2} style={[Styles.subtitleText, theme && { color: "#dfdde3" }]}>{data.snippet}</Text>
             </View>
         </View>
     </View>
