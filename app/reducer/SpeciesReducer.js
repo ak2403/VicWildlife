@@ -10,7 +10,8 @@ const SpeciesReducer = (state = initialState, action) => {
         case SpeciesTypes.GET_SPECIES_LIST:
             return {
                 ...state,
-                speciesList: action.payload
+                speciesList: action.payload,
+                bookmarked_species: action.bookmarkSpecies
             }
 
         case SpeciesTypes.GET_BOOKMARK_SPECIES:

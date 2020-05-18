@@ -10,6 +10,7 @@ export const completedOnboarding = (theme) => {
             let getResponse = await AsyncStorage.setItem('@isOnboardingComplete', 'true')
             let setTheme = await AsyncStorage.setItem('@userSelectedTheme', theme)
             let setDarkTheme = await AsyncStorage.setItem('@darkTheme', "false")
+            let setMode = await AsyncStorage.setItem('@offlineMode', "false")
             dispatch({
                 type: IntroductionTypes.COMPLETED_ONBOARDING,
                 payload: theme
@@ -28,11 +29,13 @@ export const loadingAppStatus = () => {
             if(getResponse != null){
                 let getTheme = await AsyncStorage.getItem('@userSelectedTheme')
                 let getDarkTheme = await AsyncStorage.getItem('@darkTheme')
+                let getOfflineMode = await AsyncStorage.getItem('@offlineMode')
                 dispatch({
                     type: IntroductionTypes.APP_LOADED,
                     payload: getResponse == 'true' ? true : false,
                     theme: getTheme,
-                    darkTheme: Boolean(getDarkTheme)
+                    darkTheme: Boolean(getDarkTheme),
+                    offlineMode: Boolean(getOfflineMode)
                 })
             }else{
                 dispatch({
@@ -71,3 +74,18 @@ export const toggleDarkTheme = theme => {
         })
     }
 }
+
+export const toggleOfflineMode = mode => {
+    return async dispatch => {
+        let setMode = await AsyncStorage.setItem('@offlineMode', mode.toString())
+        dispatch({
+            type: IntroductionTypes.TOGGLE_OFFLINE_MODE,
+            payload: mode
+        })
+    }
+}
+
+export const checkNetwork = value => ({
+    type: IntroductionTypes.CHECK_NETWORK,
+    payload: value
+})

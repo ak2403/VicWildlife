@@ -15,23 +15,29 @@ import Styles from './style'
 class NewsScreen extends Component {
 
     componentDidMount = () => {
-        this.props.getNews()
+        let { offlineMode } = this.props
+        if (!offlineMode) {
+            this.props.getNews()
+        }
     }
 
     render() {
-        let { latest_news, darkTheme } = this.props
+        let { latest_news, darkTheme, offlineMode } = this.props
 
         return (<SafeAreaView forceInset={{ top: 'always' }} style={{ flex: 1, position: 'relative' }}>
             <ImageBG name={BG} />
-            
+
             <View style={Styles.container}>
                 <Header title="News" />
 
                 <View>
-                    <FlatList
-                        key={item => item["Listed SPRAT TaxonID"]}
-                        data={latest_news}
-                        renderItem={item => <NewsCard theme={darkTheme} onPress={data => this.openNews(data)} data={item.item} />} />
+                    {offlineMode ? <Text>
+                        The app is in Offline mode.
+                    </Text> : <FlatList
+                            key={item => item["Listed SPRAT TaxonID"]}
+                            data={latest_news}
+                            renderItem={item => <NewsCard theme={darkTheme} onPress={data => this.openNews(data)} data={item.item} />} />
+                    }
                 </View>
             </View>
         </SafeAreaView>)
@@ -42,7 +48,8 @@ const mapStateToProps = props => {
     let { news, authentication } = props
     return {
         latest_news: news.latest_news,
-        darkTheme: authentication.darkTheme
+        darkTheme: authentication.darkTheme,
+        offlineMode: authentication.offlineMode
     }
 }
 

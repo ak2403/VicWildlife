@@ -5,7 +5,9 @@ let initialState = {
     is_app_loaded: false,
     userTheme: '',
     showMenu: false,
-    darkTheme: false
+    darkTheme: false,
+    isNetworkLive: true,
+    offlineMode: false
 }
 
 const AuthenticationReducer = (state = initialState, action) => {
@@ -23,7 +25,8 @@ const AuthenticationReducer = (state = initialState, action) => {
                 is_app_loaded: true,
                 is_onboarding_completed: action.payload,
                 userTheme: action.theme,
-                darkTheme: action.darkTheme
+                darkTheme: action.darkTheme,
+                offlineMode: action.offlineMode
             }
 
         case IntroductionTypes.SHOW_MENU:
@@ -42,6 +45,18 @@ const AuthenticationReducer = (state = initialState, action) => {
             return {
                 ...state,
                 darkTheme: action.payload
+            }
+
+        case IntroductionTypes.TOGGLE_OFFLINE_MODE:
+            return {
+                ...state,
+                offlineMode: action.payload
+            }
+
+        case IntroductionTypes.CHECK_NETWORK:
+            return {
+                ...state,
+                isNetworkLive: action.payload
             }
 
         default:

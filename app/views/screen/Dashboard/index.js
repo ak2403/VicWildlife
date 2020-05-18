@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Text, View, TouchableOpacity, Image } from 'react-native';
+import { Text, View, TouchableOpacity, Image, Alert } from 'react-native';
+import NetInfo from "@react-native-community/netinfo";
 import { Switch } from 'native-base'
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -13,7 +14,7 @@ import PerformanceScreen from '../Performance'
 import CollectionScreen from '../Collection'
 import DonationScreen from '../Donation'
 
-import { showMainMenu, switchAppTheme, toggleDarkTheme } from '../../../action/IntroductionAction'
+import { showMainMenu, switchAppTheme, toggleDarkTheme, checkNetwork, toggleOfflineMode } from '../../../action/IntroductionAction'
 
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import Logo from '../../../assets/images/logo.png';
@@ -39,9 +40,23 @@ class App extends React.Component {
     })
   }
 
-  componentDidMount = () => this.setState({
-    selectedTheme: this.props.userTheme
-  })
+  componentDidMount = () => {
+    this.setState({
+      selectedTheme: this.props.userTheme
+    })
+
+    this.interval = setInterval(() => {
+      NetInfo.fetch().then(state => {
+        // console.log("state ", state)
+        this.props.checkNetwork(state.isConnected)
+      });
+    }, 1000);
+
+  }
+
+  componentDidUpdate = () => {
+    return true
+  }
 
   onSwipeLeft(gestureState) {
     this.setState({ showMenuView: false });
@@ -71,9 +86,29 @@ class App extends React.Component {
     this.props.toggleDarkTheme(!darkTheme)
   }
 
+  toggleOfflineMode = () => {
+    let { offlineMode } = this.props
+
+    if (!offlineMode) {
+      Alert.alert("Notes", "The Services, Quiz and NewsFeed will be disabled when turning to offline mode.",
+        [{
+          text: "Cancel",
+          onPress: () => console.log("Cancel Pressed"),
+          style: "cancel"
+        }, {
+          text: "Proceed",
+          onPress: () => this.props.toggleOfflineMode(!offlineMode)
+        }],
+        { cancelable: false }
+      );
+    } else {
+      this.props.toggleOfflineMode(!offlineMode)
+    }
+  }
+
   render() {
     let { showMenuView, selectedTheme } = this.state
-    let { darkTheme } = this.props
+    let { darkTheme, offlineMode } = this.props
 
     const config = {
       velocityThreshold: 0.3,
@@ -101,7 +136,7 @@ class App extends React.Component {
         name: "Species",
         component: "Species",
         icon: "list"
-      },{
+      }, {
         name: "Quiz",
         component: "Quiz",
         icon: "my-location"
@@ -172,7 +207,7 @@ class App extends React.Component {
             <View style={{ position: 'absolute', top: 0, bottom: 0, left: 0, width: 250, paddingTop: 50, paddingLeft: 20, paddingRight: 20, backgroundColor: darkTheme ? "#232327" : "#f6f6f6" }}>
 
               <View style={{ width: '100%', height: 150, alignItems: 'center' }}>
-                <Image source={Logo} style={{ width: 150, height: 150 }} />
+                <Image source={Logo} style={{ width: 160, height: 130 }} />
               </View>
 
 
@@ -190,9 +225,15 @@ class App extends React.Component {
 
               </View>
 
-              <View style={{ marginTop: 50, flexDirection: 'row', justifyContent: 'space-between' }}>
+              <View style={{ marginTop: 80, flexDirection: 'row', justifyContent: 'space-between' }}>
                 <Text style={{ fontFamily: 'Calibre', fontSize: 16, color: darkTheme ? "#f6f6f6" : "#333" }}>Enable Dark Theme</Text>
                 <Switch value={darkTheme} onValueChange={this.toggleDarkTheme} />
+
+              </View>
+
+              <View style={{ marginTop: 30, flexDirection: 'row', justifyContent: 'space-between' }}>
+                <Text style={{ fontFamily: 'Calibre', fontSize: 16, color: darkTheme ? "#f6f6f6" : "#333" }}>Switch to Offline mode</Text>
+                <Switch value={offlineMode} onValueChange={this.toggleOfflineMode} />
 
               </View>
 
@@ -218,14 +259,17 @@ const mapStateToProps = props => {
   return {
     showMenu: authentication.showMenu,
     userTheme: authentication.userTheme,
-    darkTheme: authentication.darkTheme
+    darkTheme: authentication.darkTheme,
+    offlineMode: authentication.offlineMode
   }
 }
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   showMainMenu,
   switchAppTheme,
-  toggleDarkTheme
+  toggleDarkTheme,
+  checkNetwork,
+  toggleOfflineMode
 }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

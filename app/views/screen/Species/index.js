@@ -17,10 +17,11 @@ Geolocation.setRNConfiguration({
     enableHighAccuracy: true, timeout: 20000, maximumAge: 1000
 });
 
-const SpeciesList = ({ data, navigation, theme }) => {
+const SpeciesList = ({ data, navigation, theme, bookmarkFunc, bookmarkData }) => {
     let { item } = data
 
     let image_link = item.Image !== null ? item.Image : undefined;
+    let bookmark_index = bookmarkData.indexOf(item["Listed_SPRAT_TaxonID"])
 
     return <View style={[styles.CardView, theme && { backgroundColor: 'rgba(35,35,39, 0.8)' }]}>
         <View style={styles.ImageView}>
@@ -45,9 +46,9 @@ const SpeciesList = ({ data, navigation, theme }) => {
 
             </TouchableOpacity>
 
-            <TouchableOpacity onPress={() => this.props.bookmarkSpecies(item)}>
+            <TouchableOpacity onPress={() => bookmarkFunc(item, bookmark_index != -1 ? true : false, bookmark_index)}>
                 <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                    <Icon name="star" size={24} />
+                    <Icon name="star" color={bookmark_index != -1 ? "#e0e" : "#95a5a6"} size={24} />
                 </View>
             </TouchableOpacity>
         </View>
@@ -130,17 +131,17 @@ class SpeciesScreen extends Component {
 
     render() {
         let { searchText, filterByCategory, filterByStatus, userLocation } = this.state
-        let { speciesList, darkTheme } = this.props
+        let { speciesList, darkTheme, bookmarked_species } = this.props
 
         let filteredSpecies = []
-        console.log(userLocation)
+        let bookmarkID = bookmarked_species.map(list => list["Listed_SPRAT_TaxonID"])
 
         let speciesCategory = [];
         let threatenedStatus = [];
 
         speciesList.map(list => {
-            if (threatenedStatus.indexOf(list["Threatened_status"]) == -1) {
-                threatenedStatus.push(list["Threatened_status"])
+            if (threatenedStatus.indexOf(list["Threatened_Status"]) == -1) {
+                threatenedStatus.push(list["Threatened_Status"])
             }
             if (speciesCategory.indexOf(list.Class) == -1) {
                 speciesCategory.push(list.Class)
@@ -158,7 +159,7 @@ class SpeciesScreen extends Component {
             if (filterByCategory !== '' && list['Class'] != filterByCategory) {
                 return false;
             }
-            if (filterByStatus !== '' && list['Threatened_status'] != filterByStatus) {
+            if (filterByStatus !== '' && list['Threatened_Status'] != filterByStatus) {
                 return false;
             }
             if (list["Common_Name"] !== null) {
@@ -237,7 +238,8 @@ class SpeciesScreen extends Component {
                     <FlatList
                         key={item => item["Listed_SPRAT_TaxonID"]}
                         data={filteredSpecies}
-                        renderItem={item => <SpeciesList theme={darkTheme} data={item} navigation={this.props.navigation} />} />
+                        renderItem={item => <SpeciesList theme={darkTheme} data={item} navigation={this.props.navigation} bookmarkFunc={(list, isPresent, index) => this.props.bookmarkSpecies(list, isPresent, index)} bookmarkData={bookmarkID} />}
+                    />
                 </View>
             </View>
 
@@ -249,7 +251,8 @@ const mapStateToProps = props => {
     let { species, authentication } = props
     return {
         speciesList: species.speciesList,
-        darkTheme: authentication.darkTheme
+        darkTheme: authentication.darkTheme,
+        bookmarked_species: species.bookmarked_species
     }
 }
 

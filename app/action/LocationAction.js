@@ -57,3 +57,20 @@ export const getBookmarkLocation = () => {
         })
     }   
 }
+
+export const getLocationDetails = location => {
+    return async dispatch => {
+        let getLocationInfo = await getAPI.getLocationDetails(location.place_id)
+        
+        if(getLocationInfo.status === 200){
+            dispatch({
+                type: LocationTypes.GET_LOCATION_DETAILS,
+                payload: getLocationInfo.data
+            })
+        }
+    }
+}
+
+export const closeDetails = () => ({
+    type: LocationTypes.CLOSE_LOCATION_DETAILS
+})

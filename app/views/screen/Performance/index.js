@@ -34,7 +34,7 @@ class PerformanceScreen extends Component {
     }
 
     render() {
-        let { quiz_statistics } = this.props
+        let { quiz_statistics, offlineMode } = this.props
 
         return <SafeAreaView forceInset={{ top: 'always' }} style={{ flex: 1 }}>
             <ImageBG name={BG} />
@@ -43,7 +43,7 @@ class PerformanceScreen extends Component {
             <View style={styles.container}>
                 <Header title="Quiz" />
 
-                <View style={{ flex: 1 }}>
+                {offlineMode ? <View><Text>The app is in offline mode</Text></View> : <><View style={{ flex: 1 }}>
                     <Text style={styles.flatlistHeader}>Statistics</Text>
                     {quiz_statistics.length == 0 ? <View style={styles.smokeView}>
                         <Text style={styles.smokeText}>There is no history of quiz. To get started with a quiz, press "Take a Quiz" button.</Text>
@@ -59,7 +59,7 @@ class PerformanceScreen extends Component {
 
                     <Button title="Take a Quiz" onPress={() => this.props.navigation.navigate("TakeaQuiz")} />
 
-                </View>
+                </View></>}
 
             </View>
         </SafeAreaView>
@@ -67,9 +67,10 @@ class PerformanceScreen extends Component {
 }
 
 const mapStateToProps = props => {
-    let { performance } = props
+    let { performance, authentication } = props
     return {
-        quiz_statistics: performance.quiz_statistics
+        quiz_statistics: performance.quiz_statistics,
+        offlineMode: authentication.offlineMode
     }
 }
 

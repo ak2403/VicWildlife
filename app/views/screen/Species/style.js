@@ -28,5 +28,13 @@ export default StyleSheet.create({
         color: '#333',
         fontWeight: 'bold',
         marginBottom: 5,
-    }
+    },
+    mapLayout: {
+        flex: 1,
+        justifyContent: 'flex-end',
+        alignItems: 'center'
+    },
+    map: {
+        ...StyleSheet.absoluteFillObject,
+    },
 })

@@ -12,5 +12,21 @@ export default StyleSheet.create({
         fontSize: 32,
         color: '#fff',
         fontWeight: 'bold'
+    },
+    offlineView: {
+        marginLeft: 30,
+        backgroundColor: '#f1c40f',
+        padding: 5,
+        borderRadius: 10
+    },
+    offlineText: {
+        fontSize: 14,
+        fontFamily: 'Calibre-Bold'
+    },
+    networkView: {
+        marginLeft: 30,
+        backgroundColor: '#e74c3c',
+        padding: 5,
+        borderRadius: 10
     }
 })
