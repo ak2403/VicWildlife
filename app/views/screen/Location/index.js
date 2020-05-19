@@ -119,6 +119,11 @@ class LocationComponent extends Component {
                             <Icon name="web" size={28} />
                         </TouchableOpacity>
                     </View>
+
+                    <TouchableOpacity style={{marginTop: 5, flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}} onPress={() => this.bookmarkCard(location_details, bookmarkedID.indexOf(location_details.id))}>
+                        <Icon name="star" size={24} color={"#e0e0e0"} style={{marginRight: 10}} />
+                        <Text>Bookmark this location</Text>
+                    </TouchableOpacity>
                 </View>
 
             </View>}

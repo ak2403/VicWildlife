@@ -131,7 +131,8 @@ class SpeciesScreen extends Component {
 
     render() {
         let { searchText, filterByCategory, filterByStatus, userLocation } = this.state
-        let { speciesList, darkTheme, bookmarked_species } = this.props
+        let { speciesList, darkTheme, bookmarked_species, route } = this.props
+        let isSecondary = route.params ? route.params.isSecondary : false
 
         let filteredSpecies = []
         let bookmarkID = bookmarked_species.map(list => list["Listed_SPRAT_TaxonID"])
@@ -176,7 +177,7 @@ class SpeciesScreen extends Component {
             <ImageBG name={BG} />
 
             <View style={styles.container}>
-                <Header title="Species" />
+                <Header navigation={this.props.navigation} isSecondary={isSecondary} title="Species" />
 
                 <View>
 

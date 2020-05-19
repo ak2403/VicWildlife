@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux'
 import { getNews } from '../../../action/NewsAction'
 
 import NewsCard from '../../component/NewsCard'
-import Popup from '../../component/Popup'
+import SmokeScreen from '../../component/SmokeScreen'
 import ImageBG from '../../component/ImageBG'
 import Header from '../../component/Header'
 import BG from '../../../assets/images/quiz_bg.jpg';
@@ -14,11 +14,32 @@ import Styles from './style'
 
 class NewsScreen extends Component {
 
+    state = {
+        isOfflineMode: false
+    }
+
     componentDidMount = () => {
         let { offlineMode } = this.props
         if (!offlineMode) {
             this.props.getNews()
+        } else {
+            this.setState({
+                isOfflineMode: true
+            })
         }
+    }
+
+    componentDidUpdate = () => {
+        let { offlineMode } = this.props
+        let { isOfflineMode } = this.state
+
+        if (isOfflineMode && !offlineMode) {
+            this.props.getNews()
+            this.setState({
+                isOfflineMode: false
+            })
+        }
+        return true
     }
 
     render() {
@@ -30,13 +51,11 @@ class NewsScreen extends Component {
             <View style={Styles.container}>
                 <Header title="News" />
 
-                <View>
-                    {offlineMode ? <Text>
-                        The app is in Offline mode.
-                    </Text> : <FlatList
-                            key={item => item["Listed SPRAT TaxonID"]}
-                            data={latest_news}
-                            renderItem={item => <NewsCard theme={darkTheme} onPress={data => this.openNews(data)} data={item.item} />} />
+                <View style={{ flex: 1 }}>
+                    {offlineMode ? <SmokeScreen text={"The NewsFeed is disabled because the app is in offline mode."} /> : <FlatList
+                        key={item => item["Listed SPRAT TaxonID"]}
+                        data={latest_news}
+                        renderItem={item => <NewsCard theme={darkTheme} onPress={data => this.openNews(data)} data={item.item} />} />
                     }
                 </View>
             </View>

@@ -56,5 +56,17 @@ export default StyleSheet.create({
         backgroundColor: 'rgba(52, 52, 52, 0.5)',
         borderRadius: 5,
         textAlign: 'center'
+    },
+    lightTabStyle: {
+        backgroundColor: '#e0e0e0',
+        borderColor: '#000',
+        color: '#fff'
+    },
+    activeLightTab: {
+        backgroundColor: '#333',
+    },
+    lightTextStyle: {
+        color: '#000',
+        fontSize: 16
     }
 })

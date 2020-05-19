@@ -39,15 +39,14 @@ class DonationScreen extends Component {
     }
 
     render() {
-        let { donation } = this.props
-
-        console.log(donation)
+        let { donation, route } = this.props
+        let isSecondary = route.params ? route.params.isSecondary : false
 
         return (<SafeAreaView forceInset={{ top: 'always' }} style={{ flex: 1, position: 'relative' }}>
             <ImageBG name={BG} />
 
             <View style={Styles.container}>
-                <Header title="Donation" />
+                <Header navigation={this.props.navigation} isSecondary={isSecondary} title="Donation" />
 
                 <View>
                     <FlatList

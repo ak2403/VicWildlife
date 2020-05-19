@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { View, Text, Button, FlatList, SafeAreaView } from 'react-native'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import SegmentedControlTab from "react-native-segmented-control-tab";
+
 import Header from '../../component/Header'
 import ImageBG from '../../component/ImageBG'
 import { getBookmarkLocation } from '../../../action/LocationAction'
@@ -11,57 +13,76 @@ import BG from '../../../assets/images/collection_bg.jpg';
 import styles from './style'
 
 class CollectionScreen extends Component {
+    state = {
+        selectedIndex: 0
+    }
+
+    handleIndexChange = index => {
+        this.setState({
+            ...this.state,
+            selectedIndex: index
+        });
+    };
+
     componentDidMount = () => {
         this.props.getBookmarkLocation()
         this.props.getBookmarkSpecies()
     }
 
     render() {
-        let { bookmark_location, bookmarked_species } = this.props
-
-        console.log(bookmarked_species)
+        let { selectedIndex } = this.state
+        let { bookmark_location, bookmarked_species, route } = this.props
+        let isSecondary = route.params ? route.params.isSecondary : false
 
         return <SafeAreaView forceInset={{ top: 'always' }} style={{ flex: 1 }}>
 
             <ImageBG name={BG} />
             <View style={styles.container}>
-                <Header title="Saved Collections" />
+                <Header navigation={this.props.navigation} isSecondary={isSecondary} title="Collections" />
 
-                <Text style={styles.flatlistHeader}>Location</Text>
-                {bookmark_location.length == 0 ? <View style={styles.smokeView}>
-                    <Text style={styles.smokeText}>There is no saved wildlife service location. In order to bookmark a location, navigate to "Services".</Text>
-                </View> : <>
-                        {bookmark_location.map(location => {
-                            return <View key={location.id} style={styles.Card}>
-                                <View style={styles.cardTextView}>
-                                    <Text style={styles.cardText}>Name: </Text>
-                                    <Text style={styles.cardAnswer}>{location.name}</Text>
-                                </View>
+                <View style={{ flex: 1 }}>
+                    <SegmentedControlTab
+                        values={["Location", "Species"]}
+                        selectedIndex={selectedIndex}
+                        onTabPress={this.handleIndexChange}
+                        tabStyle={styles.lightTabStyle}
+                        activeTabStyle={styles.activeLightTab}
+                        tabTextStyle={styles.lightTextStyle}
+                    />
 
-                                <View style={styles.cardTextView}>
-                                    <Text style={styles.cardText}>Location: </Text>
-                                    <Text style={styles.cardAnswer}>{location.formatted_address}</Text>
-                                </View>
-                            </View>
-                        })}</>}
+                    <View>
+                        {selectedIndex == 0 ? <>
+                            {bookmark_location.length == 0 ? <Text>No saved locations.</Text> : bookmark_location.map(location => {
+                                return <View key={location.id} style={styles.Card}>
+                                    <View style={styles.cardTextView}>
+                                        <Text style={styles.cardText}>Name: </Text>
+                                        <Text style={styles.cardAnswer}>{location.name}</Text>
+                                    </View>
 
-                <Text style={styles.flatlistHeader}>Species</Text>
-                {bookmarked_species.length == 0 ? <View style={styles.smokeView}>
-                    <Text style={styles.smokeText}>There is no saved wildlife service location. In order to bookmark a location, navigate to "Services".</Text>
-                </View> : <>
-                        {bookmarked_species.map(location => {
-                            return <View key={location.id} style={styles.Card}>
-                                <View style={styles.cardTextView}>
-                                    <Text style={styles.cardText}>Name: </Text>
-                                    <Text style={styles.cardAnswer}>{location["Common_Name"]}</Text>
+                                    <View style={styles.cardTextView}>
+                                        <Text style={styles.cardText}>Location: </Text>
+                                        <Text style={styles.cardAnswer}>{location.formatted_address}</Text>
+                                    </View>
                                 </View>
+                            })}
+                        </> : <>
+                                {bookmarked_species.length == 0 ? <Text>No saved species.</Text> : bookmarked_species.map(location => {
+                                    return <View key={location.id} style={styles.Card}>
+                                        <View style={styles.cardTextView}>
+                                            <Text style={styles.cardText}>Name: </Text>
+                                            <Text style={styles.cardAnswer}>{location["Common_Name"]}</Text>
+                                        </View>
 
-                                <View style={styles.cardTextView}>
-                                    <Text style={styles.cardText}>Status: </Text>
-                                    <Text style={styles.cardAnswer}>{location["Threatened_Status"]}</Text>
-                                </View>
-                            </View>
-                        })}</>}
+                                        <View style={styles.cardTextView}>
+                                            <Text style={styles.cardText}>Status: </Text>
+                                            <Text style={styles.cardAnswer}>{location["Threatened_Status"]}</Text>
+                                        </View>
+                                    </View>
+                                })}
+                            </>}
+
+                    </View>
+                </View>
             </View>
 
         </SafeAreaView>

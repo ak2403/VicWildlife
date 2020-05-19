@@ -3,6 +3,7 @@ import { View, Text, Button, FlatList, SafeAreaView, Image } from 'react-native'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { getQuizStatistics } from '../../../action/PerformanceAction'
+import SmokeScreen from '../../component/SmokeScreen'
 import ImageBG from '../../component/ImageBG'
 import Header from '../../component/Header'
 import BG from '../../../assets/images/quiz_bg.jpg';
@@ -34,16 +35,17 @@ class PerformanceScreen extends Component {
     }
 
     render() {
-        let { quiz_statistics, offlineMode } = this.props
+        let { quiz_statistics, offlineMode, route } = this.props
+        let isSecondary = route.params ? route.params.isSecondary : false
 
         return <SafeAreaView forceInset={{ top: 'always' }} style={{ flex: 1 }}>
             <ImageBG name={BG} />
 
 
             <View style={styles.container}>
-                <Header title="Quiz" />
+                <Header navigation={this.props.navigation} isSecondary={isSecondary} title="Quiz" />
 
-                {offlineMode ? <View><Text>The app is in offline mode</Text></View> : <><View style={{ flex: 1 }}>
+                {offlineMode ? <View style={{ flex: 1 }}><SmokeScreen text={"The Quiz is disabled because the app is in offline mode."} /></View> : <><View style={{ flex: 1 }}>
                     <Text style={styles.flatlistHeader}>Statistics</Text>
                     {quiz_statistics.length == 0 ? <View style={styles.smokeView}>
                         <Text style={styles.smokeText}>There is no history of quiz. To get started with a quiz, press "Take a Quiz" button.</Text>

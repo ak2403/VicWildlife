@@ -45,12 +45,12 @@ class App extends React.Component {
       selectedTheme: this.props.userTheme
     })
 
-    this.interval = setInterval(() => {
-      NetInfo.fetch().then(state => {
-        // console.log("state ", state)
-        this.props.checkNetwork(state.isConnected)
-      });
-    }, 1000);
+    // this.interval = setInterval(() => {
+    //   NetInfo.fetch().then(state => {
+    //     // console.log("state ", state)
+    //     this.props.checkNetwork(state.isConnected)
+    //   });
+    // }, 1000);
 
   }
 
@@ -78,7 +78,9 @@ class App extends React.Component {
   }
 
   redirectTo = path => {
-    this.props.navigation.push(path)
+    this.props.navigation.push(path, {
+      isSecondary: true
+    })
   }
 
   toggleDarkTheme = () => {
