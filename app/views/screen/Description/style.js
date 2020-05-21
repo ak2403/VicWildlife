@@ -4,9 +4,9 @@ const Styles = StyleSheet.create({
     container: {
         flex: 1,
         paddingTop: 10,
-        paddingLeft: 20,
-        paddingRight: 20,
-        paddingBottom: 20,
+        // paddingLeft: 20,
+        // paddingRight: 20,
+        paddingBottom: 20
     },
     CardContainer: {
         flexDirection: 'column',
@@ -41,10 +41,6 @@ const Styles = StyleSheet.create({
         color: '#333',
         fontFamily: 'Calibre'
     },
-    contentText: {
-        fontSize: 12,
-        fontFamily: 'Calibre'
-    },
     buttonLayer: {
         marginTop: 10,
         width: '100%',
@@ -70,6 +66,31 @@ const Styles = StyleSheet.create({
     contentLayer: {
         backgroundColor: "rgba(52,52,52,0.9)",
         padding: 10
+    },
+    headerText: {
+        color: "#fff",
+        fontSize: 18,
+        fontFamily: 'Calibre-Bold',
+        marginBottom: 5
+    },
+    contentText: {
+        fontSize: 24,
+        fontFamily: 'Calibre',
+        color: '#fff',
+        // textAlign: 'center'
+    },
+    secondaryheaderText: {
+        color: "#fff",
+        fontSize: 16,
+        fontFamily: 'Calibre-Bold',
+        marginBottom: 5,
+        // textAlign: 'center'
+    },
+    secondarycontentText: {
+        fontSize: 18,
+        fontFamily: 'Calibre',
+        color: '#fff',
+        // textAlign: 'center'
     }
 })
 

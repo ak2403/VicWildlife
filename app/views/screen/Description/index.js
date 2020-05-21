@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet, ScrollView, SafeAreaView, Image } from 'react-native'
+import { View, Text, StyleSheet, ScrollView, SafeAreaView, Image, TouchableOpacity } from 'react-native'
 import HTMLView from 'react-native-htmlview';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -7,70 +7,113 @@ import ImageBG from '../../component/ImageBG'
 import Header from '../../component/Header'
 import BG from '../../../assets/images/questions_bg.jpg';
 
-const styles = StyleSheet.create({
-    container: {
-        padding: 20,
-        flex: 1,
-        backgroundColor: 'rgba(52, 52, 52, 0.5)'
-    },
-    headerText: {
-        fontWeight: 'bold',
-        fontSize: 18,
-        fontFamily: 'Roboto',
-        paddingBottom: 5,
-        color: '#fff'
-    },
-    contentText: {
-        fontSize: 14,
-        paddingBottom: 10,
-        fontFamily: 'Roboto',
-        color: '#fff'
-    }
-});
+import Styles from './style'
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
-const htmlStyles = StyleSheet.create({
-    p: {
-        fontSize: 14,
-        paddingBottom: 10,
-        fontFamily: 'Roboto',
-        color: '#fff'
-    }
-});
+// const htmlStyles = StyleSheet.create({
+//     p: {
+//         fontSize: 14,
+//         paddingBottom: 10,
+//         fontFamily: 'Calibre',
+//         color: '#fff'
+//     }
+// });
 
 class DescriptionScreen extends Component {
+
+    goBack = () => {
+        this.props.navigation.push('Dashboard')
+    }
 
     render() {
         let { data } = this.props.route.params
         let image_link = data.Image !== null ? data.Image : undefined;
 
-        return <SafeAreaView forceInset={{ top: 'always' }} style={{ flex: 1 }}>
+        return <View style={{ flex: 1 }}>
             <ImageBG name={BG} />
-            <ScrollView style={{ flex: 1 }}>
+            <View style={{ flex: 1 }}>
 
-                <View style={styles.container}>
-                    {image_link && <View style={{height: 250, marginBottom: 20}}>
+                <View style={Styles.container}>
+                    {image_link && <View style={{ height: 250, marginBottom: 0, position: 'relative' }}>
                         <Image source={{ uri: image_link }} style={{ flex: 1 }} />
+                        <TouchableOpacity onPress={this.goBack} style={{backgroundColor: 'rgba(0,0,0,0.5)', marginLeft: 15, marginTop: 50, position: 'absolute', padding: 5, borderRadius: 20}} >
+                        <Icon name="arrow-back" size={24} color={"#fff"} />
+                        </TouchableOpacity>
+                        
                     </View>}
 
-                    <Text style={styles.headerText}>Common Name</Text>
-                    <Text style={styles.contentText}>{data["Common Name"]}</Text>
+                    <ScrollView style={{ flex: 1, marginBottom: 10, marginTop: -20, padding: 15, borderRadius: 5, marginLeft: 10, marginRight: 10, backgroundColor: 'rgba(52,52,52,0.8)', overflow: 'scroll' }}>
+                        <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between', marginBottom: 20 }}>
+                            <View style={{ flexDirection: 'column', flex: 1 }}>
+                                <Text style={Styles.headerText}>Common Name</Text>
+                                <Text style={Styles.contentText}>{data["Common_Name"]}</Text>
+                            </View>
 
-                    <Text style={styles.headerText}>Class</Text>
-                    <Text style={styles.contentText}>{data["Class"]}</Text>
+                            <View style={{ flexDirection: 'column', flex: 1 }}>
+                                <Text style={[Styles.headerText, { textAlign: 'right' }]}>Threatened Status</Text>
+                                <Text style={[Styles.contentText, { textAlign: 'right' }]}>{data["Threatened_Status"]}</Text>
+                            </View>
+                        </View>
 
-                    <Text style={styles.headerText}>Family</Text>
-                    <Text style={styles.contentText}>{data["Family"]}</Text>
+                        <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between', marginBottom: 20 }}>
+                            <View style={{ flexDirection: 'column', flex: 1 }}>
+                                <Text style={Styles.secondaryheaderText}>Class</Text>
+                                <Text style={Styles.secondarycontentText}>{data["Class"]}</Text>
+                            </View>
 
-                    {data.Description &&
-                        <>
-                            <Text style={styles.headerText}>Descrption</Text>
-                            <HTMLView
-                                stylesheet={htmlStyles}
-                                value={`<p>${data.Description}</p>`} />
-                        </>}
+                            <View style={{ flexDirection: 'column', flex: 1 }}>
+                                <Text style={[Styles.secondaryheaderText, { textAlign: 'center' }]}>Family</Text>
+                                <Text style={[Styles.secondarycontentText, { textAlign: 'center' }]}>{data["Family"]}</Text>
+                            </View>
+
+                            <View style={{ flexDirection: 'column', flex: 1 }}>
+                                <Text style={[Styles.secondaryheaderText, { textAlign: 'right' }]}>Genus</Text>
+                                <Text style={[Styles.secondarycontentText, { textAlign: 'right' }]}>{data["Genus"]}</Text>
+                            </View>
+                        </View>
+
+                        <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between', marginBottom: 20 }}>
+                            <View style={{ flexDirection: 'column', flex: 1 }}>
+                                <Text style={Styles.secondaryheaderText}>Scientific Name</Text>
+                                <Text style={Styles.secondarycontentText}>{data["Scientific_Name"]}</Text>
+                            </View>
+
+                            <View style={{ flexDirection: 'column', flex: 1 }}>
+                                <Text style={[Styles.secondaryheaderText, { textAlign: 'center' }]}>Kingdom</Text>
+                                <Text style={[Styles.secondarycontentText, { textAlign: 'center' }]}>{data["Kingdom"]}</Text>
+                            </View>
+
+                            <View style={{ flexDirection: 'column', flex: 1 }}>
+                                <Text style={[Styles.secondaryheaderText, { textAlign: 'right' }]}>Species</Text>
+                                <Text style={[Styles.secondarycontentText, { textAlign: 'right' }]}>{data["Species"]}</Text>
+                            </View>
+                        </View>
+
+                        <View style={{ flex: 1, marginBottom: 20 }}>
+                            <Text style={Styles.secondaryheaderText}>Habitat</Text>
+                            <Text style={Styles.secondarycontentText}>{data["Habitat"]}</Text>
+                        </View>
+
+                        <View style={{ flex: 1, marginBottom: 20 }}>
+                            <Text style={Styles.secondaryheaderText}>Australian Distribution</Text>
+                            <Text style={Styles.secondarycontentText}>{data["Australian_Distribution"]}</Text>
+                        </View>
+                    </ScrollView>
+
+                    {/* <View style={{ backgroundColor: '#fff',  height: 50, }}>
+                        <TouchableOpacity>
+                            <Text>Add to my favourite</Text>
+                        </TouchableOpacity>
+                    </View> */}
+
+
+
+
+
+
                 </View>
-            </ScrollView>
-        </SafeAreaView>
+            </View>
+        </View>
 
     }
 }

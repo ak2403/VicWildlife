@@ -58,7 +58,7 @@ class App extends Component {
                     }} />
 
                     <Stack.Screen name="Description" component={DescriptionScreen} options={{
-                        // headerShown: false
+                        headerShown: false
                     }} />
 
                     <Stack.Screen name="Services" component={LocationScreen} options={{

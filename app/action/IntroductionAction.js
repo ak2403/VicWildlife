@@ -30,12 +30,13 @@ export const loadingAppStatus = () => {
                 let getTheme = await AsyncStorage.getItem('@userSelectedTheme')
                 let getDarkTheme = await AsyncStorage.getItem('@darkTheme')
                 let getOfflineMode = await AsyncStorage.getItem('@offlineMode')
+                
                 dispatch({
                     type: IntroductionTypes.APP_LOADED,
                     payload: getResponse == 'true' ? true : false,
                     theme: getTheme,
-                    darkTheme: Boolean(getDarkTheme),
-                    offlineMode: Boolean(getOfflineMode)
+                    darkTheme: getDarkTheme == 'true' ? true : false,
+                    offlineMode: getOfflineMode == 'true' ? true : false
                 })
             }else{
                 dispatch({

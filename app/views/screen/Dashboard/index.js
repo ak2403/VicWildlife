@@ -31,7 +31,6 @@ class App extends React.Component {
   }
 
   switchTheme = () => {
-    console.log(this.state)
     let { selectedTheme } = this.state
     let newSelectedTheme = selectedTheme == 'help' ? 'learn' : 'help'
     this.props.switchAppTheme(newSelectedTheme)
@@ -44,14 +43,6 @@ class App extends React.Component {
     this.setState({
       selectedTheme: this.props.userTheme
     })
-
-    // this.interval = setInterval(() => {
-    //   NetInfo.fetch().then(state => {
-    //     // console.log("state ", state)
-    //     this.props.checkNetwork(state.isConnected)
-    //   });
-    // }, 1000);
-
   }
 
   componentDidUpdate = () => {

@@ -6,7 +6,7 @@ import { getQuizStatistics } from '../../../action/PerformanceAction'
 import SmokeScreen from '../../component/SmokeScreen'
 import ImageBG from '../../component/ImageBG'
 import Header from '../../component/Header'
-import BG from '../../../assets/images/quiz_bg.jpg';
+import BG from '../../../assets/images/bg.jpg';
 
 import styles from './style'
 

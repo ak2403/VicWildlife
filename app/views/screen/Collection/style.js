@@ -52,21 +52,31 @@ export default StyleSheet.create({
         color: '#fff',
         fontSize: 14,
         fontWeight: 'bold',
-        fontFamily: 'Roboto',
+        fontFamily: 'Calibre',
         backgroundColor: 'rgba(52, 52, 52, 0.5)',
         borderRadius: 5,
         textAlign: 'center'
     },
     lightTabStyle: {
-        backgroundColor: '#e0e0e0',
-        borderColor: '#000',
-        color: '#fff'
+        backgroundColor: '#333',
+        borderColor: '#000'
     },
     activeLightTab: {
-        backgroundColor: '#333',
+        backgroundColor: '#e0e0e0',
     },
     lightTextStyle: {
+        color: '#fff',
+        fontSize: 16
+    },
+    activeTextStyle: {
         color: '#000',
         fontSize: 16
+    },
+    contentLayer: {
+        flex: 1,
+        backgroundColor: 'rgba(52, 52, 52, 0.8)',
+        borderBottomLeftRadius: 5,
+        borderBottomRightRadius: 5,
+        padding: 10
     }
 })

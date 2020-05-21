@@ -94,6 +94,7 @@ class QuizScreen extends Component {
         let { list_of_quiz_questions } = this.props;
 
         if (quizStarted) {
+            console.log(list_of_quiz_questions)
             return <Quiz data={list_of_quiz_questions} closeQuiz={() => this.closeQuiz()} />
         }
 
@@ -151,7 +152,7 @@ class QuizScreen extends Component {
                     >
                         <Picker.Item label="Select the Question Type" value="" />
                         <Picker.Item label="Multiple Options" value="multiple" />
-                        <Picker.Item label="True/False" value="boolean" />
+                        <Picker.Item label="Any" value="any" />
                     </Picker>
                 </Item>
                 {(isAllOptionsSelected == false && options.typeOfQuestions == '') && <Text style={{color: '#e74c3c'}}>Please select an option</Text>}

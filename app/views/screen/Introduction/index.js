@@ -4,13 +4,8 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import Icon from 'react-native-vector-icons/Feather'
 import ImageBG from '../../component/ImageBG'
-import ListCard from '../../component/ListCard'
 
 import BG from '../../../assets/images/bg.jpg';
-import QuizIcon from '../../../assets/images/quiz.png';
-import EmergencyIcon from '../../../assets/images/emergency.png';
-import ListIcon from '../../../assets/images/list.png';
-
 import { completedOnboarding } from '../../../action/IntroductionAction'
 import Styles from './style'
 

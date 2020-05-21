@@ -48,11 +48,14 @@ class CollectionScreen extends Component {
                         tabStyle={styles.lightTabStyle}
                         activeTabStyle={styles.activeLightTab}
                         tabTextStyle={styles.lightTextStyle}
+                        activeTabTextStyle={styles.activeTextStyle}
                     />
 
-                    <View>
+                    <View style={styles.contentLayer}>
                         {selectedIndex == 0 ? <>
-                            {bookmark_location.length == 0 ? <Text>No saved locations.</Text> : bookmark_location.map(location => {
+                            {bookmark_location.length == 0 ? <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+                                    <Text style={{color: '#fff', fontSize: 24, fontFamily: 'Calibre-Bold'}}>No saved locations.</Text>
+                                </View> : bookmark_location.map(location => {
                                 return <View key={location.id} style={styles.Card}>
                                     <View style={styles.cardTextView}>
                                         <Text style={styles.cardText}>Name: </Text>
@@ -66,7 +69,9 @@ class CollectionScreen extends Component {
                                 </View>
                             })}
                         </> : <>
-                                {bookmarked_species.length == 0 ? <Text>No saved species.</Text> : bookmarked_species.map(location => {
+                                {bookmarked_species.length == 0 ? <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+                                    <Text style={{color: '#fff', fontSize: 24, fontFamily: 'Calibre-Bold'}}>No saved species.</Text>
+                                </View> : bookmarked_species.map(location => {
                                     return <View key={location.id} style={styles.Card}>
                                         <View style={styles.cardTextView}>
                                             <Text style={styles.cardText}>Name: </Text>

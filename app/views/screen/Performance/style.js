@@ -51,7 +51,7 @@ export default StyleSheet.create({
         color: '#fff',
         fontSize: 14,
         fontWeight: 'bold',
-        fontFamily: 'Roboto',
+        fontFamily: 'Calibre',
         backgroundColor: 'rgba(52, 52, 52, 0.5)',
         borderRadius: 5,
         textAlign: 'center'

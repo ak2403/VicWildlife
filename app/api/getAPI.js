@@ -33,7 +33,11 @@ export const getLocationDetails = id => {
 }
 
 export const getQuizQuestions = props => {
-    return axios.get(`https://opentdb.com/api.php?amount=${props.numberOfQuestions}&category=27&difficulty=${props.difficultyLevel}&type=${props.typeOfQuestions}`)
+    let url = `https://opentdb.com/api.php?amount=${props.numberOfQuestions}&category=27&difficulty=${props.difficultyLevel}`;
+    let typeQuestion = props.typeOfQuestions != 'any' ? `&type=${props.typeOfQuestions}` : "";
+    url = typeQuestion == '' ? url : url+typeQuestion;
+    
+    return axios.get(url)
         .then(response => {
             return {
                 status: 200,

@@ -13,7 +13,7 @@ class Header extends Component {
 
     render() {
         let { title, isNetworkLive, offlineMode, isSecondary, navigation } = this.props
-        console.log(navigation)
+        
         return (<View style={Styles.headerView}>
             {isSecondary ? <TouchableOpacity style={{marginRight: 10}} onPress={() => navigation.push("Dashboard")}>
                 <Icon name="arrow-back" size={24} color="#fff" />

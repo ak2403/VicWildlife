@@ -9,7 +9,7 @@ openLink = link => {
         if (supported) {
             Linking.openURL(link);
         } else {
-            console.log("Don't know how to open URI: " + link);
+            
         }
     });
 };
