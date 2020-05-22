@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet, Button, SafeAreaView, Image, TouchableOpacity } from 'react-native'
+import { View, Text, ScrollView, Button, SafeAreaView, Image, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import Icon from 'react-native-vector-icons/Feather'
@@ -48,18 +48,10 @@ class Introduction extends Component {
             <ImageBG name={BG} />
 
             <View style={{ backgroundColor: 'rgba(52, 52, 52, 0.5)', flex: 1 }}>
-                <View style={{ padding: 20, height: 130 }}>
+                <View style={{ padding: 0, height: 130 }}>
                     <View style={{ width: '100%', marginTop: 50, paddingLeft: 20 }}>
-                        <Text style={{ fontSize: 28, fontWeight: 'bold', lineHeight: 50, fontFamily: 'Calibre-Regular', color: '#fff' }}>Welcome to VicWildlife</Text>
+                        <Text style={{ fontSize: 34, fontWeight: 'bold', lineHeight: 50, fontFamily: 'Calibre-Bold', color: '#fff' }}>Welcome to VicWildlife</Text>
                     </View>
-
-                    
-
-                    {/* <View style={{ marginTop: 50, paddingLeft: 20, width: '100%', justifyContent: 'center', alignItems: 'center' }}>
-                        <ListCard image={QuizIcon} title="Quiz" subtitle="Do different level quizzes" />
-                        <ListCard image={EmergencyIcon} title="Wildlife Service" subtitle="Search for wildlife service closest to you" />
-                        <ListCard image={ListIcon} title="Species list" subtitle="Search for species in Victoria" />
-                    </View> */}
                 </View>
 
                 {isWelcomeCompleted ?
@@ -105,23 +97,24 @@ class Introduction extends Component {
 
                     </>
                     : <>
-                        <View style={{marginLeft: 20, marginRight: 20}}>
-                        <View style={{ marginTop: 30 }}>
-                        <Text style={{ fontFamily: 'Calibre', fontSize: 18, color: "#fff", marginBottom: 10 }}>Do you know what was the number of animal deaths in bushfire?</Text>
-                        <Text style={{ fontFamily: 'Calibre', fontWeight: 'bold', fontSize: 24, color: "#fff" }}>It's been estimated that 1.25 billion native animals have perished in the Australian bushfires</Text>
-                    </View>
+                    <ScrollView>
+                        <View style={{ marginLeft: 20, marginRight: 20 }}>
+                            <View style={{ marginTop: 0 }}>
+                                <Text style={{ fontFamily: 'Calibre', fontSize: 18, color: "#fff", marginBottom: 10 }}>Do you know what was the number of animal deaths in bushfire?</Text>
+                                <Text style={{ fontFamily: 'Calibre', fontWeight: 'bold', fontSize: 24, color: "#fff" }}>It's been estimated that 1.25 billion native animals have perished in the Australian bushfires</Text>
+                            </View>
 
-                    <View style={{ marginTop: 50 }}>
-                        <Text style={{ fontFamily: 'Calibre', fontSize: 18, color: "#fff", marginBottom: 10 }}>What was the economic damage done by the latest bushfires?</Text>
-                        <Text style={{ fontFamily: 'Calibre', fontWeight: 'bold', fontSize: 24, color: "#fff" }}>Economic damage exceeds the record A$4.4 billion set by the 2009 “Black Saturday” blazes</Text>
-                    </View>
+                            <View style={{ marginTop: 30 }}>
+                                <Text style={{ fontFamily: 'Calibre', fontSize: 18, color: "#fff", marginBottom: 10 }}>What was the economic damage done by the latest bushfires?</Text>
+                                <Text style={{ fontFamily: 'Calibre', fontWeight: 'bold', fontSize: 24, color: "#fff" }}>Economic damage exceeds the record A$4.4 billion set by the 2009 “Black Saturday” blazes</Text>
+                            </View>
 
-                    <View style={{ marginTop: 30 }}>
-                        <Text style={{ fontFamily: 'Calibre', fontSize: 18, color: "#fff" }}>We are dedicated towards providing knowledge about Victorian species and conserving the wildlife. We also streamline assistance for injured and orphaned wildlife.</Text>
-                    </View>
+                            <View style={{ marginTop: 30 }}>
+                                <Text style={{ fontFamily: 'Calibre', fontSize: 18, color: "#fff" }}>We are dedicated towards providing knowledge about Victorian species and conserving the wildlife. We also streamline assistance for injured and orphaned wildlife.</Text>
+                            </View>
                         </View>
-
-                        <View style={{ marginTop: 'auto', marginBottom: 30, padding: 20 }}>
+                        </ScrollView>
+                        <View style={{ marginTop: 'auto', marginBottom: 20, padding: 20 }}>
                             <TouchableOpacity
                                 style={{ backgroundColor: "#C4E538", borderRadius: 5, height: 50, justifyContent: 'center', alignContent: 'center', alignItems: 'center' }}
                                 onPress={this.welcomeBoardingDone}

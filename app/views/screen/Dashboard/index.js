@@ -197,17 +197,17 @@ class App extends React.Component {
           >
             <TouchableOpacity style={{ position: 'absolute', top: 0, bottom: 0, left: 0, right: 0, backgroundColor: 'rgba(52,52,52,0.5)' }} onPress={() => this.onSwipeLeft('')}></TouchableOpacity>
 
-            <View style={{ position: 'absolute', top: 0, bottom: 0, left: 0, width: 250, paddingTop: 50, paddingLeft: 20, paddingRight: 20, backgroundColor: darkTheme ? "#232327" : "#f6f6f6" }}>
+            <View style={{ position: 'absolute', overflow: 'scroll', top: 0, bottom: 0, left: 0, width: 250, paddingTop: 40, paddingLeft: 20, paddingRight: 20, backgroundColor: darkTheme ? "#232327" : "#f6f6f6" }}>
 
               <View style={{ width: '100%', height: 150, alignItems: 'center' }}>
                 <Image source={Logo} style={{ width: 160, height: 130 }} />
               </View>
 
 
-              <View style={{ marginTop: 20 }}>
-                <Text style={{ fontFamily: 'Calibre', color: darkTheme ? "#f6f6f6" : "#333" }}>{`The current theme of the app is "${selectedTheme}"`}</Text>
-                <Text style={{ fontFamily: 'Calibre', fontSize: 12, color: darkTheme ? "#f6f6f6" : "#333" }}>featuring the Victorian Species, News Feed and Wildlife Services.</Text>
-                <View style={{ marginTop: 10, flexDirection: 'row', justifyContent: 'center' }}>
+              <View style={{ marginTop: 0 }}>
+                <Text style={{ fontFamily: 'Calibre', fontSize: 14, color: darkTheme ? "#f6f6f6" : "#333" }}>{`The current theme of the app is "${selectedTheme}"`}</Text>
+                <Text style={{ fontFamily: 'Calibre', fontSize: 14, color: darkTheme ? "#f6f6f6" : "#333" }}>,featuring the Victorian Species, News Feed and Wildlife Services.</Text>
+                <View style={{ marginTop: 5, flexDirection: 'row', justifyContent: 'center' }}>
                   <Text style={{ fontFamily: 'Calibre', color: darkTheme ? "#f6f6f6" : "#333" }}>{`Switch to ${selectedTheme == 'help' ? 'Learn' : 'Help'}`}</Text>
                 </View>
                 <View style={{ marginTop: 10, flexDirection: 'row', justifyContent: 'space-between' }}>
@@ -218,7 +218,7 @@ class App extends React.Component {
 
               </View>
 
-              <View style={{ marginTop: 80, flexDirection: 'row', justifyContent: 'space-between' }}>
+              <View style={{ marginTop: 40, flexDirection: 'row', justifyContent: 'space-between' }}>
                 <Text style={{ fontFamily: 'Calibre', fontSize: 16, color: darkTheme ? "#f6f6f6" : "#333" }}>Enable Dark Theme</Text>
                 <Switch value={darkTheme} onValueChange={this.toggleDarkTheme} />
 
@@ -230,8 +230,8 @@ class App extends React.Component {
 
               </View>
 
-              <View style={{ marginTop: 50 }}>
-                {menuOptions.map(list => <TouchableOpacity onPress={() => this.redirectTo(list.component)} style={{ height: 40, marginTop: 10, marginBottom: 10, alignItems: 'center', flexDirection: 'row' }}>
+              <View style={{ marginTop: 30 }}>
+                {menuOptions.map(list => <TouchableOpacity onPress={() => this.redirectTo(list.component)} style={{ height: 40, marginTop: 10, marginBottom: 5, alignItems: 'center', flexDirection: 'row' }}>
                   <Icon style={{ marginRight: 15 }} name={list.icon} size={20} color={darkTheme ? "#9a98a1" : "#333"} />
                   <Text style={{ fontFamily: 'Calibre', fontSize: 18, color: darkTheme ? "#f6f6f6" : "#333" }}>{list.name}</Text>
                 </TouchableOpacity>)}

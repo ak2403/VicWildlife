@@ -56,7 +56,7 @@ class LocationComponent extends Component {
         let { bookmark_location, nearby_location, showLocationDetails, location_details, offlineMode } = this.props
 
         let bookmarkedID = bookmark_location.map(list => list.id);
-
+// console.log(location_details)
         return <View style={styles.rootLayout}>
             <View style={styles.mapLayout}>
                 {locationReceived &&

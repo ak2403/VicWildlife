@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native'
 const Styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingTop: 10,
+        paddingTop: 0,
         // paddingLeft: 20,
         // paddingRight: 20,
         paddingBottom: 20
@@ -91,7 +91,17 @@ const Styles = StyleSheet.create({
         fontFamily: 'Calibre',
         color: '#fff',
         // textAlign: 'center'
-    }
+    },
+    mapLayout: {
+        flex: 1,
+        justifyContent: 'flex-end',
+        alignItems: 'center',
+        height: 200,
+        marginBottom: 20
+    },
+    map: {
+        ...StyleSheet.absoluteFillObject,
+    },
 })
 
 export default Styles

@@ -31,6 +31,7 @@ const Styles = StyleSheet.create({
     closeLayout: {
         width: 30,
         height: 30,
+        flex: 0.1,
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#E4685A',
@@ -38,6 +39,7 @@ const Styles = StyleSheet.create({
     },
     locationTitle: {
         fontSize: 24,
+        flex: 0.9,
         fontFamily: 'Calibre-Bold'
     },
     locationAddressText: {
