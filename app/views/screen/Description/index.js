@@ -22,12 +22,25 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 
 class DescriptionScreen extends Component {
 
+    state = {
+        toggleHabitat: false,
+        toggleDistribution: false
+    }
+
     goBack = () => {
         this.props.navigation.push('Dashboard')
     }
 
+    toggleView = type => {
+        console.log(type)
+        this.setState({
+            [type]: !this.state[type]
+        })
+    }
+
     render() {
         let { data } = this.props.route.params
+        let { toggleHabitat, toggleDistribution } = this.state
         let image_link = data.Image !== null ? data.Image : undefined;
 
         return <View style={{ flex: 1 }}>
@@ -113,12 +126,22 @@ class DescriptionScreen extends Component {
 
                         {data["Habitat"] && <View style={{ flex: 1, marginBottom: 20 }}>
                             <Text style={Styles.secondaryheaderText}>Habitat</Text>
-                            <Text style={Styles.secondarycontentText}>{data["Habitat"]}</Text>
+                            <TouchableOpacity onPress={() => this.toggleView("toggleHabitat")}>
+                                <Text numberOfLines={toggleHabitat ? -1 : 4} style={Styles.secondarycontentText}>{data["Habitat"]}</Text>
+                                <Text style={{ color: '#f1c40f', fontSize: 12, fontWeight: 'bold' }}>
+                                    {!toggleHabitat ? `To read more, click on the text` : `To read less, click on the text`}
+                                </Text>
+                            </TouchableOpacity>
                         </View>}
 
                         {data["Australian_Distribution"] && <View style={{ flex: 1, marginBottom: 20 }}>
                             <Text style={Styles.secondaryheaderText}>Australian Distribution</Text>
-                            <Text style={Styles.secondarycontentText}>{data["Australian_Distribution"]}</Text>
+                            <TouchableOpacity onPress={() => this.toggleView("toggleDistribution")}>
+                                <Text numberOfLines={toggleDistribution ? -1 : 4} style={Styles.secondarycontentText}>{data["Australian_Distribution"]}</Text>
+                                <Text style={{ color: '#f1c40f', fontSize: 12, fontWeight: 'bold' }}>
+                                    {!toggleDistribution ? `To read more, click on the text` : `To read less, click on the text`}
+                                </Text>
+                            </TouchableOpacity>
                         </View>}
                     </ScrollView>
 

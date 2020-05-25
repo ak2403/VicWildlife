@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux'
 import Geolocation from '@react-native-community/geolocation';
 import MapView, { PROVIDER_GOOGLE, Marker, Circle } from 'react-native-maps';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+import getDirections from 'react-native-google-maps-directions'
 import Card from '../../component/Card'
 
 import { getNearbyLocations, bookmarkLocation, getBookmarkLocation, getLocationDetails, closeDetails } from '../../../action/LocationAction';
@@ -20,7 +21,31 @@ class LocationComponent extends Component {
             latitude: '',
             longitude: ''
         },
+        selected_location: {
+            latitude: '',
+            longitude: ''
+        },
         locationReceived: false
+    }
+
+    handleGetDirections = () => {
+        let { locations, selected_location } = this.state
+        const data = {
+            source: locations,
+            destination: selected_location,
+            params: [
+                {
+                    key: "travelmode",
+                    value: "driving"        // may be "walking", "bicycling" or "transit" as well
+                },
+                {
+                    key: "dir_action",
+                    value: "navigate"       // this instantly initializes navigation using the given travel mode
+                }
+            ]
+        }
+
+        getDirections(data)
     }
 
     componentDidMount = () => {
@@ -31,6 +56,7 @@ class LocationComponent extends Component {
         }
 
         Geolocation.getCurrentPosition((position) => {
+            console.log("inside geolocation")
             this.props.getNearbyLocations({
                 latitude: position.coords.latitude,
                 longitude: position.coords.longitude
@@ -47,17 +73,33 @@ class LocationComponent extends Component {
         })
     };
 
+    onLocationSelect = data => {
+        let { selected_location } = this.state
+        selected_location = {
+            latitude: data.geometry.location.lat,
+            longitude: data.geometry.location.lng
+        }
+        this.setState({
+            selected_location
+        })
+        this.props.getLocationDetails(data)
+    }
+
     bookmarkCard = (data, index) => {
+        console.log(data)
         this.props.bookmarkLocation(data, index)
     }
 
     render() {
         let { locations, locationReceived } = this.state
-        let { bookmark_location, nearby_location, showLocationDetails, location_details, offlineMode } = this.props
+        let { bookmark_location, is_loaded, nearby_location, showLocationDetails, location_details, offlineMode } = this.props
 
-        let bookmarkedID = bookmark_location.map(list => list.id);
-// console.log(location_details)
+        let bookmarkedID = bookmark_location.map(list => list.name);
+
+        console.log("bookmarkedID : ",bookmarkedID)
+
         return <View style={styles.rootLayout}>
+            
             <View style={styles.mapLayout}>
                 {locationReceived &&
                     <MapView
@@ -82,9 +124,9 @@ class LocationComponent extends Component {
 
                             return <Marker
                                 coordinate={loc_attr}
-                                onPress={() => this.props.getLocationDetails(location)}
+                                onPress={() => this.onLocationSelect(location)}
                                 title={location.name}>
-                                <Image source={require('../../../assets/images/service.png')} style={{ width: 40, height: 40 }} />
+                                {/* <Image source={require('../../../assets/images/service.png')} style={{ width: 40, height: 40 }} /> */}
                             </Marker>
 
                         })}
@@ -98,7 +140,7 @@ class LocationComponent extends Component {
                     </MapView>}
             </View>
 
-            {showLocationDetails && <View style={styles.contentLayout}>
+            {(showLocationDetails && location_details) && <View style={styles.contentLayout}>
                 <View style={styles.ContentContainer}>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 10 }}>
                         <Text style={styles.locationTitle}>{location_details.name}</Text>
@@ -120,14 +162,24 @@ class LocationComponent extends Component {
                         </TouchableOpacity>
                     </View>
 
-                    <TouchableOpacity style={{marginTop: 5, flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}} onPress={() => this.bookmarkCard(location_details, bookmarkedID.indexOf(location_details.id))}>
-                        <Icon name="star" size={24} color={"#e0e0e0"} style={{marginRight: 10}} />
-                        <Text>Bookmark this location</Text>
-                    </TouchableOpacity>
+                    <View>
+                        <TouchableOpacity style={{ marginTop: 5, flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }} onPress={() => this.bookmarkCard(location_details, bookmarkedID.indexOf(location_details.name))}>
+                            <Icon name="star" size={24} color={bookmarkedID.indexOf(location_details.name) != -1 ? "#e0e" : "#e0e0e0"} style={{ marginRight: 10 }} />
+                            <Text>Bookmark this location</Text>
+                        </TouchableOpacity>
+
+                        <TouchableOpacity style={{ marginTop: 10, flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }} onPress={() => this.handleGetDirections(location_details)}>
+                            <Icon name="map-marker" size={24} color={"#e0e0e0"} style={{ marginRight: 10 }} />
+                            <Text>Navigate to this location</Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
 
             </View>}
-
+            
+            {!is_loaded && <View style={{ position: 'absolute', top: 30, height: 30, flex: 1, width:"100%", alignItems: 'center' }}>
+                <Text style={{ color: '#fff', backgroundColor: '#3498db', padding: 5, borderRadius: 5 }}>Please wait while the app loads the nearby services.</Text>
+            </View>}
         </View>
     }
 }
@@ -147,7 +199,8 @@ const mapStateToProps = props => {
         bookmark_location: location.bookmark_location,
         showLocationDetails: location.showLocationDetails,
         location_details: location.location_details,
-        offlineMode: location.authentication
+        offlineMode: authentication.offlineMode,
+        is_loaded: location.is_loaded
     }
 }
 

@@ -56,12 +56,21 @@ class Introduction extends Component {
 
                 {isWelcomeCompleted ?
                     <>
+                        
                         <View style={{ alignItems: 'center', flex: 0.9, justifyContent: 'center' }}>
+                            <View style={{width: '80%', marginBottom: 10}}>
+                            <Text style={{color: '#fff', fontFamily: 'Calibre-Bold', fontSize: 20, fontWeight: 'bold', textAlign: 'center'}}>Choose your main goal?</Text>
+                            <View style={{flexDirection: 'row', justifyContent: 'center'}}>
+                            <Icon name="info" color={"#fff"} style={{marginRight: 10}} size={18} />
+                            <Text style={{color: '#fff', fontFamily: 'Calibre', fontSize: 14}}>You can also change the goal later by going into the Menu of the app.</Text>
+                            </View>
+                            </View>
+                        
                             <TouchableOpacity onPress={() => this.selectTheme("learn")}>
                                 <View style={[Styles.checkboxOptionsLayout, selectedOptions == 'learn' ? Styles.selected : {}]}>
                                     <View style={Styles.checkboxLayout}>
                                         <View style={Styles.checkboxView}>
-                                            {selectedOptions == 'learn' && <Icon name="check" size={18} />}
+                                            {selectedOptions == 'learn' && <Icon name="check" color={"#fff"} size={18} />}
                                         </View>
                                     </View>
                                     <View style={{ width: '80%' }}>
@@ -75,7 +84,7 @@ class Introduction extends Component {
                                 <View style={[Styles.checkboxOptionsLayout, selectedOptions == 'help' ? Styles.selected : {}]}>
                                     <View style={Styles.checkboxLayout}>
                                         <View style={Styles.checkboxView}>
-                                            {selectedOptions == 'help' && <Icon name="check" size={18} />}
+                                            {selectedOptions == 'help' && <Icon name="check" color={"#fff"} size={18} />}
                                         </View>
                                     </View>
                                     <View style={{ width: '80%' }}>
@@ -97,22 +106,22 @@ class Introduction extends Component {
 
                     </>
                     : <>
-                    <ScrollView>
-                        <View style={{ marginLeft: 20, marginRight: 20 }}>
-                            <View style={{ marginTop: 0 }}>
-                                <Text style={{ fontFamily: 'Calibre', fontSize: 18, color: "#fff", marginBottom: 10 }}>Do you know what was the number of animal deaths in bushfire?</Text>
-                                <Text style={{ fontFamily: 'Calibre', fontWeight: 'bold', fontSize: 24, color: "#fff" }}>It's been estimated that 1.25 billion native animals have perished in the Australian bushfires</Text>
-                            </View>
+                        <ScrollView>
+                            <View style={{ marginLeft: 20, marginRight: 20 }}>
+                                <View style={{ marginTop: 0 }}>
+                                    <Text style={{ fontFamily: 'Calibre', fontSize: 18, color: "#fff", marginBottom: 10 }}>Do you know what was the number of animal deaths in bushfire?</Text>
+                                    <Text style={{ fontFamily: 'Calibre', fontWeight: 'bold', fontSize: 24, color: "#fff" }}>It's been estimated that 1.25 billion native animals have perished in the Australian bushfires</Text>
+                                </View>
 
-                            <View style={{ marginTop: 30 }}>
-                                <Text style={{ fontFamily: 'Calibre', fontSize: 18, color: "#fff", marginBottom: 10 }}>What was the economic damage done by the latest bushfires?</Text>
-                                <Text style={{ fontFamily: 'Calibre', fontWeight: 'bold', fontSize: 24, color: "#fff" }}>Economic damage exceeds the record A$4.4 billion set by the 2009 “Black Saturday” blazes</Text>
-                            </View>
+                                <View style={{ marginTop: 30 }}>
+                                    <Text style={{ fontFamily: 'Calibre', fontSize: 18, color: "#fff", marginBottom: 10 }}>What was the economic damage done by the latest bushfires?</Text>
+                                    <Text style={{ fontFamily: 'Calibre', fontWeight: 'bold', fontSize: 24, color: "#fff" }}>Economic damage exceeds the record A$4.4 billion set by the 2009 “Black Saturday” blazes</Text>
+                                </View>
 
-                            <View style={{ marginTop: 30 }}>
-                                <Text style={{ fontFamily: 'Calibre', fontSize: 18, color: "#fff" }}>We are dedicated towards providing knowledge about Victorian species and conserving the wildlife. We also streamline assistance for injured and orphaned wildlife.</Text>
+                                <View style={{ marginTop: 30 }}>
+                                    <Text style={{ fontFamily: 'Calibre', fontSize: 18, color: "#fff" }}>We are dedicated towards providing knowledge about Victorian species and conserving the wildlife. We also streamline assistance for injured and orphaned wildlife.</Text>
+                                </View>
                             </View>
-                        </View>
                         </ScrollView>
                         <View style={{ marginTop: 'auto', marginBottom: 20, padding: 20 }}>
                             <TouchableOpacity

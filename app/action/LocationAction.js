@@ -21,7 +21,7 @@ export const bookmarkLocation = (data, index) => {
         let getBookmarkLocation = await AsyncStorage.getItem("@bookmarkLocation1")
         let parsedLocationData = []
         let joinedArray = []
-
+        
         if(getBookmarkLocation != null){
             parsedLocationData = JSON.parse(getBookmarkLocation)
             if(index != -1){

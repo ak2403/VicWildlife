@@ -65,7 +65,8 @@ const Styles = StyleSheet.create({
         justifyContent: "space-between",
         alignItems: "center",
         backgroundColor: "rgba(52,52,52,0.8)",
-        marginTop: 5
+        marginTop: 5,
+        borderRadius: 5
     },
     contentLayer: {
         backgroundColor: "rgba(52,52,52,0.9)",

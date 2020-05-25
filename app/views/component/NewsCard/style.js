@@ -10,10 +10,10 @@ const styles = StyleSheet.create({
         padding: 10,
         paddingLeft: 10,
         paddingRight: 10,
-        height: 110
+        height: 140
     },
     imageView: {
-        width: 120,
+        width: 110,
         justifyContent: 'center',
         alignItems: 'center',
     },
@@ -32,6 +32,12 @@ const styles = StyleSheet.create({
     subtitleText: {
         fontSize: 12,
         color: '#333'
+    },
+    dateText: {
+        color: '#fff',
+        fontFamily: 'Calibre',
+        fontSize: 14,
+        marginTop: 5
     }
 });
 

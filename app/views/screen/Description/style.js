@@ -90,6 +90,7 @@ const Styles = StyleSheet.create({
         fontSize: 18,
         fontFamily: 'Calibre',
         color: '#fff',
+        textAlign: 'justify'
         // textAlign: 'center'
     },
     mapLayout: {

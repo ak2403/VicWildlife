@@ -43,8 +43,8 @@ class NewsScreen extends Component {
     }
 
     render() {
-        let { latest_news, darkTheme, offlineMode } = this.props
-
+        let { latest_news, darkTheme, offlineMode, is_loaded } = this.props
+        console.log(is_loaded)
         return (<SafeAreaView forceInset={{ top: 'always' }} style={{ flex: 1, position: 'relative' }}>
             <ImageBG name={BG} />
 
@@ -52,10 +52,12 @@ class NewsScreen extends Component {
                 <Header title="News" />
 
                 <View style={{ flex: 1 }}>
-                    {offlineMode ? <SmokeScreen text={"The NewsFeed is disabled because the app is in offline mode."} /> : <FlatList
+                    {offlineMode ? <SmokeScreen text={"The NewsFeed is disabled because the app is in offline mode."} /> : 
+                    is_loaded ? <FlatList
                         key={item => item["Listed SPRAT TaxonID"]}
                         data={latest_news}
                         renderItem={item => <NewsCard theme={darkTheme} onPress={data => this.openNews(data)} data={item.item} />} />
+                        : <View style={{flex: 1, justifyContent: 'center'}}><Text style={{color: '#fff', fontSize: 18, textAlign: 'center', fontWeight: 'bold'}}>We are loading the News Feed for you. Please wait...</Text></View>
                     }
                 </View>
             </View>
@@ -68,7 +70,8 @@ const mapStateToProps = props => {
     return {
         latest_news: news.latest_news,
         darkTheme: authentication.darkTheme,
-        offlineMode: authentication.offlineMode
+        offlineMode: authentication.offlineMode,
+        is_loaded: news.is_loaded
     }
 }
 

@@ -4,7 +4,8 @@ let initialState = {
     nearby_location: [],
     bookmark_location: [],
     showLocationDetails: false,
-    location_details: {}
+    location_details: {},
+    is_loaded: false
 }
 
 const LocationReducer = (state = initialState, action) => {
@@ -12,7 +13,8 @@ const LocationReducer = (state = initialState, action) => {
         case LocationTypes.GET_NEARBY_PLACES:
             return {
                 ...state,
-                nearby_location: action.payload.results//.slice(0,6)
+                nearby_location: action.payload.results,//.slice(0,6),
+                is_loaded: true
             }
 
         case LocationTypes.BOOKMARK_LOCATION:

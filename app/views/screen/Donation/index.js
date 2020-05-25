@@ -17,22 +17,10 @@ openLink = link => {
         if (supported) {
             Linking.openURL(link);
         } else {
-            
+
         }
     });
 };
-
-const DonationCard = ({ data, theme }) => {
-    let { item } = data
-    return <View style={Styles.CardContainer}>
-        <Text style={Styles.titleText}>{item["Donation Name"]}</Text>
-        <Text style={Styles.subtitleText}>{item["Donation Organization"]}</Text>
-        <Text style={Styles.contentText}>{item["Description"]}</Text>
-        <TouchableOpacity style={Styles.buttonLayer} onPress={() => openLink(item.Link)}>
-            <Text style={Styles.buttonText}>Click for more details</Text>
-        </TouchableOpacity>
-    </View>
-}
 
 class DonationScreen extends Component {
 
@@ -43,7 +31,7 @@ class DonationScreen extends Component {
     _renderHeader(item, expanded) {
         return (
             <View style={Styles.headerLayer}>
-                <Text style={{ color: "#fff", fontFamily: 'Calibre-Bold', fontSize: 18 }}>
+                <Text style={{ color: "#fff", fontFamily: 'Calibre', fontSize: 16 }}>
                     {item["Donation Name"]}
                 </Text>
                 {expanded
@@ -55,16 +43,15 @@ class DonationScreen extends Component {
     _renderContent(item) {
         return (
             <View style={Styles.contentLayer}>
-                <View style={{flexDirection: 'row'}}>
-                    <Text style={{color: '#fff', fontSize: 20, fontFamily: 'Calibre'}}>Organisation: </Text>
-                    <Text style={{color: '#fff', fontSize: 20, fontFamily: 'Calibre'}}>{item["Donation Organization"]}</Text>
+                <View style={{ flexDirection: 'row' }}>
+                    <Text style={{ color: '#fff', fontSize: 20, fontFamily: 'Calibre-Bold' }}>Organisation: </Text>
+                    <Text style={{ color: '#fff', fontSize: 20, fontFamily: 'Calibre' }}>{item["Donation Organization"]}</Text>
                 </View>
-                <Text style={{color: '#fff', fontSize: 16, fontFamily: 'Calibre'}}>{item["Description"]}</Text>
+                <Text numberOfLines={6} style={{ color: '#fff', marginTop: 10, fontSize: 16, fontFamily: 'Calibre' }}>{item["Description"]}</Text>
                 <TouchableOpacity style={Styles.buttonLayer} onPress={() => openLink(item.Link)}>
                     <Text style={Styles.buttonText}>Click for more details</Text>
                 </TouchableOpacity>
             </View>
-            
         );
     }
 
@@ -77,10 +64,11 @@ class DonationScreen extends Component {
 
             <View style={Styles.container}>
                 <Header navigation={this.props.navigation} isSecondary={isSecondary} title="Donation" />
-
+                <Text style={{ backgroundColor: 'rgba(52,52,52,0.8)', padding: 5, marginTop: 5, marginBottom: 5, color: '#fff', fontFamily: 'Calibre', fontSize: 16}}>Do you love wildlife and want to help us in preserving it. Donate your bit today and make a difference. Below are the different donation options you can choose from.</Text>
                 <View style={{ flex: 1 }}>
                     <Content>
                         <Accordion
+                            style={{ borderColor: 'none' }}
                             dataArray={donation}
                             animation={true}
                             expanded={true}
@@ -88,9 +76,6 @@ class DonationScreen extends Component {
                             renderContent={this._renderContent}
                         />
                     </Content>
-                    {/* <FlatList
-                        data={donation}
-                        renderItem={item => <DonationCard data={item} theme={""} /> } /> */}
                 </View>
             </View>
         </SafeAreaView>)

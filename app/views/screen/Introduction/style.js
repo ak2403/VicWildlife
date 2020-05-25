@@ -4,7 +4,10 @@ const Styles = StyleSheet.create({
     checkboxOptionsLayout: { 
         width: '80%', 
         flexDirection: 'row',
-        backgroundColor: 'rgba(52, 52, 52, 0.5)',
+        backgroundColor: 'rgba(52, 52, 52, 0.7)',
+        borderColor: '#7f8c8d',
+        borderWidth: 1,
+        borderRadius: 5,
         height: 100, 
         paddingTop: 15, 
         paddingBottom: 15, 
