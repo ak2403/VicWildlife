@@ -1,4 +1,4 @@
-# Back To Nature
+# VicWildlife
 ## Introduction
 The aim of the Back to Nature project report is to provide comprehensive and useful information about wildlife in Victoria on one-step solution platform. It targets volunteers and people who have interest for wildlife get knowledge and rescue wildlife promptly. This report shows a template for building the proposed solution application, including three main features that are species list, nearby wildlife service locations and quiz in the first iteration. 
 
