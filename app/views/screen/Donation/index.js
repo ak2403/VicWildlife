@@ -22,6 +22,8 @@ openLink = link => {
     });
 };
 
+let isDarkTheme = ''
+
 class DonationScreen extends Component {
 
     componentDidMount = () => {
@@ -30,24 +32,25 @@ class DonationScreen extends Component {
 
     _renderHeader(item, expanded) {
         return (
-            <View style={Styles.headerLayer}>
-                <Text style={{ color: "#fff", fontFamily: 'Calibre', fontSize: 16 }}>
+            <View style={[Styles.headerLayer, isDarkTheme ? Styles.darkView : Styles.lightView]}>
+                <Text style={[Styles.contentText, isDarkTheme ? Styles.darkTextColor : Styles.lightTextColor]}>
                     {item["Donation Name"]}
                 </Text>
                 {expanded
-                    ? <Icon style={{ fontSize: 18 }} color="#fff" name="remove-circle" />
-                    : <Icon style={{ fontSize: 18 }} color="#fff" name="add-circle" />}
+                    ? <Icon style={{ fontSize: 18 }} color={isDarkTheme ? "#fff" : '#333'} name="remove-circle" />
+                    : <Icon style={{ fontSize: 18 }} color={isDarkTheme ? "#fff" : '#333'} name="add-circle" />}
             </View>
         );
     }
+
     _renderContent(item) {
         return (
-            <View style={Styles.contentLayer}>
+            <View style={[Styles.contentLayer, isDarkTheme ? Styles.darkView : Styles.lightView]}>
                 <View style={{ flexDirection: 'row' }}>
-                    <Text style={{ color: '#fff', fontSize: 20, fontFamily: 'Calibre-Bold' }}>Organisation: </Text>
-                    <Text style={{ color: '#fff', fontSize: 20, fontFamily: 'Calibre' }}>{item["Donation Organization"]}</Text>
+                    <Text style={{ color: isDarkTheme ? "#fff" : '#333', fontSize: 18, fontFamily: 'Calibre-Bold' }}>Organisation: </Text>
+                    <Text style={{ color: isDarkTheme ? "#fff" : '#333', fontSize: 18, fontFamily: 'Calibre' }}>{item["Donation Organization"]}</Text>
                 </View>
-                <Text numberOfLines={6} style={{ color: '#fff', marginTop: 10, fontSize: 16, fontFamily: 'Calibre' }}>{item["Description"]}</Text>
+                <Text style={{ color: isDarkTheme ? "#fff" : '#333', marginTop: 10, fontSize: 16, fontFamily: 'Calibre' }}>{item["Description"]}</Text>
                 <TouchableOpacity style={Styles.buttonLayer} onPress={() => openLink(item.Link)}>
                     <Text style={Styles.buttonText}>Click for more details</Text>
                 </TouchableOpacity>
@@ -56,15 +59,20 @@ class DonationScreen extends Component {
     }
 
     render() {
-        let { donation, route } = this.props
+        let { donation, route, darkTheme } = this.props
         let isSecondary = route.params ? route.params.isSecondary : false
+        isDarkTheme = darkTheme;
 
         return (<SafeAreaView forceInset={{ top: 'always' }} style={{ flex: 1, position: 'relative' }}>
             <ImageBG name={BG} />
 
             <View style={Styles.container}>
                 <Header navigation={this.props.navigation} isSecondary={isSecondary} title="Donation" />
-                <Text style={{ backgroundColor: 'rgba(52,52,52,0.8)', padding: 5, marginTop: 5, marginBottom: 5, color: '#fff', fontFamily: 'Calibre', fontSize: 16}}>Do you love wildlife and want to help us in preserving it. Donate your bit today and make a difference. Below are the different donation options you can choose from.</Text>
+
+                <View style={[Styles.introView, darkTheme ? Styles.darkView : Styles.lightView]}>
+                    <Text style={[Styles.introText, darkTheme ? Styles.darkTextColor : Styles.lightTextColor]}>Do you love wildlife and want to help us in preserving it. Donate your bit today and make a difference. Below are the different donation options you can choose from.</Text>
+                </View>
+                
                 <View style={{ flex: 1 }}>
                     <Content>
                         <Accordion
@@ -72,6 +80,7 @@ class DonationScreen extends Component {
                             dataArray={donation}
                             animation={true}
                             expanded={true}
+                            theme={darkTheme}
                             renderHeader={this._renderHeader}
                             renderContent={this._renderContent}
                         />
@@ -83,9 +92,10 @@ class DonationScreen extends Component {
 }
 
 const mapStateToProps = props => {
-    let { donation } = props
+    let { donation, authentication } = props
     return {
-        donation: donation.donation_list
+        donation: donation.donation_list,
+        darkTheme: authentication.darkTheme
     }
 }
 

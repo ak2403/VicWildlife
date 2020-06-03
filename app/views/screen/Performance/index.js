@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, Button, FlatList, SafeAreaView, Image } from 'react-native'
+import { View, Text, Button, FlatList, SafeAreaView, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { getQuizStatistics } from '../../../action/PerformanceAction'
@@ -59,7 +59,9 @@ class PerformanceScreen extends Component {
 
                 <View style={styles.submitButton}>
 
-                    <Button title="Take a Quiz" onPress={() => this.props.navigation.navigate("TakeaQuiz")} />
+                    <TouchableOpacity style={styles.buttonStyle} onPress={() => this.props.navigation.navigate("TakeaQuiz")} >
+                        <Text style={styles.buttonText}>Take a Quiz</Text>
+                    </TouchableOpacity>
 
                 </View></>}
 

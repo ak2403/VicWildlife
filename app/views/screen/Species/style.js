@@ -37,4 +37,17 @@ export default StyleSheet.create({
     map: {
         ...StyleSheet.absoluteFillObject,
     },
+    noresultView: {
+        width: '100%', 
+        backgroundColor: 'rgba(255,255,255, 0.8)', 
+        borderRadius: 5, 
+        height: 100, 
+        justifyContent: 'center', 
+        alignItems: 'center'
+    },
+    noresultText: {
+        fontSize: 18,
+        color: '#333', 
+        fontFamily: 'Calibre-Bold'
+    }
 })

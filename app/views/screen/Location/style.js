@@ -38,17 +38,17 @@ const Styles = StyleSheet.create({
         borderRadius: 30
     },
     locationTitle: {
-        fontSize: 24,
+        fontSize: 18,
         flex: 0.9,
         fontFamily: 'Calibre-Bold'
     },
     locationAddressText: {
-        fontSize: 18,
+        fontSize: 16,
         fontFamily: 'Calibre'
     },
     phoneText: {
         paddingLeft: 10,
-        fontSize: 18,
+        fontSize: 16,
         fontFamily: 'Calibre'
     }
 });

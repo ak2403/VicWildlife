@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
         padding: 10,
         paddingLeft: 10,
         paddingRight: 10,
-        height: 140
+        height: 150
     },
     imageView: {
         width: 110,
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
         color: '#333'
     },
     dateText: {
-        color: '#fff',
+        color: '#333',
         fontFamily: 'Calibre',
         fontSize: 14,
         marginTop: 5

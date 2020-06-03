@@ -193,33 +193,35 @@ class SpeciesScreen extends Component {
                             <Text style={{ color: darkTheme ? "#dfdde3" : "#333", fontFamily: 'Calibre-Bold', fontSize: 18 }}>Filter By:</Text>
                         </View>
 
-                        <View style={{ width: '100%', flexDirection: 'row', justifyContent: 'space-between' }}>
-                            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                                <Text style={{ fontSize: 12, fontFamily: 'Calibre', color: darkTheme ? "#dfdde3" : "#333" }}>Category</Text>
+                        <View style={{ width: '100%', flexDirection: 'column', justifyContent: 'space-between' }}>
+                            <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', width: '100%', marginBottom: 10 }}>
+                                <Text style={{ fontSize: 14, height: 35, flex: 0.5, fontFamily: 'Calibre', color: darkTheme ? "#dfdde3" : "#333" }}>Category</Text>
                                 <Picker
                                     mode="dropdown"
                                     iosHeader="Select Category"
-                                    style={{ width: 100, height: 25, fontSize: 12, fontFamily: 'Calibre', backgroundColor: '#fff', color: '#333' }}
+                                    style={{ width: 200, flex: 0.6, height: 35, fontSize: 12, fontFamily: 'Calibre', backgroundColor: '#fff', color: '#333' }}
                                     placeholder="Select the Category"
                                     placeholderStyle={{ color: "#333", fontSize: 12, fontFamily: 'Calibre' }}
                                     placeholderIconColor="#007aff"
                                     selectedValue={filterByCategory}
+                                    textStyle={{fontSize: 12}}
                                     onValueChange={value => this.saveFilter('filterByCategory', value)}
                                 >
                                     {speciesCategory.map(list => <Picker.Item label={list} value={list} />)}
                                 </Picker>
                             </View>
 
-                            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                                <Text style={{ fontSize: 12, fontFamily: 'Calibre', color: darkTheme ? "#dfdde3" : "#333" }}>Threatened status</Text>
+                            <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', width: '100%', marginBottom: 10 }}>
+                                <Text style={{ fontSize: 14, height: 35, flex:0.5, fontFamily: 'Calibre', color: darkTheme ? "#dfdde3" : "#333" }}>Threatened status</Text>
                                 <Picker
                                     mode="dropdown"
                                     iosHeader="Select the Threatened status"
-                                    style={{ width: 100, height: 25, fontSize: 12, fontFamily: 'Calibre', backgroundColor: '#fff', color: '#333' }}
+                                    style={{ width: 200, flex: 0.6, height: 35, fontSize: 14, fontFamily: 'Calibre', backgroundColor: '#fff', color: '#333' }}
                                     placeholder="Select the Threatened status"
                                     placeholderStyle={{ color: "#333", fontSize: 12, fontFamily: 'Calibre' }}
                                     placeholderIconColor="#007aff"
                                     selectedValue={filterByStatus}
+                                    textStyle={{fontSize: 12}}
                                     onValueChange={value => this.saveFilter('filterByStatus', value)}
                                 >
                                     {threatenedStatus.map(list => <Picker.Item label={list} value={list} />)}
@@ -236,11 +238,13 @@ class SpeciesScreen extends Component {
 
                     </View>
 
-                    <FlatList
+                    {filteredSpecies.length != 0 ? <FlatList
                         key={item => item["Listed_SPRAT_TaxonID"]}
                         data={filteredSpecies}
                         renderItem={item => <SpeciesList theme={darkTheme} data={item} navigation={this.props.navigation} bookmarkFunc={(list, isPresent, index) => this.props.bookmarkSpecies(list, isPresent, index)} bookmarkData={bookmarkID} />}
-                    />
+                    /> : <View style={[styles.noresultView, darkTheme && {backgroundColor: 'rgba(52,52,52,0.8)'}]}>
+                        <Text style={[styles.noresultText, darkTheme && {color: '#fff'}]}>No result found for the search.</Text>
+                        </View>}
                 </View>
             </View>
 

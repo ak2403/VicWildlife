@@ -74,7 +74,7 @@ const Styles = StyleSheet.create({
         marginBottom: 5
     },
     contentText: {
-        fontSize: 24,
+        fontSize: 18,
         fontFamily: 'Calibre',
         color: '#fff',
         // textAlign: 'center'
@@ -87,7 +87,7 @@ const Styles = StyleSheet.create({
         // textAlign: 'center'
     },
     secondarycontentText: {
-        fontSize: 18,
+        fontSize: 16,
         fontFamily: 'Calibre',
         color: '#fff',
         textAlign: 'justify'

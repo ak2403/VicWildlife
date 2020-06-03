@@ -199,21 +199,20 @@ class App extends React.Component {
 
             <View style={{ position: 'absolute', overflow: 'scroll', top: 0, bottom: 0, left: 0, width: 250, paddingTop: 40, paddingLeft: 20, paddingRight: 20, backgroundColor: darkTheme ? "#232327" : "#f6f6f6" }}>
 
-              <View style={{ width: '100%', height: 150, alignItems: 'center' }}>
-                <Image source={Logo} style={{ width: 160, height: 130 }} />
+              <View style={{ width: '100%', height: 130, alignItems: 'center' }}>
+                <Image source={Logo} style={{ width: 130, height: 100 }} />
               </View>
 
 
               <View style={{ marginTop: 0 }}>
-                <Text style={{ fontFamily: 'Calibre', fontSize: 14, color: darkTheme ? "#f6f6f6" : "#333" }}>{`The current theme of the app is "${selectedTheme}"`}</Text>
-                <Text style={{ fontFamily: 'Calibre', fontSize: 14, color: darkTheme ? "#f6f6f6" : "#333" }}>,featuring the Victorian Species, News Feed and Wildlife Services.</Text>
-                <View style={{ marginTop: 5, flexDirection: 'row', justifyContent: 'center' }}>
-                  <Text style={{ fontFamily: 'Calibre', color: darkTheme ? "#f6f6f6" : "#333" }}>{`Switch to ${selectedTheme == 'help' ? 'Learn' : 'Help'}`}</Text>
+                <Text style={{ fontFamily: 'Calibre', textAlign: 'justify', fontSize: 16, color: darkTheme ? "#f6f6f6" : "#333" }}>{`The current theme of the app is "${selectedTheme}", featuring the Victorian Species, News Feed and Wildlife Services.`}</Text>
+                <View style={{ marginTop: 10, flexDirection: 'row', justifyContent: 'center' }}>
+                  <Text style={{ fontFamily: 'Calibre', fontSize: 16, color: darkTheme ? "#f6f6f6" : "#333" }}>{`Switch to ${selectedTheme == 'help' ? 'Learn' : 'Help'}`}</Text>
                 </View>
                 <View style={{ marginTop: 10, flexDirection: 'row', justifyContent: 'space-between' }}>
-                  <Text style={{ fontFamily: 'Calibre', fontSize: 16, color: darkTheme ? "#f6f6f6" : "#333" }}>Learn</Text>
+                  <Text style={{ fontFamily: 'Calibre', fontSize: 16, color: darkTheme ? "#f6f6f6" : "#333" }}>Learn mode</Text>
                   <Switch value={selectedTheme == "learn" ? false : true} onValueChange={this.switchTheme} />
-                  <Text style={{ fontFamily: 'Calibre', fontSize: 16, color: darkTheme ? "#f6f6f6" : "#333" }}>Help</Text>
+                  <Text style={{ fontFamily: 'Calibre', fontSize: 16, color: darkTheme ? "#f6f6f6" : "#333" }}>Help mode</Text>
                 </View>
 
               </View>

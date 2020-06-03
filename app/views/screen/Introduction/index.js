@@ -56,16 +56,16 @@ class Introduction extends Component {
 
                 {isWelcomeCompleted ?
                     <>
-                        
+
                         <View style={{ alignItems: 'center', flex: 0.9, justifyContent: 'center' }}>
-                            <View style={{width: '80%', marginBottom: 10}}>
-                            <Text style={{color: '#fff', fontFamily: 'Calibre-Bold', fontSize: 20, fontWeight: 'bold', textAlign: 'center'}}>Choose your main goal?</Text>
-                            <View style={{flexDirection: 'row', justifyContent: 'center'}}>
-                            <Icon name="info" color={"#fff"} style={{marginRight: 10}} size={18} />
-                            <Text style={{color: '#fff', fontFamily: 'Calibre', fontSize: 14}}>You can also change the goal later by going into the Menu of the app.</Text>
+                            <View style={{ width: '80%', marginBottom: 10 }}>
+                                <Text style={{ color: '#fff', fontFamily: 'Calibre-Bold', fontSize: 20, fontWeight: 'bold', textAlign: 'center' }}>Choose your main goal?</Text>
+                                <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
+                                    <Icon name="info" color={"#fff"} style={{ marginRight: 10 }} size={18} />
+                                    <Text style={{ color: '#fff', fontFamily: 'Calibre', fontSize: 14 }}>You can also change the goal later by going into the Menu of the app.</Text>
+                                </View>
                             </View>
-                            </View>
-                        
+
                             <TouchableOpacity onPress={() => this.selectTheme("learn")}>
                                 <View style={[Styles.checkboxOptionsLayout, selectedOptions == 'learn' ? Styles.selected : {}]}>
                                     <View style={Styles.checkboxLayout}>
@@ -108,7 +108,12 @@ class Introduction extends Component {
                     : <>
                         <ScrollView>
                             <View style={{ marginLeft: 20, marginRight: 20 }}>
-                                <View style={{ marginTop: 0 }}>
+                                <View style={{ marginTop: 30 }}>
+                                    <Text style={{ fontFamily: 'Calibre', fontSize: 18, color: "#fff", marginBottom: 10 }}>Do you know what is the issue that is faced during the rescue operations?</Text>
+                                    <Text style={{ fontFamily: 'Calibre', fontWeight: 'bold', fontSize: 24, color: "#fff" }}>The wildlife rescue volunteers need to be in there much, much sooner – that has not happened.</Text>
+                                </View>
+                                
+                                <View style={{ marginTop: 30 }}>
                                     <Text style={{ fontFamily: 'Calibre', fontSize: 18, color: "#fff", marginBottom: 10 }}>Do you know what was the number of animal deaths in bushfire?</Text>
                                     <Text style={{ fontFamily: 'Calibre', fontWeight: 'bold', fontSize: 24, color: "#fff" }}>It's been estimated that 1.25 billion native animals have perished in the Australian bushfires</Text>
                                 </View>
@@ -119,7 +124,8 @@ class Introduction extends Component {
                                 </View>
 
                                 <View style={{ marginTop: 30 }}>
-                                    <Text style={{ fontFamily: 'Calibre', fontSize: 18, color: "#fff" }}>We are dedicated towards providing knowledge about Victorian species and conserving the wildlife. We also streamline assistance for injured and orphaned wildlife.</Text>
+                                    <Text style={{ color: "#C4E538", fontFamily: 'Calibre-Bold', fontSize: 28 }}>In order to help the wildlife volunteers,</Text>
+                                    <Text style={{ fontFamily: 'Calibre', fontSize: 20, color: "#fff" }}>We are dedicated towards providing knowledge about Victorian species and conserving the wildlife. We also streamline assistance for injured and orphaned wildlife.</Text>
                                 </View>
                             </View>
                         </ScrollView>

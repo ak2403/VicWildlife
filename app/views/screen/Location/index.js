@@ -6,7 +6,7 @@ import Geolocation from '@react-native-community/geolocation';
 import MapView, { PROVIDER_GOOGLE, Marker, Circle } from 'react-native-maps';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import getDirections from 'react-native-google-maps-directions'
-import Card from '../../component/Card'
+import IconMenu from '../../component/IconMenu'
 
 import { getNearbyLocations, bookmarkLocation, getBookmarkLocation, getLocationDetails, closeDetails } from '../../../action/LocationAction';
 import styles from './style'
@@ -133,10 +133,10 @@ class LocationComponent extends Component {
 
                         <Circle
                             center={{ latitude: Number(locations.latitude), longitude: Number(locations.longitude) }}
-                            radius={400}
-                            strokeWidth={2}
+                            radius={800}
+                            strokeWidth={3}
                             strokeColor={'#1a66ff'}
-                            fillColor={'rgba(230,238,255,0.5)'} />
+                            fillColor={'rgba(52,52,52,0.6)'} />
                     </MapView>}
             </View>
 
@@ -180,6 +180,7 @@ class LocationComponent extends Component {
             {!is_loaded && <View style={{ position: 'absolute', top: 30, height: 30, flex: 1, width:"100%", alignItems: 'center' }}>
                 <Text style={{ color: '#fff', backgroundColor: '#3498db', padding: 5, borderRadius: 5 }}>Please wait while the app loads the nearby services.</Text>
             </View>}
+            <IconMenu />
         </View>
     }
 }

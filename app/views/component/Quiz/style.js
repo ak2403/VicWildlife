@@ -9,14 +9,13 @@ export default StyleSheet.create({
         alignContent: 'center'
     },
     questionsView: {
-        paddingLeft: 5,
-        paddingRight: 5,
-    },
-    questionView: {
-
+        paddingLeft: 10,
+        paddingRight: 10,
+        width: '100%'
     },
     questionText: {
-        fontSize: 18,
+        fontFamily: 'Calibre-Bold',
+        fontSize: 22,
         marginBottom: 10
     },
     optionsView: {
@@ -33,13 +32,14 @@ export default StyleSheet.create({
         fontSize: 16
     },
     controlView: {
+        marginTop: 50,
         marginBottom: 50,
         justifyContent: 'space-between',
         flexDirection: 'row'
     },
     closeIcon: {
         position: 'absolute',
-        top: 60,
+        top: 40,
         left: 30,
         width: 30,
         height: 30,
@@ -47,5 +47,27 @@ export default StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#E4685A',
         borderRadius: 30
+    },
+    checkBox: {
+        borderRadius: 20,
+        width: 25,
+        height: 25,
+        justifyContent: 'center',
+        alignItems: 'center',
+        alignContent: 'center'
+    },
+    showResultText: {
+        fontSize: 22, 
+        paddingBottom: 10, 
+        fontFamily: 'Calibre-Bold',
+        textAlign: 'center'
+    },
+    resultQuestionText: {
+        fontFamily: 'Calibre',
+        fontSize: 16,
+        marginBottom: 10
+    },
+    buttonView: {
+        marginTop: 30
     }
 })

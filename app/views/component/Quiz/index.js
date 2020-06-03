@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 import { View, Text, Button, TouchableOpacity } from 'react-native'
 import { CheckBox } from 'native-base'
 import Icon from 'react-native-vector-icons/Feather'
-import {connect} from 'react-redux'
-import {bindActionCreators} from 'redux'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import styles from './style'
 
-import {saveQuiz} from '../../../action/PerformanceAction'
+import { saveQuiz } from '../../../action/PerformanceAction'
 
 class Quiz extends Component {
     constructor(props) {
@@ -95,7 +95,7 @@ class Quiz extends Component {
 
     render() {
         let { lengthOfQuestions, sortQuestion, answersByUser, currentQuestionIndex, showLeftIcon, showRightIcon, correctAnswerByUser, completedQuiz } = this.state
-        let { data } = this.props
+        let { data, darkTheme } = this.props
         let selectedAnswer = ''
 
         let currentQuestion = data[currentQuestionIndex]
@@ -110,30 +110,37 @@ class Quiz extends Component {
         if (answersByUser[currentQuestionIndex]) {
             selectedAnswer = answersByUser[currentQuestionIndex]
         }
-
-        return <View style={styles.container}>
+        
+        return <View style={[styles.container, { backgroundColor: darkTheme ? 'rgba(52, 52, 52, 1)' : 'rgba(255, 255, 255, 1)' }]}>
             {completedQuiz ? <View>
-                <Text style={{paddingBottom: 10, fontWeight: 'bold'}}>{`You have answered ${correctAnswerByUser} out of ${lengthOfQuestions}`}</Text>
-                <View>{data.map(question => <View style={{paddingBottom: 5}}>
-                    <Text>Q1: {question.question}</Text>
-                    <Text style={{color: '#27ae60', fontWeight: 'bold'}}>correct answer: {question.correct_answer}</Text>
-                </View>)}</View>
-                <Button title="Finish the Quiz" onPress={() => this.props.closeQuiz()} />
+                <Text style={[styles.showResultText, { color: darkTheme ? '#fff' : '#333' }]}>{`You have answered ${correctAnswerByUser} out of ${lengthOfQuestions}`}</Text>
+                <View style={{paddingLeft: 10, paddingRight: 10}}>
+                    {data.map((question, index) => <View style={{ paddingBottom: 10 }}>
+                        <Text style={[styles.resultQuestionText, { color: darkTheme ? '#fff' : '#333' }]}>Q{index + 1}: {question.question}</Text>
+                        <Text style={{ color: '#27ae60', fontWeight: 'bold', fontSize: 16 }}>Correct answer: {question.correct_answer}</Text>
+                        {(answersByUser[index] != question.correct_answer) &&
+                            <Text style={{ color: '#e74c3c', fontWeight: 'bold', fontSize: 16 }}>Wrong answer: {answersByUser[index]}</Text>}
+                    </View>)}
+                </View>
+                <View style={styles.buttonView}>
+                    <Button title="Finish the Quiz" onPress={() => this.props.closeQuiz()} />
+                </View>
             </View> :
                 <>
                     <View style={styles.closeIcon}>
                         <Icon name="x" size={20} color="#fff" onPress={() => this.props.closeQuiz()} />
                     </View>
+
                     <View style={styles.questionsView}>
                         <View style={styles.questionView}>
-                            <Text style={styles.questionText}>Q {currentQuestionIndex+1} : {currentQuestion.question}</Text>
+                            <Text style={[styles.questionText, { color: darkTheme ? '#fff' : '#333' }]}>Q {currentQuestionIndex + 1} : {currentQuestion.question}</Text>
                         </View>
 
                         <View style={styles.optionsView}>
                             {shuffe_options.map(list => <TouchableOpacity key={list} onPress={() => this.answerSelected(list)}>
                                 <View style={styles.optionListView}>
-                                    <CheckBox checked={selectedAnswer == list ? true : false} onPress={() => this.answerSelected(list)} />
-                                    <Text style={styles.optionsText}>{list}</Text>
+                                    <CheckBox style={styles.checkBox} checked={selectedAnswer == list ? true : false} onPress={() => this.answerSelected(list)} />
+                                    <Text style={[styles.optionsText, { color: darkTheme ? '#fff' : '#333' }]}>{list}</Text>
                                 </View>
                             </TouchableOpacity>)}
                         </View>
@@ -141,22 +148,22 @@ class Quiz extends Component {
                         <View style={styles.controlView}>
                             {showLeftIcon ? <Icon
                                 name="arrow-left"
-                                color="#333"
+                                color={darkTheme ? "#fff" : "#333"}
                                 onPress={this.proceedPrevStep}
-                                size={24}
+                                size={32}
                             /> : <View></View>}
 
                             {showRightIcon ? <Icon
                                 name="arrow-right"
-                                color="#333"
+                                color={darkTheme ? "#fff" : "#333"}
                                 onPress={this.proceedNextStep}
-                                size={24}
+                                size={32}
                             /> : <View></View>}
 
                             {currentQuestionIndex == lengthOfQuestions - 1 && <Icon
                                 name="check"
-                                color="#333"
-                                size={24}
+                                color={darkTheme ? "#fff" : "#333"}
+                                size={32}
                                 onPress={this.calculateAnswer}
                             />}
 
@@ -171,4 +178,11 @@ const mapDispatchToProps = dispatch => bindActionCreators({
     saveQuiz
 }, dispatch)
 
-export default connect(null, mapDispatchToProps)(Quiz)
+const mapStateToProps = props => {
+    let { authentication } = props
+    return {
+        darkTheme: authentication.darkTheme
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Quiz)

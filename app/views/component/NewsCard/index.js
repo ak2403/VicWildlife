@@ -30,7 +30,7 @@ const NewsCard = props => {
                 <Text numberOfLines={2} style={[Styles.subtitleText, theme && { color: "#dfdde3" }]}>{data.snippet}</Text>
             </View>
         </View>
-        <Text style={Styles.dateText}>published on {moment(data.date_published).format("MM-DD-YY, h:mm:ss a")}</Text>
+        <Text style={[Styles.dateText, theme && {'color': "#dfdde3"}]}>Published on {moment(data.date_published).format("MM-DD-YY, h:mm:ss a")}</Text>
     </View>
     </TouchableOpacity>)
 }

@@ -127,7 +127,7 @@ class DescriptionScreen extends Component {
                         {data["Habitat"] && <View style={{ flex: 1, marginBottom: 20 }}>
                             <Text style={Styles.secondaryheaderText}>Habitat</Text>
                             <TouchableOpacity onPress={() => this.toggleView("toggleHabitat")}>
-                                <Text numberOfLines={toggleHabitat ? -1 : 4} style={Styles.secondarycontentText}>{data["Habitat"]}</Text>
+                                <Text numberOfLines={toggleHabitat ? 0 : 4} style={Styles.secondarycontentText}>{data["Habitat"]}</Text>
                                 <Text style={{ color: '#f1c40f', fontSize: 12, fontWeight: 'bold' }}>
                                     {!toggleHabitat ? `To read more, click on the text` : `To read less, click on the text`}
                                 </Text>
@@ -137,7 +137,7 @@ class DescriptionScreen extends Component {
                         {data["Australian_Distribution"] && <View style={{ flex: 1, marginBottom: 20 }}>
                             <Text style={Styles.secondaryheaderText}>Australian Distribution</Text>
                             <TouchableOpacity onPress={() => this.toggleView("toggleDistribution")}>
-                                <Text numberOfLines={toggleDistribution ? -1 : 4} style={Styles.secondarycontentText}>{data["Australian_Distribution"]}</Text>
+                                <Text numberOfLines={toggleDistribution ? 0 : 4} style={Styles.secondarycontentText}>{data["Australian_Distribution"]}</Text>
                                 <Text style={{ color: '#f1c40f', fontSize: 12, fontWeight: 'bold' }}>
                                     {!toggleDistribution ? `To read more, click on the text` : `To read less, click on the text`}
                                 </Text>
@@ -145,11 +145,11 @@ class DescriptionScreen extends Component {
                         </View>}
                     </ScrollView>
 
-                    {/* <View style={{ backgroundColor: '#fff',  height: 50, }}>
+                    <View style={{ backgroundColor: '#fff',  height: 50, }}>
                         <TouchableOpacity>
                             <Text>Add to my favourite</Text>
                         </TouchableOpacity>
-                    </View> */}
+                    </View>
 
 
 

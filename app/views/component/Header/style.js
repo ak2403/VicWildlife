@@ -10,6 +10,7 @@ export default StyleSheet.create({
     },
     headerTitle: {
         fontSize: 32,
+        flex: 1,
         color: '#fff',
         fontWeight: 'bold'
     },

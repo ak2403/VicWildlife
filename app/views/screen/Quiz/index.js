@@ -7,25 +7,7 @@ import { connect } from 'react-redux'
 import { getQuizQuestions, resetQuiz } from '../../../action/PerformanceAction'
 
 import Quiz from '../../component/Quiz'
-
-const styles = StyleSheet.create({
-    controlView: {
-        marginBottom: 50,
-        justifyContent: 'space-between',
-        flexDirection: 'row'
-    },
-    closeIcon: {
-        position: 'absolute',
-        top: 60,
-        left: 30,
-        width: 30,
-        height: 30,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#E4685A',
-        borderRadius: 30
-    }
-})
+import Styles from './style'
 
 class QuizScreen extends Component {
 
@@ -49,23 +31,23 @@ class QuizScreen extends Component {
     }
 
     ProceedQuiz = () => {
-        let {options} = this.state
+        let { options } = this.state
         let isAllOptionsSelected = true;
 
         for (var key of Object.keys(options)) {
-            if(options[key] == ''){
+            if (options[key] == '') {
                 isAllOptionsSelected = false
             }
         }
 
-        if(isAllOptionsSelected){
+        if (isAllOptionsSelected) {
             this.props.getQuizQuestions(options)
-        }else{
+        } else {
             this.setState({
                 isAllOptionsSelected: false
             })
         }
-        
+
     }
 
     componentDidUpdate = prevProps => {
@@ -91,82 +73,86 @@ class QuizScreen extends Component {
 
     render() {
         let { quizStarted, options, isAllOptionsSelected } = this.state;
-        let { list_of_quiz_questions } = this.props;
+        let { list_of_quiz_questions, darkTheme } = this.props;
 
         if (quizStarted) {
-            console.log(list_of_quiz_questions)
             return <Quiz data={list_of_quiz_questions} closeQuiz={() => this.closeQuiz()} />
         }
 
-        return <View style={{ flex: 1, padding: 50, justifyContent: 'center', alignItems: 'center', alignContent: 'center' }}>
-            <View style={styles.closeIcon}>
+        return <View style={[Styles.controllerView, {backgroundColor: darkTheme ? 'rgba(52, 52, 52, 1)' : 'rgba(255, 255, 255, 1)'}]}>
+            <View style={Styles.closeIcon}>
                 <Icon name="x" size={20} color="#fff" onPress={this.closeQuiz} />
             </View>
 
-            <Text>Quiz</Text>
-            <Form style={{width: '100%'}}>
-                <Item picker>
-                    <Picker
-                        mode="dropdown"
-                        style={{ width: undefined }}
-                        // placeholder="Select the number of questions"
-                        placeholderStyle={{ color: "#bfc6ea" }}
-                        placeholderIconColor="#007aff"
-                        selectedValue={options.numberOfQuestions}
-                        onValueChange={value => this.onChange("numberOfQuestions", value)}
-                    >
-                        <Picker.Item label="Select the number of questions" value="" />
-                        <Picker.Item label="5" value="5" />
-                        <Picker.Item label="10" value="10" />
-                        <Picker.Item label="15" value="15" />
-                    </Picker>
-                    
-                </Item>
-                {(isAllOptionsSelected == false && options.numberOfQuestions == '') && <Text style={{color: '#e74c3c'}}>Please select an option</Text>}
-                <Item picker>
-                    <Picker
-                        mode="dropdown"
-                        style={{ width: undefined }}
-                        // placeholder="Select the difficulty"
-                        placeholderStyle={{ color: "#bfc6ea" }}
-                        placeholderIconColor="#007aff"
-                        selectedValue={options.difficultyLevel}
-                        onValueChange={value => this.onChange("difficultyLevel", value)}
-                    >
-                        <Picker.Item label="Select the difficulty" value="" />
-                        <Picker.Item label="Easy" value="easy" />
-                        <Picker.Item label="Medium" value="medium" />
-                        <Picker.Item label="Hard" value="hard" />
-                    </Picker>
-                </Item>
-                {(isAllOptionsSelected == false && options.difficultyLevel == '') && <Text style={{color: '#e74c3c'}}>Please select an option</Text>}
-                <Item picker>
-                    <Picker
-                        mode="dropdown"
-                        style={{ width: undefined }}
-                        // placeholder="Select the Question Type"
-                        placeholderStyle={{ color: "#bfc6ea" }}
-                        placeholderIconColor="#007aff"
-                        selectedValue={options.typeOfQuestions}
-                        onValueChange={value => this.onChange("typeOfQuestions", value)}
-                    >
-                        <Picker.Item label="Select the Question Type" value="" />
-                        <Picker.Item label="Multiple Options" value="multiple" />
-                        <Picker.Item label="Any" value="any" />
-                    </Picker>
-                </Item>
-                {(isAllOptionsSelected == false && options.typeOfQuestions == '') && <Text style={{color: '#e74c3c'}}>Please select an option</Text>}
-            </Form>
-            <Button title="Start Quiz" onPress={() => this.ProceedQuiz()} />
+            <View style={Styles.contentView}>
+                <Text style={[Styles.headerTitle, {color: darkTheme ? '#fff' : '#333'}]}>Quiz</Text>
+                <Form style={{ width: '100%' }}>
+                    <Item picker style={Styles.dropdownView}>
+                        <Picker
+                            mode="dropdown"
+                            style={{color: darkTheme ? '#fff' : '#333'}}
+                            placeholderStyle={{ color: "#fff" }}
+                            textStyle={{ color: "#fff", fontSize: 18, fontFamily: 'Calibre' }}
+                            placeholderIconColor="#007aff"
+                            selectedValue={options.numberOfQuestions}
+                            onValueChange={value => this.onChange("numberOfQuestions", value)}>
+                            <Picker.Item label="Select the number of questions" value="" />
+                            <Picker.Item label="5" value="5" />
+                            <Picker.Item label="10" value="10" />
+                            <Picker.Item label="15" value="15" />
+                        </Picker>
+
+                    </Item>
+                    {(isAllOptionsSelected == false && options.numberOfQuestions == '') && <Text style={{ color: '#e74c3c' }}>Please select an option</Text>}
+                    <Item picker style={Styles.dropdownView}>
+                        <Picker
+                            mode="dropdown"
+                            style={{color: darkTheme ? '#fff' : '#333'}}
+                            placeholderStyle={{ color: "#bfc6ea" }}
+                            textStyle={{ color: "#fff", fontSize: 18, fontFamily: 'Calibre' }}
+                            placeholderIconColor="#007aff"
+                            selectedValue={options.difficultyLevel}
+                            onValueChange={value => this.onChange("difficultyLevel", value)}
+                        >
+                            <Picker.Item label="Select the difficulty" value="" />
+                            <Picker.Item label="Easy" value="easy" />
+                            <Picker.Item label="Medium" value="medium" />
+                            <Picker.Item label="Hard" value="hard" />
+                        </Picker>
+                    </Item>
+                    {(isAllOptionsSelected == false && options.difficultyLevel == '') && <Text style={{ color: '#e74c3c' }}>Please select an option</Text>}
+                    <Item picker style={Styles.dropdownView}>
+                        <Picker
+                            mode="dropdown"
+                            style={{color: darkTheme ? '#fff' : '#333'}}
+                            placeholderStyle={{ color: "#bfc6ea" }}
+                            textStyle={{ color: "#fff", fontSize: 18, fontFamily: 'Calibre' }}
+                            placeholderIconColor="#007aff"
+                            selectedValue={options.typeOfQuestions}
+                            onValueChange={value => this.onChange("typeOfQuestions", value)}
+                        >
+                            <Picker.Item label="Select the Question Type" value="" />
+                            <Picker.Item label="Multiple Options" value="multiple" />
+                            <Picker.Item label="Any" value="any" />
+                        </Picker>
+                    </Item>
+                    {(isAllOptionsSelected == false && options.typeOfQuestions == '') && <Text style={{ color: '#e74c3c' }}>Please select an option</Text>}
+                </Form>
+
+                <View style={Styles.buttonStyle}>
+                    <Button title="Start Quiz" onPress={() => this.ProceedQuiz()} />
+                </View>
+            </View>
         </View>
     }
 }
 
 const mapStateToProps = props => {
-    let { performance } = props
+    let { performance, authentication } = props
     return {
         list_of_quiz_questions: performance.list_of_quiz_questions,
-        isQuizStarted: performance.isQuizStarted
+        isQuizStarted: performance.isQuizStarted,
+        darkTheme: authentication.darkTheme
     }
 }
 

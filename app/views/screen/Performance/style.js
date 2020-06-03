@@ -9,8 +9,9 @@ export default StyleSheet.create({
         paddingBottom: 20
     },
     flatlistHeader: {
-        fontSize: 18,
+        fontSize: 24,
         color: '#fff',
+        fontFamily: 'Calibre-Bold',
         marginBottom: 10
     },
     Card: {
@@ -49,11 +50,23 @@ export default StyleSheet.create({
         padding: 50,
         lineHeight: 30,
         color: '#fff',
-        fontSize: 14,
+        fontSize: 18,
         fontWeight: 'bold',
         fontFamily: 'Calibre',
         backgroundColor: 'rgba(52, 52, 52, 0.5)',
         borderRadius: 5,
         textAlign: 'center'
+    },
+    buttonStyle: {
+        backgroundColor: '#3498db',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: 40,
+        borderRadius: 5
+    },
+    buttonText: {
+        fontFamily: 'Calibre',
+        fontSize: 18,
+        color: '#fff'
     }
 })
