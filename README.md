@@ -6,17 +6,6 @@ The aim of the Back to Nature project report is to provide comprehensive and use
 This mobile application provides name, habitat, description and unique characteristics of the endangered wildlife based on the location and species. It allows users to search endangered wildlife by name and location. It also allows users to save their filter and use it again in the future. In addition, it has a quiz function which allows users to test their knowledge and how much they have learnt by using this application. The quiz results and numbers of people also can be analysed for feedback purposes. Besides, it shares donated information, it allows users to reach local communities and do donations to protect wildlife.
 What's more, it has responsive mobile screen sizes and feedback function. It allows users to express themselves. Data from the application can be downloaded and the application can be used without an internet connection.
 
-
-## Iteration 1
-This iteration of the project focused on the users who have interested about the wildlife species in Victoria and also know the wildlife service nearby their current location. The user can also test the skills about the species by undergoing Quiz in the application. The user story is based on the persona of Jen and David who are interested in the Victoria’s wildlife species and gain knowledge about it. Therefore, the application provides:
-
-1.	List of wildlife species in Victoria.
-
-2.	Quiz functionality where the user can test/gain their knowledge.
-
-3.	Find the nearby wildlife service.
-
-
 ## Libraries used:
 "react": "16.11.0"
 
