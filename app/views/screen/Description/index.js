@@ -145,11 +145,11 @@ class DescriptionScreen extends Component {
                         </View>}
                     </ScrollView>
 
-                    <View style={{ backgroundColor: '#fff',  height: 50, }}>
+                    {/* <View style={{ backgroundColor: '#fff',  height: 50, }}>
                         <TouchableOpacity>
                             <Text>Add to my favourite</Text>
                         </TouchableOpacity>
-                    </View>
+                    </View> */}
 
 
 

@@ -48,7 +48,7 @@ class Introduction extends Component {
             <ImageBG name={BG} />
 
             <View style={{ backgroundColor: 'rgba(52, 52, 52, 0.5)', flex: 1 }}>
-                <View style={{ padding: 0, height: 130 }}>
+                <View style={{ padding: 0 }}>
                     <View style={{ width: '100%', marginTop: 50, paddingLeft: 20 }}>
                         <Text style={{ fontSize: 34, fontWeight: 'bold', lineHeight: 50, fontFamily: 'Calibre-Bold', color: '#fff' }}>Welcome to VicWildlife</Text>
                     </View>
