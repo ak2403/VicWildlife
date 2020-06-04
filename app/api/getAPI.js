@@ -67,7 +67,7 @@ export const getSpecies = () => {
 }
 
 export const getNews = () => {
-    return axios.get(`https://api.breakingapi.com/news?q=wildlife&type=headlines&locale=en-AU&output=json&page_size=50&api_key=2BA974BA400C4F94B9F0C1247A15B00F`)
+    return axios.get(`https://api.breakingapi.com/news?q=wildlife&type=headlines&locale=en-AU&output=json&page_size=50&api_key=4B51BD518B3D4B02A05DCEB95B6EEF0F`)
         .then(response => {
             return {
                 status: 200,
