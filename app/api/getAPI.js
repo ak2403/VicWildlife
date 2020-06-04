@@ -67,22 +67,22 @@ export const getSpecies = () => {
 }
 
 export const getNews = () => {
-    // return axios.get(`https://api.breakingapi.com/news?q=wildlife&type=headlines&locale=en-AU&output=json&page_size=50&api_key=2BA974BA400C4F94B9F0C1247A15B00F`)
-    //     .then(response => {
-    //         return {
-    //             status: 200,
-    //             data: response.data.articles
-    //         }
-    //     })
-    //     .catch(err => {
-    //         return {
-    //             status: 400
-    //         }
-    //     })
-    return {
-        status: 200,
-        data: NewsData.articles
-    }
+    return axios.get(`https://api.breakingapi.com/news?q=wildlife&type=headlines&locale=en-AU&output=json&page_size=50&api_key=2BA974BA400C4F94B9F0C1247A15B00F`)
+        .then(response => {
+            return {
+                status: 200,
+                data: response.data.articles
+            }
+        })
+        .catch(err => {
+            return {
+                status: 400
+            }
+        })
+    // return {
+    //     status: 200,
+    //     data: NewsData.articles
+    // }
 }
 
 export const getDonations = () => {
