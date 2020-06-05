@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, Button, TouchableOpacity } from 'react-native'
+import { View, Text, Button, TouchableOpacity, ScrollView } from 'react-native'
 import { CheckBox } from 'native-base'
 import Icon from 'react-native-vector-icons/Feather'
 import { connect } from 'react-redux'
@@ -112,7 +112,7 @@ class Quiz extends Component {
         }
         
         return <View style={[styles.container, { backgroundColor: darkTheme ? 'rgba(52, 52, 52, 1)' : 'rgba(255, 255, 255, 1)' }]}>
-            {completedQuiz ? <View>
+            {completedQuiz ? <ScrollView style={{marginTop: 60}}>
                 <Text style={[styles.showResultText, { color: darkTheme ? '#fff' : '#333' }]}>{`You have answered ${correctAnswerByUser} out of ${lengthOfQuestions}`}</Text>
                 <View style={{paddingLeft: 10, paddingRight: 10}}>
                     {data.map((question, index) => <View style={{ paddingBottom: 10 }}>
@@ -125,7 +125,7 @@ class Quiz extends Component {
                 <View style={styles.buttonView}>
                     <Button title="Finish the Quiz" onPress={() => this.props.closeQuiz()} />
                 </View>
-            </View> :
+            </ScrollView> :
                 <>
                     <View style={styles.closeIcon}>
                         <Icon name="x" size={20} color="#fff" onPress={() => this.props.closeQuiz()} />
