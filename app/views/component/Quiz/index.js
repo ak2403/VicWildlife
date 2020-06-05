@@ -112,7 +112,7 @@ class Quiz extends Component {
         }
         
         return <View style={[styles.container, { backgroundColor: darkTheme ? 'rgba(52, 52, 52, 1)' : 'rgba(255, 255, 255, 1)' }]}>
-            {completedQuiz ? <ScrollView>
+            {completedQuiz ? <ScrollView style={{marginTop: 60}}>
                 <Text style={[styles.showResultText, { color: darkTheme ? '#fff' : '#333' }]}>{`You have answered ${correctAnswerByUser} out of ${lengthOfQuestions}`}</Text>
                 <View style={{paddingLeft: 10, paddingRight: 10}}>
                     {data.map((question, index) => <View style={{ paddingBottom: 10 }}>
